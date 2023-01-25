@@ -1,6 +1,6 @@
 
 function App() {
-  
+
   return (
     <div>
       hello
@@ -13,13 +13,13 @@ export default App;
 
 
 {/* <ul>
-        <li><b>CSS:</b>
-          <li>Tailwindcss</li>
-          <li>Metrial UI</li>
-        </li>
-        <li><b>extranal</b>
-          <li>react-router-dom</li>
-          <li> </li>
-        </li>
+  <li><b>CSS:</b>
+    <li>Tailwindcss</li>
+    <li>Metrial UI</li>
+  </li>
+  <li><b>extranal</b>
+    <li>react-router-dom</li>
+    <li> </li>
+  </li>
 
-      </ul> */}
+</ul>  */}

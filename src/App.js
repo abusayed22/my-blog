@@ -1,9 +1,17 @@
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Nav from "./components/nav/Nav";
+import CommingSoon from "./components/CommingSoon";
 
 function App() {
 
   return (
     <div>
-      hello
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/catagory" element={<CommingSoon />} />
+      </Routes>
     </div>
   );
 }

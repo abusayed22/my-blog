@@ -2,7 +2,7 @@ import React from 'react'
 
 function CommingSoon() {
   return (
-    <div>comming soon..</div>
+    <div className='text-center text-red text-xl mt-5'>CommingSoon This page...</div>
   )
 }
 

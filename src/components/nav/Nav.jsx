@@ -14,8 +14,8 @@ function Nav() {
     ]
   return (
     <div>
-      <div className="flex justify-between px-3 py-3">
-        <div className="flex ">
+      <div className="flex justify-between px-3 py-3 md:flex-row-reverse">
+        <div className="flex">
           <div className="flex">
             <button>
               <SearchIcon style={{ fontSize: "40px" }} />
@@ -27,18 +27,22 @@ function Nav() {
         </div>
         <input
           type="text"
-          className="border border-gray w-[380px] focus:text-rose md:w-[80%] lg:w-[50%] outline-none p-1"
+          className="hidden border border-gray w-[380px] focus:text-rose md:w-[80%] lg:w-[50%] outline-none p-1"
         />
+        <Link to={'/'} className="text-3xl font-bold text-red md:ml-[-75%] lg:ml-[-82%] xl:ml-[-84%]">myblog</Link>
         <div>
-          <button className="sm:hidden">
+          <button className="md:hidden">
             <LegendToggleIcon style={{ fontSize: "40px" }} />
           </button>
         </div>
       </div>
-      <div className="bg-white ">
-        <ul className="flex justify-center w-[90%]">
+      <div className="bg-white h-20 invisible md:visible">
+        <ul className="flex justify-center w-[90%] items-center h-20">
             {catagory.map(list => (
-            <Link key={list.id} path={`/${list.cat}`} className="p-2 hover:underline hover:underline-offset-8 text-xl">{list.cat}</Link>
+              <li key={list.id}>
+              <Link  to={`${list.cat}`} className="p-2 hover:underline hover:underline-offset-8 text-xl ">{list.cat}</Link>
+
+            </li>
             
             ))}
         </ul>

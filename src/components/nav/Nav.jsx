@@ -4,32 +4,38 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LegendToggleIcon from "@mui/icons-material/LegendToggle";
 import { Link } from "react-router-dom";
 import ModalNav from "../modalComponents/ModalNav";
+import InputModal from "../modalComponents/InputModal";
 
 function Nav({ catagory }) {
-  const [toggled, isToggled] = useState(false);
+  const [toggled, setToggled] = useState(false);
+  const [inputToggled, setInputToggled] = useState(false);
 
   // nav toggled handler
   const toggledHandler = () => {
-    isToggled((prv) => !prv);
+    setToggled((prv) => !prv);
   };
+   // input toggled handler
+  const inputToggledHandler = () => {
+    setInputToggled((prv) => !prv);
+  }
 
   return (
     <div>
       <div className=" flex justify-between px-3 py-3 md:flex-row-reverse">
         <div className="flex">
           <div className="flex">
-            <button>
-              <SearchIcon style={{ fontSize: "40px" }} />
-            </button>
+            
+              <SearchIcon onClick={inputToggledHandler} toggledHandler={inputToggledHandler} className="relative" style={{ fontSize: "40px" }} />
+              <div className="absolute top-3 left-[20%] md:left-[20%]">
+                <InputModal inputToggled={inputToggled} toggledHandler={inputToggledHandler}/>
+              </div>
+           
             <button>
               <AccountCircleIcon style={{ fontSize: "40px" }} />
             </button>
           </div>
         </div>
-        <input
-          type="text"
-          className="hidden border border-gray w-[380px] focus:text-rose md:w-[80%] lg:w-[50%] outline-none p-1"
-        />
+        
         <Link
           to={"/"}
           className="text-3xl font-bold text-red md:ml-[-75%] lg:ml-[-82%] xl:ml-[-84%]"

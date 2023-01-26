@@ -2,17 +2,30 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Nav from "./components/nav/Nav";
 import CommingSoon from "./components/CommingSoon";
+import ModalNav from "./components/modalComponents/ModalNav";
+import { useState } from "react";
+
 
 function App() {
+  const catagory = [
+    { id: 1, cat: 'catagory' },
+    { id: 2, cat: 'catagory' },
+    { id: 3, cat: 'catagory' },
+    { id: 4, cat: 'catagory' },
+    { id: 5, cat: 'catagory' },
+  ]
+
+  
 
   return (
-    <div>
-      <Nav />
+    <>
+      <Nav catagory={catagory}  />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

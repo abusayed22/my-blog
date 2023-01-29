@@ -1,11 +1,23 @@
-import React from 'react'
-import baner from "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fblog&psig=AOvVaw39hpH0JYDAMmD_bNGJJSHT&ust=1674837059835000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCIif16XU5fwCFQAAAAAdAAAAABAE.jpg"
+import React from "react";
+import bg_video from "../../assets/videos/Pexels Videos 1851768.mp4";
+
 function Hero() {
   return (
-    <div>
-        <img src={baner} alt="" />
+    <div className="relative">
+      <video
+        src={bg_video}
+        autoPlay
+        // loop
+        muted
+        width="100%"
+        className="object-cover h-[80vh]"
+      />
+      <div className="absolute top-[50%] left-[35%] md:left-[45%] flex flex-col justify-center items-center">
+        <h2 className="font-serif text-4xl text-red">My Blog</h2>
+        <p className="font-sans text-lg text-yellow">Show your passinate content..</p>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

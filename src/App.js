@@ -6,6 +6,7 @@ import ModalNav from "./components/modalComponents/ModalNav";
 import { useState } from "react";
 import Footer from "./components/footer/Footer";
 import SingleBlog from "./pages/singleblog/SingleBlog";
+import Author from "./pages/author/Author";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />
         <Route path="/single" element={<SingleBlog />} />
+        <Route path="/author" element={<Author />} />
       </Routes>
       
       <Footer />

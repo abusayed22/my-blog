@@ -12,7 +12,7 @@ function SingleBlog() {
       </div>
       <br />
       <div className="flex">
-        <div className="flex flex-col justify-center items-center w-[20%] ">
+        <div className="flex flex-col justify-center items-center w-[20%] space-y-1">
           <Avatar src="" alt="" />
           <b>Aurthor Name</b>
           <p>propeson</p>

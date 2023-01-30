@@ -15,5 +15,7 @@
     <li>react-router-dom</li>
     <li> </li>
   </li>
+  
+  animation: react-reveal
 
 </ul>

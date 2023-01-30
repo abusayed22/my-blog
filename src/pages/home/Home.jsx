@@ -19,7 +19,9 @@ function Home() {
         <Cart />
         <Cart />
       </div>
-     
+      <div className="flex justify-center mt-5">
+        <Pagination count={10} color="secondary" />
+      </div>
     </div>
   );
 }

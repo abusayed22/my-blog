@@ -2,7 +2,7 @@
   <li><b>CSS:</b>
     <ul>
          <li>Tailwindcss</li>
-        <li>Metrial UI</li>
+        <li>Material UI</li>
     </ul>
   </li>
   <li><b>FontFamily:</b>

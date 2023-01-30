@@ -17,7 +17,7 @@ function Hero() {
         <h2 className="font-serif text-4xl text-red">My Blog</h2>
         <p className="font-sans text-lg text-yellow">Show your passinate content..</p>
       </div>
-      <Loader />
+      {/* <Loader /> */}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Nav from "./components/nav/Nav";
 import CommingSoon from "./components/CommingSoon";
 import ModalNav from "./components/modalComponents/ModalNav";
 import { useState } from "react";
+import Footer from "./components/footer/Footer";
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />
       </Routes>
+      
+      <Footer />
     </>
   );
 }

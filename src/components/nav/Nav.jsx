@@ -14,28 +14,35 @@ function Nav({ catagory }) {
   const toggledHandler = () => {
     setToggled((prv) => !prv);
   };
-   // input toggled handler
+  // input toggled handler
   const inputToggledHandler = () => {
     setInputToggled((prv) => !prv);
-  }
+  };
 
   return (
     <div>
       <div className="dark:bg-black flex justify-between px-3 py-3 md:flex-row-reverse">
         <div className="flex">
           <div className="flex">
-            
-              <SearchIcon onClick={inputToggledHandler} toggledHandler={inputToggledHandler} className="relative dark:text-white" style={{ fontSize: "40px" }} />
-              <div className="absolute top-3 left-[20%] md:left-[20%]">
-                <InputModal inputToggled={inputToggled} toggledHandler={inputToggledHandler}/>
-              </div>
-           
+            <SearchIcon
+              onClick={inputToggledHandler}
+              toggledHandler={inputToggledHandler}
+              className="relative dark:text-white"
+              style={{ fontSize: "40px" }}
+            />
+            <div className="absolute top-3 left-[20%] md:left-[20%]">
+              <InputModal
+                inputToggled={inputToggled}
+                toggledHandler={inputToggledHandler}
+              />
+            </div>
+
             <button className="dark:text-white">
               <AccountCircleIcon style={{ fontSize: "40px" }} />
             </button>
           </div>
         </div>
-        
+
         <Link
           to={"/"}
           className="text-3xl font-bold text-red md:ml-[-75%] lg:ml-[-82%] xl:ml-[-84%]"
@@ -43,9 +50,12 @@ function Nav({ catagory }) {
           myblog
         </Link>
 
-          {/* toggled */}
+        {/* toggled */}
         <div>
-          <button onClick={toggledHandler} className="relative md:hidden transition-transform z-10 dark:text-gray">
+          <button
+            onClick={toggledHandler}
+            className="relative md:hidden transition-transform z-10 dark:text-gray"
+          >
             <LegendToggleIcon style={{ fontSize: "40px" }} />
             <div className="absolute right-0 top-32">
               <ModalNav

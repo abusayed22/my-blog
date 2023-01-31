@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -19,9 +19,16 @@ function Login() {
     p: 4,
   };
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  // sign in
+  const [sign,setSign] = useState(false);
+  const signHandler = () => {
+    setSign(prev => !prev)
+  }
+
 
   return (
     <div className="dark:bg-black">
@@ -53,11 +60,11 @@ function Login() {
             <br />
             <br />
             <div className="w-96 mx-auto flex justify-center space-x-10">
-              <button className="border dark:text-white shadow-lg border-green hover:bg-[#7e7474] transition w-24 h-10 rounded-sm">
+              <button className="border dark:text-black shadow-lg hover:text-white border-green hover:bg-[#218b4a] transition w-24 h-10 rounded-sm">
                 Login
               </button>
-              <button className="border dark:text-white shadow-lg border-white bg-blue hover:text-yellow w-24 h-10 rounded-sm">
-                Login
+              <button onClick={signHandler} className="border dark:text-white shadow-lg border-white bg-blue hover:text-yellow w-24 h-10 rounded-sm">
+                Sigin-in
               </button>
             </div>
           </Box>

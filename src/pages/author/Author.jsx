@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material";
 import React from "react";
 import test from "../../assets//images/busness.jpg";
 import Cart from "../../components/home/Cart";
-import Zoom from "react-reveal/Zoom";
+// import Zoom from "react-reveal/Zoom";
 
 function Author() {
   return (
@@ -23,11 +23,11 @@ function Author() {
       </div>
 
       <div className="mt-10">
-      <Zoom>
+      {/* <Zoom> */}
         <p className="text-xl font-extrabold text-green border-b text-center">
           Name's Blog
         </p>
-      </Zoom>
+      {/* </Zoom> */}
       </div>
       <div className="flex flex-wrap justify-center space-x-5">
         <Cart />

@@ -2,7 +2,7 @@ import React from "react";
 import test from "../../../src/assets/images/neture.jpg";
 import { Avatar, Pagination, Typography } from "@mui/material";
 import Cart from "../../components/home/Cart";
-import Fade from "react-reveal/Fade";
+// import Fade from "react-reveal/Fade";
 
 function SingleBlog() {
   return (
@@ -19,7 +19,7 @@ function SingleBlog() {
           <p>tittle</p>
         </div>
         <div className="w-[80%] p-5">
-          <Fade left>
+          {/* <Fade left> */}
             <p
               left
               className="indent-12 selection:text-green first-letter:text-red first-letter:text-2xl text-justify dark:text-green dark:selection:text-yellow "
@@ -35,7 +35,7 @@ function SingleBlog() {
               eos. Cum ducimus, alias dolorem, facere saepe optio ullam suscipit
               ad delectus distinctio fugiat adipisci.
             </p>
-          </Fade>
+          {/* </Fade> */}
         </div>
       </div>
       <br />

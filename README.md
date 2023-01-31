@@ -17,5 +17,6 @@
   </li>
   
   animation: react-reveal
+  a bug lossed half-day, the bug was of react-reveal. react-reveal published was 5 years old. so maybe react-reveal isn't for this time.
 
 </ul>

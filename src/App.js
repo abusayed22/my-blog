@@ -7,6 +7,7 @@ import { useState } from "react";
 import Footer from "./components/footer/Footer";
 import SingleBlog from "./pages/singleblog/SingleBlog";
 import Author from "./pages/author/Author";
+import Login from "./pages/login/Login";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/catagory" element={<CommingSoon />} />
         <Route path="/single" element={<SingleBlog />} />
         <Route path="/author" element={<Author />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       
       <Footer />

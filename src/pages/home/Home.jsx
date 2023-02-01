@@ -19,9 +19,6 @@ function Home() {
       {/* <Fade bottom> */}
         <div className="flex flex-wrap justify-around ">
           <Cart />
-          <Cart />
-          <Cart />
-          <Cart />
         </div>
       {/* </Fade> */}
       <div className="flex justify-center mt-5">

@@ -1,17 +1,18 @@
 import React from "react";
-import test from "../../assets/images/tecnology.jpg";
+// import test from "../../assets/images/tecnology.jpg";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function Cart() {
+function Cart({ blog ={}}) {
+  const { id, thumbnail, title, avatar, author, date } = blog;
   return (
     <>
-      <div className="rounded-lg mt-5 dark:bg-[#f30b0ba8] bg-[#f4f7fa] w-[420px] space-y-4 h-[500px] opacity- flex flex-col items-center justify-center shadow-down shadow-xl">
-        <img src={test} alt="test" className="opacity-75 w-[380px] h-60 " />
+
+      <div key={id} className="rounded-lg mt-5 dark:bg-[#f30b0ba8] bg-[#f4f7fa] w-[420px] space-y-4 h-[500px] opacity- flex flex-col items-center justify-center shadow-down shadow-xl">
+        <img src={thumbnail} alt="test" className="opacity-75 w-[380px] h-60 " />
         <div className="flex flex-col space-y-3">
           <b className="text-clip text-center font-extrabold select-text selection:text-green">
-            The application of scientific knowledge for practical purposes,
-            especially in industry. "advances in computer technology"
+            {title}
           </b>
           <div className="mx-auto">
             <Link
@@ -24,15 +25,15 @@ function Cart() {
           <Link to={"/author"} className="mx-auto flex space-x-2">
             <Avatar
               alt="Cindy Baker"
-              src={test}
+              src={avatar}
               sx={{ width: 56, height: 56 }}
             />
             <div>
               <Link to={"/author"} className="text-lg border-b-2">
-                Author Name
+                {author}
               </Link>
               <p className="text-sm text-gray">a day ago</p>
-              <span className=" text-gray">1/30/2023</span>
+              <span className=" text-gray">{date}</span>
             </div>
           </Link>
         </div>

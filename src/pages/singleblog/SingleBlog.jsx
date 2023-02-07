@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 function SingleBlog() {
   const {id} = useParams();
-  const blog = useSelector(state => state.allBlog);
+  const {blog} = useSelector(state => state.allBlog);
 
   const dispatch = useDispatch();
   useEffect(() => {

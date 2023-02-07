@@ -7,13 +7,14 @@ import fetchBlog from "../../redux/allBlog/thunk/fetchBlog";
 
 function Home() {
 
-  const blogs = useSelector(state => state.allBlog);
+  const blogs = useSelector(state => state.allBlog.blogs);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchBlog)
   }, [dispatch]);
 
+  console.log(blogs)
   return (
     <div className="bg-black">
       <Hero />

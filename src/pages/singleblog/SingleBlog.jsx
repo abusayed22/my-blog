@@ -1,41 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import test from "../../../src/assets/images/neture.jpg";
 import { Avatar, Pagination, Typography } from "@mui/material";
 import Cart from "../../components/home/Cart";
+import { useDispatch, useSelector } from "react-redux";
+import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
+import { useParams } from "react-router-dom";
 // import Fade from "react-reveal/Fade";
 
 function SingleBlog() {
+  const {id} = useParams();
+  const blog = useSelector(state => state.allBlog);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(singleBlogFetch(id))
+  }, [dispatch,id])
+
+  console.log(blog)
+  const {id:bId,title,description,author,date,thumbnail} = blog;
   return (
     <div className="dark:bg-black">
       <div>
-        <img src={test} alt="test" className="w-[100%] h-[60vh]" />
+        <img src={thumbnail} alt={author} className="w-[100%] h-[60vh]" />
       </div>
       <br />
       <div className="flex">
         <div className="flex flex-col justify-center items-center w-[20%] space-y-1">
           <Avatar src="" alt="" />
-          <b>Aurthor Name</b>
-          <p>propeson</p>
-          <p>tittle</p>
+          <b>{author}</b>
+          <p>{'A GOOD TEACHER'}</p>
+          <p>{"Passionate Programmer"}</p>
         </div>
         <div className="w-[80%] p-5">
-          {/* <Fade left> */}
             <p
               left
               className="indent-12 selection:text-green first-letter:text-red first-letter:text-2xl text-justify dark:text-green dark:selection:text-yellow "
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit deserunt saepe tempora a quasi nulla fuga doloribus
-              beatae earum incidunt aspernatur porro ullam facilis eum esse
-              excepturi, quam cumque doloremque, obcaecati dolore. Accusantium,
-              doloribus! Nostrum cumque doloribus, quo quas natus, at animi
-              laborum distinctio, rem ipsum delectus voluptate officia minus
-              eum. Quisquam pariatur laborum reprehenderit, adipisci vero
-              aliquid inventore placeat. Ex facere corporis reiciendis vitae
-              eos. Cum ducimus, alias dolorem, facere saepe optio ullam suscipit
-              ad delectus distinctio fugiat adipisci.
+              {description}
             </p>
-          {/* </Fade> */}
         </div>
       </div>
       <br />

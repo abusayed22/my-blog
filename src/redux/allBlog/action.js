@@ -1,4 +1,4 @@
-import { LOADED } from "./actionTypes"
+import { LOADED, SINGLE_LOADED } from "./actionTypes"
 
 
 export const loaded = (blogs) => {
@@ -7,3 +7,11 @@ export const loaded = (blogs) => {
         payload: blogs
     }
 }
+
+export const single_loaded = (blog) => {
+    return {
+        type: SINGLE_LOADED,
+        payload: blog
+    }
+}
+

@@ -1,4 +1,4 @@
-import { LOADED } from "./actionTypes";
+import { LOADED,SINGLE_LOADED } from "./actionTypes";
 
 const initialState = []
 
@@ -7,6 +7,8 @@ const allBlogReducer = (state = initialState,action) => {
         case LOADED:
             return action.payload
 
+        case SINGLE_LOADED:
+            return action.payload
     }
     return state;
 }

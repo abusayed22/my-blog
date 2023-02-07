@@ -7,7 +7,7 @@ import fetchBlog from "../../redux/allBlog/thunk/fetchBlog";
 
 function Home() {
 
-  const blogs = useSelector(state => state.allBlog.videos);
+  const blogs = useSelector(state => state.allBlog);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import React from "react";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function Cart({ blog ={}}) {
+function Cart({ blog = {}}) {
   const { id, thumbnail, title, avatar, author, date } = blog;
   return (
     <>
@@ -15,7 +15,7 @@ function Cart({ blog ={}}) {
           </b>
           <div className="mx-auto">
             <Link
-              to={"/single"}
+              to={`/single/${id}`}
               className="my-6 border border-white transition hover:border-[#818cf8]  shadow-sm hover:shadow-[#818cf8] hover:shadow-md px-5 py-2 text-blue rounded-md"
             >
               View..

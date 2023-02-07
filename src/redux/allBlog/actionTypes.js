@@ -1,1 +1,3 @@
 export const LOADED = "ALL_BLOG_LOADED";
+export const SINGLE_LOADED = "SINGLE_BLOG_LOADED";
+

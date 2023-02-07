@@ -21,12 +21,13 @@ function Home() {
       <p className="text-xl font-extrabold text-green border-b text-center">
         ALL Blogs
       </p>
-   {/* ⛔️ Uncaught TypeError: map is not a function */}
 
-      <div className="flex flex-wrap justify-center space-x-4">
-       {blogs?.map(single => 
-       <Cart blog={single} key={single.id}/>
-        )}
+      <div className="w-[90%] mx-auto">
+        <div className="flex flex-shrink flex-wrap justify-evenly">
+          {blogs?.map(single =>
+            <Cart blog={single} key={single.id} />
+          )}
+        </div>
       </div>
       <div className="flex justify-center mt-5">
         <Pagination count={10} color="secondary" />

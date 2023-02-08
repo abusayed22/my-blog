@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "../../components/home/Hero";
 import Cart from "../../components/home/Cart";
-import { Pagination } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBlog from "../../redux/allBlog/thunk/fetchBlog";
+import { Pagination } from "@mui/material";
+import Paginations from "../../utils/loader/Paginations";
 
 function Home() {
 
@@ -14,7 +15,18 @@ function Home() {
     dispatch(fetchBlog)
   }, [dispatch]);
 
-  console.log(blogs)
+  // pagination functional
+  // const [blogs, setBlogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [blogPerPage, setBlogPerPage] = useState(2);
+
+  const indexOfLastBlog = currentPage * blogPerPage
+  const indexOfFirstBlog = indexOfLastBlog - blogPerPage
+  const currentBlog = blogs?.slice(indexOfFirstBlog, indexOfLastBlog);
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
   return (
     <div className="bg-black">
       <Hero />
@@ -25,14 +37,20 @@ function Home() {
 
       <div className="w-[90%] mx-auto">
         <div className="flex flex-shrink flex-wrap justify-evenly">
-          {blogs?.map(single =>
-            <Cart blog={single} key={single.id} />
-          )}
+          <Cart blogs={currentBlog} />
         </div>
       </div>
       <div className="flex justify-center mt-5">
-        <Pagination count={10} color="secondary" />
+        <Paginations
+          blogPerPage={blogPerPage}
+          totalBlogs={blogs?.length}
+          paginate={paginate} 
+          currentPage={currentPage}
+          indexOfLastBlog={indexOfLastBlog}
+          indexOfFirstBlog={indexOfFirstBlog}
+          />
       </div>
+      {/* <Pagination count={blogs?.length} /> */}
     </div>
   );
 }

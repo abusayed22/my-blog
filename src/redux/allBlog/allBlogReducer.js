@@ -1,4 +1,5 @@
 import { LOADED,SINGLE_LOADED } from "./actionTypes";
+import {produce} from "immer"
 
 const initialState = {
     blogs: [],
@@ -8,16 +9,14 @@ const initialState = {
 const allBlogReducer = (state = initialState,action) => {
     switch(action.type) {
         case LOADED:
-            return  {
-                ...state,
-                blogs: action.payload
-            }
+            return produce(state, (draftState) => {
+                draftState.blogs = action.payload
+            })
 
         case SINGLE_LOADED:
-            return {
-                ...state,
-                blog: action.payload
-            }
+            return produce(state, (draftState) => {
+                draftState.blog = action.payload
+            })
     }
     return state;
 }

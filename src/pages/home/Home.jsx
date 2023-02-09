@@ -3,12 +3,11 @@ import Hero from "../../components/home/Hero";
 import Cart from "../../components/home/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBlog from "../../redux/allBlog/thunk/fetchBlog";
-import { Pagination } from "@mui/material";
 import Paginations from "../../utils/loader/Paginations";
 
 function Home() {
 
-  const blogs = useSelector(state => state.allBlog.blogs);
+  const {blogs,isLoading,isError} = useSelector(state => state.allBlog.blogs);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +17,7 @@ function Home() {
   // pagination functional
   // const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1)
-  const [blogPerPage, setBlogPerPage] = useState(2);
+  const [blogPerPage, setBlogPerPage] = useState(3);
 
   const indexOfLastBlog = currentPage * blogPerPage
   const indexOfFirstBlog = indexOfLastBlog - blogPerPage
@@ -46,8 +45,6 @@ function Home() {
           totalBlogs={blogs?.length}
           paginate={paginate} 
           currentPage={currentPage}
-          indexOfLastBlog={indexOfLastBlog}
-          indexOfFirstBlog={indexOfFirstBlog}
           />
       </div>
       {/* <Pagination count={blogs?.length} /> */}

@@ -1,12 +1,18 @@
-import { loaded } from "../action";
+import { loaded ,fail,loading} from "../action";
 
 const fetchBlog = async (dispatch, getState) => {
-    
-    const res = await fetch('http://localhost:9000/videos2');
-    const blogs = await res.json()
 
-    dispatch(loaded(blogs))
-    
+    dispatch(loading())
+
+    try {
+        const res = await fetch('http://localhost:9000/videos2');
+        const blogs = await res.json()
+
+        dispatch(loaded(blogs))
+    } catch (error) {
+        dispatch(fail(error))
+    }
+
 
 }
 

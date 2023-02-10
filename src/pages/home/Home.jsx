@@ -36,7 +36,7 @@ function Home() {
 
       <div className="w-[90%] mx-auto">
         <div className="flex flex-shrink flex-wrap justify-evenly">
-          <Cart blogs={currentBlog} />
+          {isLoading ? (<Cart blogs={currentBlog} loading={isLoading} />) : (<Cart blogs={currentBlog} />)}
         </div>
       </div>
       <div className="flex justify-center mt-5">

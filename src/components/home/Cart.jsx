@@ -7,10 +7,10 @@ import HomeLoaderCard from "../loader/HomeLoaderCard";
 function Cart({ blogs = {},loading }) {
   // const { id, thumbnail, title, avatar, author, date } = blogs;
 
-  if(!loading) {
+  if(loading) {
     return (
       <>
-        {blogs.map(s => (
+        {blogs?.map(s => (
           <HomeLoaderCard />
         ))}
   
@@ -19,7 +19,7 @@ function Cart({ blogs = {},loading }) {
   } else {
     return (
       <>
-        {blogs.map(s => (
+        {blogs?.map(s => (
           <div key={s.id} className="rounded-lg mt-5 dark:bg-[#f30b0ba8] bg-[#f4f7fa] w-[420px] md:w-[380px] space-y-4 h-[500px] opacity- flex flex-col items-center justify-center shadow-down shadow-xl">
             <img src={s.thumbnail} alt="test" className="opacity-75 w-[380px] h-60 mb-5" />
             <div className="flex flex-col space-y-3">

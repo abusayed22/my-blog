@@ -1,5 +1,9 @@
 export const LOADED = "ALL_BLOG_LOADED";
 export const LOADING = "IS_LOADING";
 export const FAILD = "IS_FAILD";
+
+// SINGLE DATA ACTION TYPE
 export const SINGLE_LOADED = "SINGLE_BLOG_LOADED";
+export const SINGLE_LOADING = "SINGLE_LOADING";
+export const SINGLE_FAILD = "SINGLE_FAILD";
 

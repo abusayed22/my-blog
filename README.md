@@ -28,3 +28,10 @@
 <b>Ulitls:</b>
  <li>Pagination</li>
 </ol>
+
+
+
+bugs
+1= pagination right arrow
+2= gatagory section
+3=

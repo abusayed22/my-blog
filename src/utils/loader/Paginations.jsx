@@ -50,6 +50,3 @@ console.log()
 };
 
 export default Paginations;
-
-
-

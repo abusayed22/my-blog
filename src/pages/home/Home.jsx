@@ -7,7 +7,7 @@ import Paginations from "../../utils/loader/Paginations";
 
 function Home() {
 
-  const {blogs,isLoading,isError} = useSelector(state => state?.allBlog.blogs);
+  const {blogs,isLoading,isError} = useSelector(state => state.allBlog?.blogs);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,6 +24,7 @@ function Home() {
   const indexOfFirstBlog = indexOfLastBlog - blogPerPage
   const currentBlog = blogs?.slice(indexOfFirstBlog, indexOfLastBlog);
 
+
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -37,7 +38,7 @@ function Home() {
 
       <div className="w-[90%] mx-auto">
         <div className="flex flex-shrink flex-wrap justify-evenly">
-          {isLoading ? (<Cart blogs={currentBlog} loading={isLoading} />) : (<Cart blogs={currentBlog} />)}
+          {isLoading && !isError ? (<Cart blogs={currentBlog} loading={isLoading} />) : (<Cart blogs={currentBlog} />)}
         </div>
       </div>
       <div className="flex justify-center mt-5">

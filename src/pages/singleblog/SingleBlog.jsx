@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Avatar, Pagination, Typography } from "@mui/material";
+import { Avatar, Pagination } from "@mui/material";
 import Cart from "../../components/home/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
@@ -7,20 +7,22 @@ import { useParams } from "react-router-dom";
 
 
 function SingleBlog() {
-  const { blog, isLoading, isError } = useSelector(state => state?.allBlog?.blog);
+  const {blog,isLoading,isError} = useSelector(state => state.allBlog.blog);
   const { id } = useParams();
 
   const dispatch = useDispatch();
 
-  // useEffect((id) => {
-  //   dispatch(singleBlogFetch(id))
-  // }, [dispatch, id]);
-  // console.log(id)
-  dispatch(singleBlogFetch(id))
+  // TODO: why is not working
+  useEffect(() => {
+    dispatch(singleBlogFetch(id))
+  }, [dispatch, id]);
 
-
-
+  
+  
+  
   const { title, description, author, date, thumbnail } = blog || {}
+  
+ 
 
   if (!isError && isLoading) {
     return (<>
@@ -57,7 +59,7 @@ function SingleBlog() {
             <Cart />
           </div>
           <div className="flex justify-center mt-10">
-            <Pagination count={10} color="primary" />
+            
           </div>
         </div>
       </div>

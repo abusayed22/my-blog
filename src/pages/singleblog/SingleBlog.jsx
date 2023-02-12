@@ -4,25 +4,23 @@ import Cart from "../../components/home/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
 import { useParams } from "react-router-dom";
-// import Fade from "react-reveal/Fade";
+
 
 function SingleBlog() {
+  const { blog, isLoading, isError } = useSelector(state => state?.allBlog?.blog);
   const { id } = useParams();
-  const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
-  
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(singleBlogFetch(id))
-  }, [dispatch, id]);
-
-  console.log(blog)
-  console.log('loading  '+isLoading)
-  console.log(isError)
+  // useEffect((id) => {
+  //   dispatch(singleBlogFetch(id))
+  // }, [dispatch, id]);
+  // console.log(id)
+  dispatch(singleBlogFetch(id))
 
 
-  const { title, description, author, date, thumbnail } = blog;
+
+  const { title, description, author, date, thumbnail } = blog || {}
 
   if (!isError && isLoading) {
     return (<>

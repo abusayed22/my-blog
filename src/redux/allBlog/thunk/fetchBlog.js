@@ -5,7 +5,7 @@ const fetchBlog = async (dispatch, getState) => {
     dispatch(loading())
 
     try {
-        const res = await fetch('http://localhost:9000/videos2');
+        const res = await fetch('http://localhost:9000/videos2/');
         const blogs = await res.json()
 
         dispatch(loaded(blogs))

@@ -7,11 +7,12 @@ import Paginations from "../../utils/loader/Paginations";
 
 function Home() {
 
-  const {blogs,isLoading,isError} = useSelector(state => state.allBlog.blogs);
+  const {blogs,isLoading,isError} = useSelector(state => state?.allBlog.blogs);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchBlog)
+    
   }, [dispatch]);
 
   // pagination functional

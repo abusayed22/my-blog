@@ -14,7 +14,7 @@ const initialState = {
         isError: null
     },
     blog: {
-        blog: [],
+        blog: {},
         isLoading: false,
         isError: null
     }
@@ -68,7 +68,7 @@ const allBlogReducer = (state = initialState, action) => {
                 blog: {
                     ...state.blog,
                     blog: action.payload,
-                    isLoadindg: false,
+                    isLoading: false,
                     isError: null
                 }
             }
@@ -77,7 +77,7 @@ const allBlogReducer = (state = initialState, action) => {
                 ...state,
                 blog: {
                     ...state.blog,
-                    blog: [],
+                    blog: {},
                     isLoading: true,
                     isError: null
                 }
@@ -87,7 +87,7 @@ const allBlogReducer = (state = initialState, action) => {
                 ...state,
                 blog: {
                     ...state.blog,
-                    blog: [],
+                    blog: {},
                     isLoading: false,
                     isError: action.payload
                 }

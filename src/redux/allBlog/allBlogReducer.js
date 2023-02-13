@@ -99,6 +99,7 @@ const allBlogReducer = (state = initialState, action) => {
                 }
             }
 
+        // related blogs operation
             case RELATED_LOADED:
                 return {
                     ...state,

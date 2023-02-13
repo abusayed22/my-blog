@@ -17,7 +17,7 @@ function Home() {
 
   // pagination functional
   // const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1);
   const [blogPerPage, setBlogPerPage] = useState(3);
 
   const indexOfLastBlog = currentPage * blogPerPage

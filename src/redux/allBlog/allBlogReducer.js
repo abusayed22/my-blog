@@ -1,4 +1,4 @@
-import { LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD } from "./actionTypes";
+import { LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD,RELATED_FAILD,RELATED_LOADED,RELATED_LOADING } from "./actionTypes";
 import { produce } from "immer"
 import { Castle } from "@mui/icons-material";
 
@@ -17,10 +17,16 @@ const initialState = {
         blog: {},
         isLoading: false,
         isError: null
+    },
+    related: {
+        blogs: [],
+        isLoading: false,
+        isError: null
     }
 }
 
 const allBlogReducer = (state = initialState, action) => {
+    // eslint-disable-next-line default-case
     switch (action.type) {
         case LOADED:
             // TODO: this is spread way
@@ -92,6 +98,37 @@ const allBlogReducer = (state = initialState, action) => {
                     isError: action.payload
                 }
             }
+
+            case RELATED_LOADED:
+                return {
+                    ...state,
+                    related: {
+                        ...state.blogs,
+                        blogs: action.payload,
+                        isLoadindg: false,
+                        isError: null
+                    }
+                }
+            case RELATED_LOADING:
+                return {
+                    ...state,
+                    related: {
+                        ...state.blogs,
+                        blogs: [],
+                        isLoadindg: true,
+                        isError: null
+                    }
+                }
+            case RELATED_FAILD:
+                return {
+                    ...state,
+                    related: {
+                        ...state.blogs,
+                        blogs: [],
+                        isLoadindg: false,
+                        isError: action.payload
+                    }
+                }
 
     }
     return state;

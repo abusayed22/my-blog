@@ -1,4 +1,4 @@
-import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD } from "./actionTypes"
+import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD } from "./actionTypes"
 
 
 export const loaded = (blogs) => {
@@ -36,6 +36,25 @@ export const single_loading = () => {
 export const single_error = (err) => {
     return {
         type: SINGLE_FAILD,
+        payload: err
+    }
+}
+
+// related actions
+export const related_loaded = (blogs) => {
+    return {
+        type: RELATED_LOADED,
+        payload: blogs
+    }
+}
+export const related_loading = () => {
+    return {
+        type: RELATED_LOADING,
+    }
+}
+export const related_fail = (err) => {
+    return {
+        type: RELATED_FAILD,
         payload: err
     }
 }

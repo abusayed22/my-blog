@@ -5,6 +5,7 @@ import LegendToggleIcon from "@mui/icons-material/LegendToggle";
 import { Link } from "react-router-dom";
 import ModalNav from "../modalComponents/ModalNav";
 import InputModal from "../modalComponents/InputModal";
+import Taging from "./tags/Taging";
 
 function Nav({ catagory }) {
   const [toggled, setToggled] = useState(false);
@@ -69,16 +70,11 @@ function Nav({ catagory }) {
       </div>
       <div className="bg-white h-20 invisible md:visible z-20">
         <ul className="flex justify-center w-[90%] items-center h-20">
-          {catagory.map((list) => (
-            <li key={list.id}>
-              <Link
-                to={`${list.cat}`}
-                className="p-2 hover:underline hover:underline-offset-8 text-xl "
-              >
-                {list.cat}
-              </Link>
-            </li>
-          ))}
+          <li>
+            {catagory.map(cat => (
+              <Taging catagroy={catagory}/>
+            ))}
+          </li>
         </ul>
       </div>
     </div>

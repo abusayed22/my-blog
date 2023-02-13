@@ -16,7 +16,11 @@ const filterReducer = (state= initialState, action) => {
         
         case TAG_REMOVED: 
             return {
-                ...state.
+                ...state,
+                tags: [
+                    ...state.tags.splice(0,action.payload),
+                    ...state.items.splice(1)
+                ]
             }
 
         default:

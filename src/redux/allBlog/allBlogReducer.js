@@ -1,7 +1,6 @@
 import { LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD,RELATED_FAILD,RELATED_LOADED,RELATED_LOADING } from "./actionTypes";
 import { produce } from "immer"
 import { Castle } from "@mui/icons-material";
-import { TAG_SELECT } from "../blogFilter/actionTypes";
 
 // const initialState = {
 //     blogs: [],
@@ -29,7 +28,8 @@ const initialState = {
 const allBlogReducer = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
-        case TAG_SELECT:
+        case LOADED:
+            // TODO: this is spread way
             return {
                 ...state,
                 blogs: {

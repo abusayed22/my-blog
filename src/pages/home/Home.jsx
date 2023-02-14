@@ -4,6 +4,7 @@ import Cart from "../../components/home/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBlog from "../../redux/allBlog/thunk/fetchBlog";
 import Paginations from "../../utils/loader/Paginations";
+import HomeLoaderCard from "../../components/loader/HomeLoaderCard";
 
 function Home() {
 
@@ -38,7 +39,11 @@ function Home() {
 
       <div className="w-[90%] mx-auto">
         <div className="flex flex-shrink flex-wrap justify-evenly snap-start">
-          {isLoading && !isError ? (<Cart blogs={currentBlog} loading={isLoading} />) : (<Cart blogs={currentBlog} />)}
+          {isLoading ? (<>
+            <HomeLoaderCard />
+            <HomeLoaderCard />
+            <HomeLoaderCard />
+          </>) : (<Cart blogs={currentBlog} />)}
         </div>
       </div>
       <div className="flex justify-center mt-5">

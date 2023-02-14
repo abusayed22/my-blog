@@ -1,16 +1,14 @@
-        
-        // case TAG_REMOVED: 
-        //     return {
-        //         ...state,
-                // tags: [
-                //     ...state.tags.splice(0,action.payload),
-                //     ...state.items.splice(1)
-                // ]
-                // ...state.tags.slice(action.payload,0)
+// case TAG_REMOVED: 
+//     return {
+//         ...state,
+// tags: [
+//     ...state.tags.splice(0,action.payload),
+//     ...state.items.splice(1)
+// ]
+// ...state.tags.slice(action.payload,0)
 
 
-import produce from "immer";
-import { TAG_SELECT ,TAG_REMOVED, SEARCH} from "./actionTypes";
+import { TAG_SELECT, TAG_REMOVED, SEARCH } from "./actionTypes";
 
 
 
@@ -26,20 +24,24 @@ const filterReducer = (state = initialState, action) => {
         case TAG_SELECT:
             return {
                 ...state,
-                
+                tags: [
+                    ...state.tags,
+                    action.payload
+                ]
             }
-            
-        // case TAG_REMOVED:
-        //     return {
-                
-        //     }
 
-        case SEARCH: 
+        case TAG_REMOVED:
+            return {
+                ...state,
+                tags: state.tags.filter(item => item !== action.payload)
+            }
+
+        case SEARCH:
             return {
                 ...state,
                 search: action.payload
             }
-        
+
 
     }
     return state;

@@ -12,10 +12,10 @@ import Sign_in from "./pages/login/Sign_in";
 function App() {
   const catagory = [
     { id: 1, cat: 'Vs code' },
-    { id: 1, cat: 'React' },
-    { id: 1, cat: 'Css' },
-    { id: 1, cat: 'Tips' },
-    { id: 1, cat: 'Tailwindcss' },
+    { id: 6, cat: 'React' },
+    { id: 7, cat: 'Css' },
+    { id: 8, cat: 'Tips' },
+    { id: 9, cat: 'Tailwindcss' },
     { id: 2, cat: 'Technology' },
     { id: 3, cat: 'Photograpy' },
     { id: 4, cat: 'Writer' },

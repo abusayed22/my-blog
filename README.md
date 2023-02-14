@@ -15,6 +15,7 @@
     <li>react-router-dom</li>
     <li>immer implement for mutetedly state update in allBlogsReducer. But is not for my reducer opparation, because <b>Immer only supports setting array indices and the 'length' property
 </b> </li>
+    <li> npm install --save-dev tailwind-scrollbar</li>
     <li> </li>
   </li>
   

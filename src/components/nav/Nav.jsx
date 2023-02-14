@@ -68,13 +68,13 @@ function Nav({ catagory }) {
           </button>
         </div>
       </div>
-      <div className="bg-white h-20 invisible md:visible z-20">
-        <ul className="flex justify-center w-[90%] items-center h-20">
-          <li>
-            {catagory.map(cat => (
-              <Taging catagroy={catagory}/>
-            ))}
-          </li>
+      <div className="bg-green opacity-75 fixed w-[100%] scroll-mt-[-66px] snap-y h-20 invisible md:visible z-20">
+        <ul className="flex justify-center w-[90%] items-center h-20 space-x-2">
+          {catagory.map(cat => (
+            <li key={cat.id}>
+              <Taging catagroy={cat.cat} />
+            </li>
+          ))}
         </ul>
       </div>
     </div>

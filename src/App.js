@@ -11,11 +11,15 @@ import Sign_in from "./pages/login/Sign_in";
 
 function App() {
   const catagory = [
-    { id: 1, cat: 'catagory' },
-    { id: 2, cat: 'catagory' },
-    { id: 3, cat: 'catagory' },
-    { id: 4, cat: 'catagory' },
-    { id: 5, cat: 'catagory' },
+    { id: 1, cat: 'Vs code' },
+    { id: 1, cat: 'React' },
+    { id: 1, cat: 'Css' },
+    { id: 1, cat: 'Tips' },
+    { id: 1, cat: 'Tailwindcss' },
+    { id: 2, cat: 'Technology' },
+    { id: 3, cat: 'Photograpy' },
+    { id: 4, cat: 'Writer' },
+    { id: 5, cat: 'Javascript' },
   ]
 
 

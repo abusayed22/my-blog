@@ -28,7 +28,7 @@ function Nav({ catagory }) {
             <SearchIcon
               onClick={inputToggledHandler}
               toggledHandler={inputToggledHandler}
-              className="relative dark:text-white"
+              className="relative text-green cursor-pointer"
               style={{ fontSize: "40px" }}
             />
             <div className="absolute top-3 left-[20%] md:left-[20%]">
@@ -68,11 +68,11 @@ function Nav({ catagory }) {
           </button>
         </div>
       </div>
-      <div className="bg-green opacity-75 fixed w-[100%] scroll-mt-[-66px] snap-y h-20 invisible md:visible z-20">
+      <div className="bg-green opacity-75 w-[100%] scroll-mt-[-66px] snap-y h-20 invisible md:visible z-20">
         <ul className="flex justify-center w-[90%] items-center h-20 space-x-2">
           {catagory.map(cat => (
             <li key={cat.id}>
-              <Taging catagroy={cat.cat} />
+              <Taging tag={cat.cat} />
             </li>
           ))}
         </ul>

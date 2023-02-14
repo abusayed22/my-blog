@@ -2,6 +2,8 @@ import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
 function InputModal({ inputToggled,toggledHandler }) {
+
+  
   return (
     inputToggled && (
       <div className="flex">

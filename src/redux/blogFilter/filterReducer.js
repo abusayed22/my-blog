@@ -1,30 +1,48 @@
-import { TAG_SELECT,TAG_REMOVED } from "./actionTypes";
+        
+        // case TAG_REMOVED: 
+        //     return {
+        //         ...state,
+                // tags: [
+                //     ...state.tags.splice(0,action.payload),
+                //     ...state.items.splice(1)
+                // ]
+                // ...state.tags.slice(action.payload,0)
+
+
+import produce from "immer";
+import { TAG_SELECT ,TAG_REMOVED, SEARCH} from "./actionTypes";
+
 
 
 const initialState = {
     tags: [],
-    search: ''
+    search: null
 }
 
 
-const filterReducer = (state= initialState, action) => {
+const filterReducer = (state = initialState, action) => {
+    // eslint-disable-next-line default-case
     switch (action.type) {
         case TAG_SELECT:
             return {
-                ...state.tags.push(action.payload)
+                ...state,
+                
             }
-        
-        case TAG_REMOVED: 
+            
+        // case TAG_REMOVED:
+        //     return {
+                
+        //     }
+
+        case SEARCH: 
             return {
                 ...state,
-                tags: [
-                    ...state.tags.splice(0,action.payload),
-                    ...state.items.splice(1)
-                ]
+                search: action.payload
             }
+        
 
-        default:
-            break;
     }
+    return state;
 }
+
 export default filterReducer;

@@ -20,6 +20,8 @@ function Nav({ catagory }) {
     setInputToggled((prv) => !prv);
   };
 
+  
+
   return (
     <div>
       <div className="dark:bg-black flex justify-between px-3 py-3 md:flex-row-reverse">

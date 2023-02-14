@@ -5,7 +5,7 @@ import { removed_tag, tag_select } from "../../../redux/blogFilter/action";
 function Taging({ tag }) {
 
     const dispatch = useDispatch();
-    const { tags: selectedTag, search: searchValue } = useSelector(state => state?.filterBlog);
+    const { tags: selectedTag } = useSelector(state => state?.filterBlog);
 
     const ifSlected = selectedTag.includes(tag) ? true : false;
 

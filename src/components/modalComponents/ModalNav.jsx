@@ -1,8 +1,10 @@
 import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
+import ModalNavList from "./ModalNavList";
+
 
 function ModalNav({ toggled, toggledHandler, catagory }) {
+
     return (
         toggled && (
             <div>
@@ -14,13 +16,7 @@ function ModalNav({ toggled, toggledHandler, catagory }) {
 
                     <ul className="flex flex-col items-center mt-5 w-72 bg-white">
                         {catagory.map((list) => (
-                            <Link
-                                to={`${list.cat}`}
-                                key={list.id}
-                                className=" hover:shadow-red w-72 h-10 mt-4 shadow-lg font-bold text-center hover:text-red"
-                            >
-                                {list.cat}
-                            </Link>
+                            <ModalNavList key={list.id} list={list} />
                         ))}
                     </ul>
                 </div>

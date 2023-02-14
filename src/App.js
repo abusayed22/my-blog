@@ -25,7 +25,7 @@ function App() {
 
   
   return (
-    <>
+    <div className="scrollbar scroll-smooth scrollbar-corner-red ">
       <Nav catagory={catagory} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -36,7 +36,7 @@ function App() {
         <Route path="/sign_in" element={<Sign_in />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import Loader from "../../utils/loader/Loader";
 
 function Hero() {
   return (
-    <div className="relative">
+    <div className="relative ">
       <video
         src={bg_video}
         autoPlay

@@ -37,7 +37,7 @@ function Home() {
       </p>
 
       <div className="w-[90%] mx-auto">
-        <div className="flex flex-shrink flex-wrap justify-evenly">
+        <div className="flex flex-shrink flex-wrap justify-evenly snap-start">
           {isLoading && !isError ? (<Cart blogs={currentBlog} loading={isLoading} />) : (<Cart blogs={currentBlog} />)}
         </div>
       </div>

@@ -12,10 +12,9 @@ const fetchBlog = ({tags, searched}) =>  async (dispatch, getState) => {
             queryString = tags.map(tag => `tags_like=${tag}`).join("&")
         }
 
-        if(!searched === "") {
+        if(!searched == "") {
             queryString = `q=${searched}`
         }
-        console.log(queryString);
 
         const res = await fetch(`http://localhost:9000/videos2?${queryString}`);
         const blogs = await res.json()

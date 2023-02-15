@@ -3,15 +3,20 @@ import React from "react";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomeLoaderCard from "../loader/HomeLoaderCard";
+import { useSelector } from "react-redux";
 
 function Cart({ blogs  , loading }) {
+  const { tags: selectedTag } = useSelector(state => state?.filterBlog);
+  console.log(selectedTag);
   // const { id, thumbnail, title, avatar, author, date } = blogs;
 
   // if(blogs?.length > 0) {
     if (loading) {
       return (
         <>
-          {blogs?.map(s => (
+          {blogs?
+          .filter(tag === selectedTag.cat)
+          .map(s => (
             <HomeLoaderCard key={s.id} />
           ))}
   

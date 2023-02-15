@@ -14,9 +14,7 @@ function Cart({ blogs  , loading }) {
     if (loading) {
       return (
         <>
-          {blogs?
-          .filter(tag === selectedTag.cat)
-          .map(s => (
+          {blogs?.map(s => (
             <HomeLoaderCard key={s.id} />
           ))}
   

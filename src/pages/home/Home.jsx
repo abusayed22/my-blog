@@ -9,12 +9,14 @@ import HomeLoaderCard from "../../components/loader/HomeLoaderCard";
 function Home() {
 
   const {blogs,isLoading,isError} = useSelector(state => state.allBlog?.blogs);
+  // get from filter state : to fetch get blogs with tags&search filter
+  const { tags,search:searched } = useSelector(state => state?.filterBlog);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
-    dispatch(fetchBlog)
+    dispatch(fetchBlog({tags,searched}))
     
-  }, [dispatch]);
+  }, [dispatch,tags,searched]);
 
   // pagination functional
   // const [blogs, setBlogs] = useState([]);

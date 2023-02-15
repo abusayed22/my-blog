@@ -31,7 +31,7 @@ function InputModal({ inputToggled, toggledHandler }) {
     // debounce(setInput(e.target.value),3000)
     
   }
-  console.log(input);
+
 
   useEffect(() => {
     dispatch(search(input))

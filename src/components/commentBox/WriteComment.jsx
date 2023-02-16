@@ -16,15 +16,15 @@ import { FormatBold, FormatItalic, KeyboardArrowDown } from '@mui/icons-material
 import { Box, FormControl, FormLabel, IconButton, Menu, MenuItem } from '@mui/material';
 import { useState } from 'react';
 
-function CommentBox() {
+function WriteComment() {
   const [italic, setItalic] = useState(false);
   const [fontWeight, setFontWeight] = useState('normal');
   const [anchorEl, setAnchorEl] = useState(null);
   return (
-    <FormControl className='w-[100%] mx-auto'>
+    <FormControl className='w-[100%] mx-auto '>
       <textarea
-        className='w-[80%]'
-        placeholder="Type something here…"
+        className='w-[100%] rounded-lg outline-none px-6 py-2 mx-auto shadow-inner'
+        placeholder="Type your comment..."
         minRows={3}
         endDecorator={
           <Box
@@ -92,4 +92,4 @@ function CommentBox() {
 }
 
 
-export default CommentBox;
+export default WriteComment;

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Avatar, Pagination } from "@mui/material";
-import Cart from "../../components/home/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
 import { useParams } from "react-router-dom";
@@ -8,7 +7,7 @@ import HomeLoaderCard from "../../components/loader/HomeLoaderCard";
 import relatedBlog from '../../redux/allBlog/thunk/relatedBlog'
 import SingleRelated from "../../components/singleRelated/SingleRelated";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import CommentBox from "../../components/commentBox/CommentBox";
+import Comments from "../../components/commentBox/Comments";
 
 
 function SingleBlog() {
@@ -81,22 +80,21 @@ function SingleBlog() {
             <Avatar src="" alt="" />
             <b className="text-gray shadow-deep">{author}</b>
           </div>
-          <div className="w-[92%] p-5 bg-white">
+          <div className="w-[92%] p-5 bg-gray rounded-lg">
             <p
               left
-              className="w-[92%] mx-auto indent-12 selection:text-green shadow-deep bg-[#f4f7fa] first-letter:text-yellow first-letter:text-2xl text-justify dark:text-green dark:selection:text-yellow brightness-100 dark:bg-[#a51515a8] rounded-sm p-5"
+              className="w-[100%] mx-auto indent-12 selection:text-green shadow-deep bg-[#f4f7fa] first-letter:text-yellow first-letter:text-2xl text-justify dark:text-green dark:selection:text-yellow brightness-100 dark:bg-[#a51515a8] rounded-sm p-5"
             >
               {description}
             </p>
             <div className="w-[10%] mx-auto space-x-4 text-justify text-red dark:selection:text-yellow rounded-sm p-5 flex">
               <span className="text-rose text-center"> <FavoriteBorderIcon /> {'10'}</span>
-              <span className="text-gray text-center cursor-pointer">{'Comment'} 10</span>
+              <span className="text-yellow hover:text-blue transition text-center cursor-pointer">{'Comment'} 10</span>
             </div>
+            <Comments />
             
           </div>
-          <div className="flex justify-center">
-              <CommentBox />
-            </div>
+          
         </div>
         <br />
         <div>

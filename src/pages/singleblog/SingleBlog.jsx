@@ -19,7 +19,7 @@ function SingleBlog() {
   const { id } = useParams();
 
   // state for toggle of comment modal
-  const [open,setOpen] = useState(false)
+  const [open,setOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,8 @@ function SingleBlog() {
   }, [dispatch, id]);
 
 
-  const { title, description, author, date, thumbnail, tags } = blog || {}
+  const { title, description, author, date, thumbnail, tags,like,comments } = blog || {}
+
 
   useEffect(() => {
     dispatch(relatedBlog({ tags, id }))
@@ -40,7 +41,6 @@ function SingleBlog() {
  const toggleHandler = () => {
   setOpen((open) => !open)
  }
- console.log(open);
 
   if (!isError && isLoading) {
     return (<>
@@ -97,11 +97,13 @@ function SingleBlog() {
             >
               {description}
             </p>
+            <br />
             <div className="w-[40%] mx-auto space-x-4 text-red dark:selection:text-yellow flex justify-around">
-              <span className="text-rose text-center"> <FavoriteTwoToneIcon /> {'10'}</span>
-              <span onClick={toggleHandler} className="text-yellow hover:text-blue transition text-center cursor-pointer">{'3 Comment'} {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </span>
+              <span className="text-rose text-center"> <FavoriteTwoToneIcon /> {like}</span>
+              <span onClick={toggleHandler} className="text-yellow hover:text-blue transition text-center cursor-pointer">{`${comments?.length} Comment`} {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </span>
             </div>
-            <Comments open={open}/>
+            <br />
+            <Comments open={open} blog={blog}/>
             
           </div>
           
@@ -115,7 +117,7 @@ function SingleBlog() {
             <SingleRelated blogs={blogs} />
           </div>
           <div className="flex justify-center mt-10">
-            pagination
+            
           </div>
         </div>
       </div>

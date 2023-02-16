@@ -2,7 +2,7 @@ import SingleComment from "./SingleComment";
 import WriteComment from "./WriteComment";
 
 
-function Comments({open}) {
+function Comments({open,blog}) {
    return (
     open && (
       <div className="w-[100%] lg:w-[70%] mx-auto rounded-2xl border border-white shadow-black p-1  flex flex-col items-center justify-center">
@@ -10,9 +10,7 @@ function Comments({open}) {
         <WriteComment />
       </div>
       <div className="overflow-y-auto h-80 snap-y ">
-        <SingleComment />
-        <SingleComment />
-        <SingleComment />
+        <SingleComment blog={blog}/>
       </div>
     </div>
     )

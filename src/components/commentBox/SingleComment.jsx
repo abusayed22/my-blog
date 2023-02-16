@@ -21,9 +21,9 @@ function SingleComment() {
                                 </div>
 
                             </th>
-                            <td className="px-6 py-4">
-                                <div className="flex gap-2">
-                                    <b className="text-justify  inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-xs font-semibold text-violet-600">
+                            <td className=" lg:px-6 py-1 lg:py-4">
+                                <div className="flex gap-1 md:gap-2">
+                                    <b className="sm:text-left md:text-justify text-blue md:text-black  h-20 md:h-auto overflow-auto bg-violet-50 text-[10px] lg:text-md xl:font-extrabold text-violet-600">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro qui, quod quas, sint, dolorum non nulla maxime a optio eveniet quis aliquid minus voluptatem tenetur esse dolor. Id, optio rem illo architecto ullam eveniet totam ipsa nam tenetur, repudiandae distinctio ex sapiente numquam adipisci earum. Officiis illo a rem ipsam quia praesentium nam tempora, tempore ipsa amet tenetur libero iste distinctio dicta illum quidem dolore, ex inventore! Et illo perspiciatis rem maxime. Magni eos explicabo obcaecati? Aperiam, illo! Accusamus deleniti veniam in quis soluta officiis dolore, assumenda omnis repudiandae magni a sapiente ea quibusdam reiciendis deserunt quos nisi vel explicabo.
                                     </b>
                                 </div>

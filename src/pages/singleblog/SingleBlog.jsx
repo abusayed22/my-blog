@@ -87,7 +87,7 @@ function SingleBlog() {
             >
               {description}
             </p>
-            <div className="w-[10%] mx-auto space-x-4 text-justify text-red dark:selection:text-yellow rounded-sm p-5 flex">
+            <div className="w-[40%] mx-auto space-x-4 text-red dark:selection:text-yellow flex justify-around">
               <span className="text-rose text-center"> <FavoriteBorderIcon /> {'10'}</span>
               <span className="text-yellow hover:text-blue transition text-center cursor-pointer">{'Comment'} 10</span>
             </div>

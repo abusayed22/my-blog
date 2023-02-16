@@ -24,7 +24,7 @@ function Nav({ catagory }) {
 
   return (
     <div>
-      <div className="dark:bg-black flex justify-between px-3 py-3 md:flex-row-reverse">
+      <div className="scrollbar-none dark:bg-black flex justify-between px-3 py-3 md:flex-row-reverse">
         <div className="flex">
           <div className="flex">
             <SearchIcon
@@ -71,9 +71,9 @@ function Nav({ catagory }) {
         </div>
       </div>
       <div className="bg-green opacity-75 w-[100%] scroll-mt-[-66px] snap-y h-20 invisible md:visible z-20">
-        <ul className="flex justify-center w-[90%] items-center h-20 space-x-2">
+        <ul className="flex mx-auto justify-center w-[90%] items-center h-20 md:space-x-0">
           {catagory.map(cat => (
-            <li key={cat.id}>
+            <li key={cat.id} className=" ">
               <Taging tag={cat.cat} />
             </li>
           ))}

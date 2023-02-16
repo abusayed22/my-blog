@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import HomeLoaderCard from "../../components/loader/HomeLoaderCard";
 import relatedBlog from '../../redux/allBlog/thunk/relatedBlog'
 import SingleRelated from "../../components/singleRelated/SingleRelated";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CommentBox from "../../components/commentBox/CommentBox";
 
 
 function SingleBlog() {
@@ -19,13 +21,13 @@ function SingleBlog() {
   useEffect(() => {
     dispatch(singleBlogFetch(id))
   }, [dispatch, id]);
-  
-  
-  const { title, description, author, date, thumbnail,tags } = blog || {}
+
+
+  const { title, description, author, date, thumbnail, tags } = blog || {}
 
   useEffect(() => {
-    dispatch(relatedBlog({tags,id}))
-  },[id,tags,dispatch])
+    dispatch(relatedBlog({ tags, id }))
+  }, [id, tags, dispatch])
 
   const loading = blogs?.isLoading
 
@@ -62,7 +64,7 @@ function SingleBlog() {
             <HomeLoaderCard />
           </div>
           <div className="flex justify-center mt-10">
-                paginations
+            paginations
           </div>
         </div>
       </div>
@@ -79,14 +81,22 @@ function SingleBlog() {
             <Avatar src="" alt="" />
             <b className="text-gray shadow-deep">{author}</b>
           </div>
-          <div className="w-[92%] p-5">
+          <div className="w-[92%] p-5 bg-white">
             <p
               left
-              className="indent-12 selection:text-green shadow-deep bg-[#f4f7fa] first-letter:text-yellow first-letter:text-2xl text-justify dark:text-green dark:selection:text-yellow brightness-100 dark:bg-[#a51515a8] rounded-sm p-5"
+              className="w-[92%] mx-auto indent-12 selection:text-green shadow-deep bg-[#f4f7fa] first-letter:text-yellow first-letter:text-2xl text-justify dark:text-green dark:selection:text-yellow brightness-100 dark:bg-[#a51515a8] rounded-sm p-5"
             >
               {description}
             </p>
+            <div className="w-[10%] mx-auto space-x-4 text-justify text-red dark:selection:text-yellow rounded-sm p-5 flex">
+              <span className="text-rose text-center"> <FavoriteBorderIcon /> {'10'}</span>
+              <span className="text-gray text-center cursor-pointer">{'Comment'} 10</span>
+            </div>
+            
           </div>
+          <div className="flex justify-center">
+              <CommentBox />
+            </div>
         </div>
         <br />
         <div>

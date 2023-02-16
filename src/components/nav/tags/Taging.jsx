@@ -22,7 +22,7 @@ function Taging({ tag }) {
 
     return (
         <>
-            <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex  overflow-y-auto">
+            <div className=" mx-auto  md:px-1 md:py-1  flex  [850px]:py-0">
                 <div onClick={() => tagSelectHandler()} className={selectedStyle}>
                     {tag}
                 </div>

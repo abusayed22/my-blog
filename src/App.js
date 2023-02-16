@@ -18,7 +18,6 @@ function App() {
     { id: 9, cat: 'Tailwindcss' },
     { id: 2, cat: 'Technology' },
     { id: 3, cat: 'Photograpy' },
-    { id: 4, cat: 'Writer' },
     { id: 5, cat: 'Javascript' },
   ]
 

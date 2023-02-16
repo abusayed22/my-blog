@@ -1,8 +1,8 @@
 import { loaded ,fail,loading} from "../action";
 
-const fetchBlog = ({tags, searched}) =>  async (dispatch, getState) => {
+const fetchBlog = ({tags, searched}) =>  async (dispatch) => {
 
-    dispatch(loading())
+    dispatch(loading());
 
     try {
         // like query type : ?tags_like=react
@@ -17,12 +17,12 @@ const fetchBlog = ({tags, searched}) =>  async (dispatch, getState) => {
         }
 
         const res = await fetch(`http://localhost:9000/videos2?${queryString}`);
-        const blogs = await res.json()
+        const blogs = await res.json();
 
         dispatch(loaded(blogs))
     } catch (error) {
         dispatch(fail(error))
-    }
+    };
 
 
 }

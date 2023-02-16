@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, Pagination } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
@@ -8,12 +8,18 @@ import relatedBlog from '../../redux/allBlog/thunk/relatedBlog'
 import SingleRelated from "../../components/singleRelated/SingleRelated";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Comments from "../../components/commentBox/Comments";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 
 
 function SingleBlog() {
   const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
   const blogs = useSelector(state => state.allBlog.related);
   const { id } = useParams();
+
+  // state for toggle of comment modal
+  const [open,setOpen] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -30,7 +36,11 @@ function SingleBlog() {
 
   const loading = blogs?.isLoading
 
-
+// toggle controller
+ const toggleHandler = () => {
+  setOpen((open) => !open)
+ }
+ console.log(open);
 
   if (!isError && isLoading) {
     return (<>
@@ -88,10 +98,10 @@ function SingleBlog() {
               {description}
             </p>
             <div className="w-[40%] mx-auto space-x-4 text-red dark:selection:text-yellow flex justify-around">
-              <span className="text-rose text-center"> <FavoriteBorderIcon /> {'10'}</span>
-              <span className="text-yellow hover:text-blue transition text-center cursor-pointer">{'Comment'} 10</span>
+              <span className="text-rose text-center"> <FavoriteTwoToneIcon /> {'10'}</span>
+              <span onClick={toggleHandler} className="text-yellow hover:text-blue transition text-center cursor-pointer">{'3 Comment'} {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </span>
             </div>
-            <Comments />
+            <Comments open={open}/>
             
           </div>
           

@@ -31,8 +31,8 @@ function SingleComment() {
                             <td className="px-6 py-4">
 
                                 {/* TODO: when own comment : this area will vissible */}
-                                <div className="flex justify-end gap-4">
-                                    <div x-data="{ tooltip: 'Delete' }" href="#">
+                                <div className="flex justify-end gap-2 md:gap-4">
+                                    <div x-data="{ tooltip: 'Delete' }">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"
@@ -49,7 +49,7 @@ function SingleComment() {
                                             />
                                         </svg>
                                     </div>
-                                    <div x-data="{ tooltip: 'Edite' }" href="#">
+                                    <div x-data="{ tooltip: 'Edite' }" >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"

@@ -9,7 +9,7 @@ const fetchBlog = ({tags, searched}) =>  async (dispatch) => {
         // undefinedtags_like=Javascript
         let queryString;
         if(tags?.length > 0) {
-            queryString = tags.map(tag => `tags_like=${tag}`).join("&")
+            queryString = tags.map(tag => `tags_like=${tag}`).join("&");
         }
 
         if(!searched == "") {

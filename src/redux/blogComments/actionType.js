@@ -1,0 +1,2 @@
+export const COMMENT_POST = "BLOG_COMMENT_POST";
+export const COMMENT_LOADED = "BLOG_COMMENT_LOADED";

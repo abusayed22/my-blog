@@ -1,18 +1,20 @@
+import { useSelector } from "react-redux";
 
-function SingleComment({ blog }) {
-    const { id, thumbnail, comments } = blog;
+function SingleComment({blog}) {
+    // const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
+    const { id, thumbnail, comments } = blog ;
     console.log(comments);
     return (
         <>
             {/* component */}
-            <div className="snap-center overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+            <div className=" snap-center overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
                 <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
                     <thead className="bg-gray-50">
                         {/* Header of the table */}
                     </thead>
                     {comments?.map(s => (
-                        <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-                            <tr className="hover:bg-gray-50">
+                        <tbody key={s.id} className="divide-y divide-gray-100 border-t border-gray-100">
+                            <tr className=" hover:bg-gray-50">
                                 <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                     <div className="relative h-10 w-10">
                                         <img
@@ -21,14 +23,16 @@ function SingleComment({ blog }) {
                                             alt=""
                                         />
                                         <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white" />
+                                        
                                     </div>
 
                                 </th>
                                 <td className=" lg:px-6 py-1 lg:py-4">
                                     <div className="flex gap-1 md:gap-2">
-                                        <b className="sm:text-left md:text-justify text-blue md:text-black  h-20 md:h-auto overflow-auto bg-violet-50 text-[10px] lg:text-md xl:font-extrabold text-violet-600">
-                                            {s}
+                                        <b className="w-[100%] sm:text-left md:text-sm lg:text-sm md:text-justify text-blue md:text-black flex md:flex-none items-center h-20 md:h-auto overflow-auto bg-violet-50 text-[10px] lg:text-md xl:font-extrabold text-violet-600">
+                                            {s.com}
                                         </b>
+                                        
                                     </div>
                                 </td>
                                 <td className="px-6 py-4">
@@ -74,8 +78,9 @@ function SingleComment({ blog }) {
                                     </div>
 
 
-
+                                    
                                 </td>
+                                
                             </tr>
 
                         </tbody>

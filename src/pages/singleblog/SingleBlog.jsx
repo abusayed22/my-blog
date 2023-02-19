@@ -19,7 +19,7 @@ function SingleBlog() {
   const { id } = useParams();
 
   // state for toggle of comment modal
-  const [open,setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -28,19 +28,18 @@ function SingleBlog() {
   }, [dispatch, id]);
 
 
-  const { title, description, author, date, thumbnail, tags,like,comments } = blog || {}
+  const { title, description, author, date, thumbnail, tags, like, comments } = blog || {}
 
 
   useEffect(() => {
     dispatch(relatedBlog({ tags, id }))
   }, [id, tags, dispatch])
-
   const loading = blogs?.isLoading
 
-// toggle controller
- const toggleHandler = () => {
-  setOpen((open) => !open)
- }
+  // toggle controller
+  const toggleHandler = () => {
+    setOpen((open) => !open)
+  }
 
   if (!isError && isLoading) {
     return (<>
@@ -104,9 +103,9 @@ function SingleBlog() {
             </div>
             <br />
             <Comments open={open} blog={blog}/>
-            
+
           </div>
-          
+
         </div>
         <br />
         <div>
@@ -117,7 +116,7 @@ function SingleBlog() {
             <SingleRelated blogs={blogs} />
           </div>
           <div className="flex justify-center mt-10">
-            
+
           </div>
         </div>
       </div>

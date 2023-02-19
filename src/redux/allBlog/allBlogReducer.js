@@ -1,6 +1,7 @@
 import { LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD,RELATED_FAILD,RELATED_LOADED,RELATED_LOADING } from "./actionTypes";
 import { produce } from "immer"
 import { Castle } from "@mui/icons-material";
+import { COMMENT_POST } from "../commentCRUD/actionType";
 
 // const initialState = {
 //     blogs: [],
@@ -130,7 +131,25 @@ const allBlogReducer = (state = initialState, action) => {
                         isError: action.payload
                     }
                 }
-
+                // blog: {
+                //     blog: {},
+                //     isLoading: false,
+                //     isError: null
+            // case COMMENT_POST: 
+            //     return produce(state.blog, (draft) => {
+            //         draft.comments.push(action.payload)
+            //     })
+            // case COMMENT_POST: 
+            //     return {
+            //         ...state,
+            //         blog: {
+            //             ...state.blog,
+            //             comments: [
+            //                 ...state.blog.comments,
+            //                 action.payload
+            //             ]
+            //         }
+            //     }
     }
     return state;
 }

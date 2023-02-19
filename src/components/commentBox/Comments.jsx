@@ -1,15 +1,18 @@
+import { useSelector } from "react-redux";
 import SingleComment from "./SingleComment";
 import WriteComment from "./WriteComment";
 
 
 function Comments({open,blog}) {
+  // const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
+  const {id} = blog
    return (
     open && (
-      <div className="w-[100%] lg:w-[70%] mx-auto rounded-2xl border border-white shadow-black p-1  flex flex-col items-center justify-center">
+      <div className="w-[100%] md:w-[50%] mx-auto rounded-2xl border border-white shadow-black p-1  flex flex-col items-center justify-center">
       <div className="mx-auto w-[100%]">
-        <WriteComment />
+        <WriteComment id={id}/>
       </div>
-      <div className="overflow-y-auto h-80 snap-y ">
+      <div className="overflow-y-auto h-80 snap-y w-[100%]">
         <SingleComment blog={blog}/>
       </div>
     </div>

@@ -3,8 +3,8 @@ import SingleComment from "./SingleComment";
 import WriteComment from "./WriteComment";
 
 
-function Comments({open,blog}) {
-  // const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
+function Comments({open}) {
+  const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
   const {id} = blog
    return (
     open && (
@@ -12,8 +12,8 @@ function Comments({open,blog}) {
       <div className="mx-auto w-[100%]">
         <WriteComment id={id}/>
       </div>
-      <div className="overflow-y-auto h-80 snap-y w-[100%]">
-        <SingleComment blog={blog}/>
+      <div className="overflow-y-auto h-auto snap-y w-[100%]">
+        <SingleComment />
       </div>
     </div>
     )

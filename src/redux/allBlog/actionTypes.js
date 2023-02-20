@@ -11,3 +11,8 @@ export const RELATED_LOADED = "RELATED_BLOG_LOADED";
 export const RELATED_LOADING = "RELATED_LOADING";
 export const RELATED_FAILD = "RELATED_FAILD";
 
+// comment 
+export const COMMENT_POST = "BLOG/COMMENT_POST";
+export const COMMENT_POST_ERROR = "BLOG/COMMENT_POST_ERROR";
+
+

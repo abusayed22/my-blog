@@ -1,20 +1,22 @@
 import { useSelector } from "react-redux";
 
-function SingleComment({blog}) {
-    // const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
-    const { id, thumbnail, comments } = blog ;
-    console.log(comments);
+function SingleComment() {
+    const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
+    const { id, thumbnail, comments } = blog;
+    console.log('single com' + comments);
     return (
         <>
             {/* component */}
-            <div className=" snap-center overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-                <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
+            <div className=" snap-center overflow-hidden rounded-lg  shadow-md m-5">
+                <table className="w-full h-auto bg-white text-left text-sm text-gray-500">
                     <thead className="bg-gray-50">
                         {/* Header of the table */}
                     </thead>
                     {comments?.map(s => (
-                        <tbody key={s.id} className="divide-y divide-gray-100 border-t border-gray-100">
+                        <tbody key={s.id} className="divide-y divide-gray-100  rounded-xl ">
+                            <hr />
                             <tr className=" hover:bg-gray-50">
+                                <p className="text-center text-gray border-b-gray mt-1">{s.date}</p>
                                 <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                     <div className="relative h-10 w-10">
                                         <img
@@ -22,8 +24,8 @@ function SingleComment({blog}) {
                                             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                             alt=""
                                         />
-                                        <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white" />
-                                        
+                                        <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-gray" />
+
                                     </div>
 
                                 </th>
@@ -32,7 +34,7 @@ function SingleComment({blog}) {
                                         <b className="w-[100%] sm:text-left md:text-sm lg:text-sm md:text-justify text-blue md:text-black flex md:flex-none items-center h-20 md:h-auto overflow-auto bg-violet-50 text-[10px] lg:text-md xl:font-extrabold text-violet-600">
                                             {s.com}
                                         </b>
-                                        
+
                                     </div>
                                 </td>
                                 <td className="px-6 py-4">
@@ -76,11 +78,7 @@ function SingleComment({blog}) {
                                         {/* TODO:  when is not own comment */}
                                         {/* <div><span>a day ago</span></div> */}
                                     </div>
-
-
-                                    
                                 </td>
-                                
                             </tr>
 
                         </tbody>

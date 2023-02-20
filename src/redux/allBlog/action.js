@@ -1,5 +1,5 @@
-import { COMMENT_POST } from "../commentCRUD/actionType"
-import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD } from "./actionTypes"
+import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR } from "./actionTypes"
+import commentPost from "./thunk/commentPost/commentPost"
 
 
 export const loaded = (blogs) => {
@@ -61,9 +61,16 @@ export const related_fail = (err) => {
 }
 
 // comment
-export const post_comment = (comment) => {
+export const post_comment = ({com,date}) => {
     return {
-        COMMENT_POST,
-        payload: comment
+        type: COMMENT_POST,
+        payload: {com,date}
     }
 }
+
+// export const post_comment_error = (eror) => {
+//     return {
+//         type: COMMENT_POST_ERROR,
+//         payload: eror
+//     }
+// }

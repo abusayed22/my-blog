@@ -1,7 +1,6 @@
-import { LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD,RELATED_FAILD,RELATED_LOADED,RELATED_LOADING } from "./actionTypes";
+import { COMMENT_POST, LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD, RELATED_FAILD, RELATED_LOADED, RELATED_LOADING, COMMENT_POST_ERROR } from "./actionTypes";
 import { produce } from "immer"
 import { Castle } from "@mui/icons-material";
-import { COMMENT_POST } from "../commentCRUD/actionType";
 
 // const initialState = {
 //     blogs: [],
@@ -67,7 +66,7 @@ const allBlogReducer = (state = initialState, action) => {
         //     draftState.isError = false;
         // })
 
-    
+
         //single fetch opparations
         case SINGLE_LOADED:
             return {
@@ -101,57 +100,91 @@ const allBlogReducer = (state = initialState, action) => {
             }
 
         // related blogs operation
-            case RELATED_LOADED:
-                return {
-                    ...state,
-                    related: {
-                        ...state.blogs,
-                        blogs: action.payload,
-                        isLoadindg: false,
-                        isError: null
+        case RELATED_LOADED:
+            return {
+                ...state,
+                related: {
+                    ...state.blogs,
+                    blogs: action.payload,
+                    isLoadindg: false,
+                    isError: null
+                }
+            }
+        case RELATED_LOADING:
+            return {
+                ...state,
+                related: {
+                    ...state.blogs,
+                    blogs: [],
+                    isLoadindg: true,
+                    isError: null
+                }
+            }
+        case RELATED_FAILD:
+            return {
+                ...state,
+                related: {
+                    ...state.blogs,
+                    blogs: [],
+                    isLoadindg: false,
+                    isError: action.payload
+                }
+            }
+        // blog: {
+        //     blog: {},
+        //     isLoading: false,
+        //     isError: null
+        // case COMMENT_POST: 
+        //     return produce(state.blog, (draft) => {
+        //         draft.comments.push(action.payload)
+        //     })
+        case COMMENT_POST:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: {
+                        ...state.blog.blog,
+                        comments: [
+                            ...state.blog.blog.comments,
+                            {
+                                com: action.payload.com,
+                                date: action.payload.date
+                            }
+                        ]
                     }
                 }
-            case RELATED_LOADING:
-                return {
-                    ...state,
-                    related: {
-                        ...state.blogs,
-                        blogs: [],
-                        isLoadindg: true,
-                        isError: null
-                    }
-                }
-            case RELATED_FAILD:
-                return {
-                    ...state,
-                    related: {
-                        ...state.blogs,
-                        blogs: [],
-                        isLoadindg: false,
-                        isError: action.payload
-                    }
-                }
-                // blog: {
-                //     blog: {},
-                //     isLoading: false,
-                //     isError: null
-            // case COMMENT_POST: 
-            //     return produce(state.blog, (draft) => {
-            //         draft.comments.push(action.payload)
-            //     })
-            // case COMMENT_POST: 
-            //     return {
-            //         ...state,
-            //         blog: {
-            //             ...state.blog,
-            //             comments: [
-            //                 ...state.blog.comments,
-            //                 action.payload
-            //             ]
-            //         }
-            //     }
-    }
+            }
+        }
+        // case COMMENT_POST_ERROR: 
+        //     return {
+
+        //     }
+
     return state;
 }
 
 export default allBlogReducer;
+
+// {
+//     "title": "যে ১০ টি ভুল বিগিনার রিয়্যাক্ট ডেভেলপাররা করে থাকেন",
+//     "description": "আপনারা যারা বিগিনার হিসেবে রিয়্যাক্ট জেস নিয়ে কাজ করা শুরু করেছেন, তারা রিয়্যাক্ট এর বেশ কিছু কনসেপ্ট ঠিক মতো আয়ত্ত না করতে পারার কারণে বিচিত্র কিছু সমস্যার সম্মুখীন হন এবং শেষ পর্যন্ত বুঝতে না পেরে হতাশ হয়ে পড়েন। তাদের জন্যই এই ভিডিওটি। এই ভিডিওতে আমি এমন ১০টি সমস্যার কথা তুলে ধরেছি যেগুলো বিগিনার হিসেবে আপনারা অহরহ সম্মুখীন হবেন। আশা করি ভিডিওটি দেখলে আপনাদের এই সমস্যাগুলো নিয়ে আর কনফিউশন থাকবেনা।",
+//     "author": "LWS",
+//     "link": "https://www.youtube-nocookie.com/embed/6O4s7v28nlw",
+//     "thumbnail": "https://i3.ytimg.com/vi/6O4s7v28nlw/maxresdefault.jpg",
+//     "like": [
+//     9
+//     ],
+//     "comments": {
+//     "com": "Insa-Allha",
+//     "date": 1676875396718
+//     },
+//     "date": "May 10, 2022",
+//     "duration": "10:12",
+//     "views": "2.1K",
+//     "tags": [
+//     "begainer",
+//     "react"
+//     ],
+//     "id": 8
+//     }

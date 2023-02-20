@@ -102,7 +102,7 @@ function SingleBlog() {
               <span onClick={toggleHandler} className="text-yellow hover:text-blue transition text-center cursor-pointer">{`${comments?.length} Comment`} {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </span>
             </div>
             <br />
-            <Comments open={open} blog={blog}/>
+            <Comments open={open}/>
 
           </div>
 

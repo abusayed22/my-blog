@@ -61,10 +61,10 @@ export const related_fail = (err) => {
 }
 
 // comment
-export const post_comment = ({com,date}) => {
+export const post_comment = (commentObj) => {
     return {
         type: COMMENT_POST,
-        payload: {com,date}
+        payload: commentObj
     }
 }
 

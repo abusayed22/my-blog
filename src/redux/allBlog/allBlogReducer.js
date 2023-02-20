@@ -143,16 +143,7 @@ const allBlogReducer = (state = initialState, action) => {
                 ...state,
                 blog: {
                     ...state.blog,
-                    blog: {
-                        ...state.blog.blog,
-                        comments: [
-                            ...state.blog.blog.comments,
-                            {
-                                com: action.payload.com,
-                                date: action.payload.date
-                            }
-                        ]
-                    }
+                    blog: action.payload
                 }
             }
         }

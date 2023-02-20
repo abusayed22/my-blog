@@ -2,17 +2,33 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import commentPost from '../../redux/allBlog/thunk/commentPost/commentPost';
 
-function WriteComment({ id:blogId }) {
+function WriteComment({ id: blogId }) {
 
   const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
   const [input, setInput] = useState('');
   const dispatch = useDispatch();
   const { id, title, description, author, date, duration, views, tags, link, thumbnail, like, comments } = blog || {}
-  
+
   // comment submit hadler
   const submitHandler = (e) => {
     e.preventDefault()
-    const commentObj = {com:input,date: Date.now()}
+    const commentObj = {
+      id,
+      title,
+      description,
+      author,
+      date,
+      duration,
+      views,
+      tags,
+      link,
+      thumbnail,
+      like,
+      comments: [
+        ...comments,
+        { com: input, date: Date.now() }
+      ]
+    }
     dispatch(commentPost({id,commentObj}))
     setInput('')
   }

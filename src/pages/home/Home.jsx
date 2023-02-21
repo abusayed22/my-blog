@@ -32,7 +32,7 @@ function Home() {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <div className="bg-black scroll-smooth">
+    <div className="bg-[#E1D5D9] dark:bg-black scroll-smooth">
       <Hero />
       <br />
       <p className="text-xl font-extrabold text-green border-b text-center">

@@ -79,7 +79,7 @@ function SingleBlog() {
     </>)
   } else {
     return (
-      <div className="dark:bg-black">
+      <div className="dark:bg-black bg-[#E1D5D9]">
         <div>
           <img src={thumbnail} alt={author} className="w-[75%] h-[60vh] mx-auto shadow-deep " />
         </div>
@@ -87,9 +87,9 @@ function SingleBlog() {
         <div className="flex flex-col justify-center items-center md:flex ">
           <div className="flex flex-col items-center md:w-[18%] w-[50%]  space-y-1">
             <Avatar src="" alt="" />
-            <b className="text-gray shadow-deep">{author}</b>
+            <b className="text-gray ">{author}</b>
           </div>
-          <div className="w-[92%] p-5 bg-gray rounded-lg">
+          <div className="w-[92%] p-5 bg-[#AAABA8] rounded-lg">
             <p
               left
               className="w-[100%] mx-auto indent-12 selection:text-green shadow-deep bg-[#f4f7fa] first-letter:text-yellow first-letter:text-2xl text-justify dark:text-green dark:selection:text-yellow brightness-100 dark:bg-[#a51515a8] rounded-sm p-5"
@@ -109,7 +109,7 @@ function SingleBlog() {
         </div>
         <br />
         <div>
-          <p className="mx-auto text-2xl w-40 border-b-4 dark:text-white">
+          <p className="mx-auto text-2xl w-40 border-b-4 dark:text-white text-green">
             Related Blogs
           </p>
           <div className="flex flex-wrap justify-center space-x-5">

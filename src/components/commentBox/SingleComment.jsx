@@ -1,9 +1,10 @@
+import moment from "moment";
 import { useSelector } from "react-redux";
 
 function SingleComment() {
     const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
     const { id, thumbnail, comments } = blog;
-    console.log('single com' + comments);
+    console.log(comments.date);
     return (
         <>
             {/* component */}

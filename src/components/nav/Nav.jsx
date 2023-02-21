@@ -24,7 +24,7 @@ function Nav({ catagory }) {
 
   return (
     <div>
-      <div className="scrollbar-none dark:bg-black flex justify-between px-3 py-3 md:flex-row-reverse">
+      <div className="scrollbar-none dark:bg-black bg-yellow flex justify-between px-3 py-3 md:flex-row-reverse">
         <div className="flex">
           <div className="flex">
             <SearchIcon

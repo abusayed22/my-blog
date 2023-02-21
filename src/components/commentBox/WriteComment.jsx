@@ -1,3 +1,4 @@
+import moment from 'moment/moment';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import commentPost from '../../redux/allBlog/thunk/commentPost/commentPost';
@@ -26,8 +27,9 @@ function WriteComment({ id: blogId }) {
       like,
       comments: [
         ...comments,
-        { com: input, date: Date.now() }
+        { com: input, date: moment(Date.now()).format("MMM Do YY") }
       ]
+      
     }
     dispatch(commentPost({id,commentObj}))
     setInput('')

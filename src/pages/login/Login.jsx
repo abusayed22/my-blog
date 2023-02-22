@@ -14,7 +14,8 @@ function Login() {
     transform: "translate(-50%, -50%)",
     width: 500,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    borderRadius: "10px",
+    // border: "2px solid #000",
     boxShadow: 24,
     p: 4,
   };
@@ -31,8 +32,10 @@ function Login() {
 
 
   return (
-    <div className="dark:bg-black">
-      <Button onClick={handleOpen}>Open modal</Button>
+    <div className="dark:bg-black h-[50vh]">
+      
+{/* <img src="https://i.ibb.co/hXppSv7/sign.jpg" alt="sign" border="0" className="w-100% h-[100vh]"/> */}
+      {/* <button onClick={handleOpen} className="border border-green my-4 mx-auto w-10">Login</button> */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -45,7 +48,6 @@ function Login() {
             <TextField
               id="outlined-basic"
               label="Email"
-              variant="outlined"
               className="w-[100%] text-red"
             />
             <br />

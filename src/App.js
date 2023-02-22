@@ -7,6 +7,7 @@ import SingleBlog from "./pages/singleblog/SingleBlog";
 import Author from "./pages/author/Author";
 import Login from "./pages/login/Login";
 import Sign_in from "./pages/login/Sign_in";
+import { toast, ToastContainer } from "react-toastify";
 
 
 function App() {
@@ -21,11 +22,15 @@ function App() {
     { id: 5, cat: 'Javascript' },
   ]
 
-
+  const notify = () => toast.success("Wow so easy !");
   
   return (
     <div className="scrollbar scroll-smooth scrollbar-corner-red ">
       <Nav catagory={catagory} />
+      <div>
+        <button onClick={notify}></button>
+        <ToastContainer />
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />

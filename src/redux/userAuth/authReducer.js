@@ -6,7 +6,7 @@ const initialState = {
     isError: false
 }
 
-const authReducers = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case USER_REGISTER_DONE:
             return {
@@ -41,4 +41,4 @@ const authReducers = (state = initialState, action) => {
     }
 }
 
-export default authReducers;
+export default authReducer;

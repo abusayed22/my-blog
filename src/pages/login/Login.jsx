@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Login() {
   const style = {
@@ -65,10 +66,9 @@ function Login() {
               <button className="border dark:text-black shadow-lg hover:text-white border-green hover:bg-[#218b4a] transition w-24 h-10 rounded-sm">
                 Login
               </button>
-              <button onClick={signHandler} className="border dark:text-white shadow-lg border-white bg-blue hover:text-yellow w-24 h-10 rounded-sm">
-                Sigin-in
-              </button>
             </div>
+            <br />
+        <p className="text-sm text-rose">Don't have an account,then please do <Link to={"/sign_in"} className='text-blue'>Register</Link> yourself !</p>
           </Box>
         </div>
       </Modal>

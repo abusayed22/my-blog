@@ -1,7 +1,9 @@
 import { Box, Checkbox, Modal, TextField } from "@mui/material";
 import { pink } from "@mui/material/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import loading from "../../assets/loading.gif"
+import { ValidateEmail } from "../../utils/validationChecked/ValidateEmail";
+import DoneIcon from '@mui/icons-material/Done';
 
 function Sign_in() {
   const style = {
@@ -26,6 +28,44 @@ function Sign_in() {
   const signHandler = () => {
     setSign(prev => !prev)
   }
+
+  // state for all input
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [professional, setprofessional] = useState('');
+  const [title, setTitle] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(null)
+
+  // email validation on debounce
+
+  // const debounch = (fn,delay) => {
+  //   const timmer = setTimeout(() => {
+  //     fn()
+  //   }, delay);
+  //   return () => clearTimeout(timmer)
+  // };
+
+
+
+
+
+  useEffect(() => {
+    const getData = setTimeout(() => {
+      // do that
+      if (ValidateEmail(email)) {
+        setIsEmailValid(true)
+      } else {
+        setIsEmailValid(false)
+      }
+
+    }, 2000);
+
+    return () => clearTimeout(getData)
+
+  }, [email]);
+
+  console.log(isEmailValid);
   return (
     // <div className="dark:bg-black py-5">
     //   <div className=" shadow-deep flex flex-col space-y-5 p-5 w-[450px] h-[70vh] border border-gray dark:bg-[#64748b] bg-white rounded-md mx-auto">
@@ -97,15 +137,22 @@ function Sign_in() {
               className="w-[100%] text-red"
               aria-disabled
               required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <br />
             <br />
             <TextField
               id="outlined-basic"
-              label="Email"
-              className="w-[100%] text-red"
+              label='Email'
+              className='w-[100%] text-red relative'
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
+            {isEmailValid ? (<DoneIcon className="absolute right-10 text-rose mt-3" />) :
+              (null)}
+            <p className="text-red absolute">Please valid email type here..!</p>
             <br />
             <br />
             <TextField
@@ -115,6 +162,8 @@ function Sign_in() {
               autoComplete="current-password"
               className="w-[100%] "
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <br />
             <br />
@@ -127,6 +176,8 @@ function Sign_in() {
               autoComplete="current-password"
               className="w-[100%] "
               required
+              value={professional}
+              onChange={(e) => setprofessional(e.target.value)}
             />
             <br />
             <br />
@@ -136,6 +187,8 @@ function Sign_in() {
               type="text"
               className="w-[100%]"
               required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <br />
             <br />

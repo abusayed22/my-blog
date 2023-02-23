@@ -36,3 +36,7 @@ bugs
 1= pagination right arrow
 2= gatagory section
 3= todo scrollbar implement
+
+
+deploy url: 
+auth: https://auth-server-49u7.onrender.com/api/auth

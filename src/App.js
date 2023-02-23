@@ -37,7 +37,7 @@ function App() {
         <Route path="/single/:id" element={<SingleBlog />} />
         <Route path="/author" element={<Author />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/sign_in" element={<Sign_in />} />
+        <Route path="/register" element={<Sign_in />} />
       </Routes>
       <Footer />
     </div>

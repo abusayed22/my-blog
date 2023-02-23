@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 function Cart({ blogs  , loading }) {
   const { tags: selectedTag } = useSelector(state => state?.filterBlog);
-  console.log(selectedTag);
   // const { id, thumbnail, title, avatar, author, date } = blogs;
 
   // if(blogs?.length > 0) {

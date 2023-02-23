@@ -1,5 +1,6 @@
 import { loaded ,fail,loading} from "../action";
 
+
 const fetchBlog = ({tags, searched}) =>  async (dispatch) => {
 
     dispatch(loading());
@@ -21,7 +22,8 @@ const fetchBlog = ({tags, searched}) =>  async (dispatch) => {
 
         dispatch(loaded(blogs))
     } catch (error) {
-        dispatch(fail(error))
+        dispatch(fail(error.message))
+        console.log(error);
     };
 
 

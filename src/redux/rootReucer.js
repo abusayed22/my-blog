@@ -7,7 +7,7 @@ import authReducer from "./userAuth/authReducer";
 const rootReducer = combineReducers({
     allBlog : allBlogReducer,
     filterBlog: filterReducer,
-    // user: authReducer,
+    user: authReducer,
 })
 
 export default rootReducer;

@@ -1,55 +1,27 @@
-import { Box, Checkbox, Modal, TextField } from "@mui/material";
-import { pink } from "@mui/material/colors";
+import { Modal } from "@mui/material";
 import { useEffect, useState } from "react";
 import loading from "../../assets/loading.gif"
 import { ValidateEmail } from "../../utils/validationChecked/ValidateEmail";
-import DoneIcon from '@mui/icons-material/Done';
+import registerThunk from "../../redux/userAuth/authThunk/registerThunk";
+import { useDispatch, useSelector } from "react-redux";
 
 function Sign_in() {
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 500,
-    bgcolor: "background.paper",
-    borderRadius: "10px",
-    boxShadow: 24,
-    p: 4,
 
-  };
-
+  const { user, isLoading } = useSelector(state => state.user);
+  console.log(isLoading);
   const [open, setOpen] = useState(true);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   // sign in
-  const [sign, setSign] = useState(false);
-  const signHandler = () => {
-    setSign(prev => !prev)
-  }
-
+  const [signErr, setSignErr] = useState(false);
+  const dispatch = useDispatch();
   // state for all input
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [professional, setprofessional] = useState('');
   const [title, setTitle] = useState('');
-  const [isEmailValid, setIsEmailValid] = useState(null)
+  const [isEmailValid, setIsEmailValid] = useState();
 
-  // email validation on debounce
-
-  // const debounch = (fn,delay) => {
-  //   const timmer = setTimeout(() => {
-  //     fn()
-  //   }, delay);
-  //   return () => clearTimeout(timmer)
-  // };
-
-
-
-
-
+  // debounc email validation
   useEffect(() => {
     const getData = setTimeout(() => {
       // do that
@@ -65,148 +37,204 @@ function Sign_in() {
 
   }, [email]);
 
-  console.log(isEmailValid);
+
+  // submit handler 
+  const signSubmitHandler = (e) => {
+    e.preventDefault()
+    if (name === "" || email === "" || password === "" || professional === "" || title === "") {
+      setSignErr(true)
+    } else {
+      dispatch(registerThunk({
+        name,
+        email,
+        password,
+        professional,
+        title
+      }));
+    }
+  }
+
+
   return (
-    // <div className="dark:bg-black py-5">
-    //   <div className=" shadow-deep flex flex-col space-y-5 p-5 w-[450px] h-[70vh] border border-gray dark:bg-[#64748b] bg-white rounded-md mx-auto">
-    //     <p className="text-2xl text-center font-bold">sign-in</p>
-    //     <div>
-    //       <span className="after:content-['*']">Email</span>
-    //       <input
-    //         className="h-12 rounded-md outline-none w-[400px] text-gray px-2"
-    //         placeholder=" example@gmail.com"
-    //         type="email"
-    //       />
-    //     </div>
-    //     <div>
-    //       <span className="after:content-['*']">Password</span>
-    //       <input
-    //         className="h-12 rounded-md outline-none w-[400px] text-gray px-2"
-    //         type="email"
-    //         placeholder="Password"
-    //       />
-    //     </div>
-    //     <div className="flex ">
-    //       <div>
-    //         <span className="after:content-['']">First Name:</span>
-    //         <input
-    //           className="h-12 rounded-md outline-none w-[188px] text-gray px-2"
-    //           placeholder=" First Name.."
-    //           type="email"
-    //         />
-    //       </div>
-    //       <div>
-    //         <span className="after:content-['']">Last Name:</span>
-    //         <input
-    //           className="h-12 rounded-md outline-none w-[198px] text-gray px-2"
-    //           placeholder=" Last Name.."
-    //           type="email"
-    //         />
-    //       </div>
-    //     </div>
-    //     <div>
-    //       <Checkbox
-    //         defaultChecked
-    //         sx={{
-    //           color: pink[800],
-    //           "&.Mui-checked": {
-    //             color: pink[600],
-    //           },
-    //         }}
-    //       /> <span className="text-green">Team policy agree..</span>
-    //     </div>
-    //     <div className="text-center">
-    //         <button className=" rounded-md shadow-md w-32 h-10 border transition hover:bg-[#8299b6] border-gray">Create Account</button>
-    //     </div>
-    //   </div>
-    // </div>
-    <div className="dark:bg-black h-[50vh]">
+    <div className="dark:bg-black">
       <Modal
         open={open}
         // onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="dark:bg-black ">
-          <Box sx={style} >
-            <p className="text-2xl text-center my-3">Sign up</p>
-            {/* <form action=""></form> */}
-            <TextField
-              id="outlined-basic"
-              label="Name"
-              className="w-[100%] text-red"
-              aria-disabled
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <br />
-            <br />
-            <TextField
-              id="outlined-basic"
-              label='Email'
-              className='w-[100%] text-red relative'
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {isEmailValid ? (<DoneIcon className="absolute right-10 text-rose mt-3" />) :
-              (null)}
-            <p className="text-red absolute">Please valid email type here..!</p>
-            <br />
-            <br />
-            <TextField
-              id="outlined-password-input"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              className="w-[100%] "
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <br />
-            <br />
-            <br />
-            <br />
-            <TextField
-              id="outlined-password-input"
-              label="professional"
-              type="text"
-              autoComplete="current-password"
-              className="w-[100%] "
-              required
-              value={professional}
-              onChange={(e) => setprofessional(e.target.value)}
-            />
-            <br />
-            <br />
-            <TextField
-              id="outlined-password-input"
-              label="Title"
-              type="text"
-              className="w-[100%]"
-              required
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <br />
-            <br />
-            <div className="w-96 mx-auto flex justify-center space-x-10">
+        <div className="dark:bg-black">
 
-              <button onClick={signHandler} className="border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg">
-                Sigin-in
-              </button>
-              {/* TODO: defendices */}
-              {/* <button type="button" disabled className="border dark:text-white shadow-lg border-white bg-blue w-24 h-10 rounded-lg flex items-center justify-around p-[2px]">
-                <svg
-                  className="border-r-white border-t-white animate-spin h-4 w-4 rounded-full bg-transparent border-2 border-transparent border-opacity-50"
-                  viewBox="0 0 24 24"
-                />
-                Loading...
-              </button> */}
+
+          <section className="bg-gray-50 dark:bg-gray-900">
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+
+              <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                  <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    Create and account
+                  </h1>
+                  <form className="space-y-4 md:space-y-6" action="#">
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        id="email"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Type your Name"
+                        required=""
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        onClick={() => setSignErr(false)}
+                      />
+                    </div>
+                    <div>
+
+                      {isEmailValid ? (
+                        <>
+                          <label
+                            htmlFor="email"
+                            className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                          >
+                            Your email
+                          </label>
+                          <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            className=" bg-[#d9f99d] border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="name@company.com"
+                            required=""
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onClick={() => setSignErr(false)}
+                          />
+                        </>
+                      ) :
+                        (
+                          <>
+                            <label
+                              htmlFor="email"
+                              className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                            >
+                              Your email
+                            </label>
+                            <input
+                              type="email"
+                              name="email"
+                              id="email"
+                              className=" bg-[#fecaca]  border border-red text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder="name@company.com"
+                              required=""
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              onClick={() => setSignErr(false)}
+                            />
+                          </>
+                        )}
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="password"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="••••••••"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required=""
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        onClick={() => setSignErr(false)}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        placeholder="profession"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        profession
+                      </label>
+                      <input
+                        type="text"
+                        name="professional"
+                        id="professional"
+                        placeholder="profession"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required=""
+                        value={professional}
+                        onChange={(e) => setprofessional(e.target.value)}
+                        onClick={() => setSignErr(false)}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        placeholder="Title"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Title
+                      </label>
+                      <input
+                        type="text"
+                        name="professional"
+                        id="professional"
+                        placeholder="Title"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required=""
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        onClick={() => setSignErr(false)}
+                      />
+                    </div>
+
+                    {isLoading ? (
+                      <button type="button" disabled className="border dark:text-white shadow-lg border-white bg-blue w-24 h-10 rounded-lg flex items-center justify-around p-[2px]">
+                        <svg
+                          className="border-r-white border-t-white animate-spin h-4 w-4 rounded-full bg-transparent border-2 border-transparent border-opacity-50"
+                          viewBox="0 0 24 24"
+                        />
+                        Loading...
+                      </button>
+                    ) : (
+                      <div className="w-[80%] mx-auto flex justify-center space-x-5">
+                        {signErr ? (<button disabled onClick={signSubmitHandler} className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}>
+                          Sigin-in
+                        </button>) : (
+                          <button onClick={signSubmitHandler} className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}>
+                            Sigin-in
+                          </button>
+                        )}
+                      </div>
+                    )}
+
+                    {signErr ? (<p className="text-red">You have not filled any form...!</p>) : null}
+
+                    {/* <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                      Already have an account?{" "}
+                      <a
+                        href="#"
+                        className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      >
+                        Login here
+                      </a>
+                    </p> */}
+                  </form>
+                </div>
+              </div>
             </div>
-          </Box>
+          </section>
+
+
         </div>
       </Modal>
     </div>

@@ -1,9 +1,9 @@
 import { USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING } from "./actionType"
 
-export const user_register_done = (userData) => {
+export const user_register_done = ({tokenData,userData}) => {
     return {
         type: USER_REGISTER_DONE,
-        payload: userData
+        payload: {tokenData,userData}
     }
 }
 export const user_register_faild = (error) => {

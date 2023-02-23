@@ -12,11 +12,11 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: {
-                    token: action.payload.token,
-                    isLoggedIn: action.payload.isLoggedIn,
-                    name: action.payload.name,
-                    passward: action.payload.passward,
-                    email: action.payload.email
+                    token: action.payload.tokenData,
+                    isLoggedIn: null,
+                    name: action.payload.userData.name,
+                    passward: action.payload.userData.password,
+                    email: action.payload.userData.email
                 }
             }
             
@@ -37,7 +37,7 @@ const authReducer = (state = initialState, action) => {
             }
 
         default:
-            break;
+            return state
     }
 }
 

@@ -4,11 +4,12 @@ import loading from "../../assets/loading.gif"
 import { ValidateEmail } from "../../utils/validationChecked/ValidateEmail";
 import registerThunk from "../../redux/userAuth/authThunk/registerThunk";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Sign_in() {
 
   const { user, isLoading } = useSelector(state => state.user);
-  console.log(isLoading);
+  // console.log(isLoading);
   const [open, setOpen] = useState(true);
   // sign in
   const [signErr, setSignErr] = useState(false);
@@ -219,15 +220,14 @@ function Sign_in() {
 
                     {signErr ? (<p className="text-red">You have not filled any form...!</p>) : null}
 
-                    {/* <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                    <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                       Already have an account?{" "}
-                      <a
-                        href="#"
-                        className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      <Link to={'/login'}
+                        className="font-medium text-primary-600 hover:underline- dark:text-yellow  text-blue"
                       >
                         Login here
-                      </a>
-                    </p> */}
+                      </Link>
+                    </p>
                   </form>
                 </div>
               </div>

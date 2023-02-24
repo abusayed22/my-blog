@@ -8,6 +8,7 @@ import Author from "./pages/author/Author";
 import Login from "./pages/login/Login";
 import Sign_in from "./pages/login/Sign_in";
 import { toast, ToastContainer } from "react-toastify";
+import { useAuthChecked } from "./utils/hooks/useAuthChecked";
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
   ]
 
   const notify = () => toast.success("Wow so easy !");
-  
+  const isChecked = useAuthChecked()
+  console.log('check? ' + isChecked);
   return (
     <div className="scrollbar scroll-smooth scrollbar-corner-red ">
       <Nav catagory={catagory} />

@@ -36,7 +36,7 @@ function Login() {
 
 
   const { user, isLoading } = useSelector(state => state.user);
-  console.log(isLoading);
+  // console.log(isLoading);
   // const [open, setOpen] = useState(true);
   // sign in
   const [signErr, setSignErr] = useState(false);
@@ -172,11 +172,11 @@ function Login() {
                       </button>
                     ) : (
                       <div className="w-[80%] mx-auto flex justify-center space-x-5">
-                        {signErr ? (<button disabled onClick={loginSubmitHandler} className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}>
-                          Login-in
+                        {signErr ? (<button disabled className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}>
+                          Login_
                         </button>) : (
                           <button onClick={loginSubmitHandler} className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}>
-                            Sigin-in
+                            Login
                           </button>
                         )}
                       </div>

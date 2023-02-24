@@ -1,4 +1,4 @@
-import { USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING } from "./actionType";
+import { USER_LOGIN_DONE, USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING } from "./actionType";
 
 const initialState = {
     user: {},
@@ -14,9 +14,20 @@ const authReducer = (state = initialState, action) => {
                 user: {
                     token: action.payload.tokenData,
                     isLoggedIn: null,
-                    name: action.payload.userData.name,
-                    passward: action.payload.userData.password,
-                    email: action.payload.userData.email
+                    name: action.payload.userData?.name,
+                    passward: action.payload.userData?.password,
+                    email: action.payload.userData?.email
+                }
+            }
+        case USER_LOGIN_DONE:
+            return {
+                ...state,
+                user: {
+                    token: action.payload.token,
+                    isLoggedIn: true,
+                    name: action.payload.user?.name,
+                    passward: action.payload.userData?.password,
+                    email: action.payload.userData?.email
                 }
             }
             

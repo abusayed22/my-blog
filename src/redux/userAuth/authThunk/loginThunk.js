@@ -13,7 +13,7 @@ const loginThunk = (userData) => async(dispatch) => {
         const authData = await res.data
         const tokenData = authData.access_token
         
-        localStorage.setItem("auth", JSON.stringify({userLoggedIn: true, token: tokenData}))
+        localStorage.setItem("auth", JSON.stringify({userLoggedIn: true, token: tokenData,user:userData}))
         dispatch(user_loggedIn({tokenData,userData}))
         // toast.success('successfully register')
     } catch (error) {

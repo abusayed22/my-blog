@@ -25,14 +25,14 @@ function App() {
 
   const notify = () => toast.success("Wow so easy !");
   const isChecked = useAuthChecked()
-  console.log('check? ' + isChecked);
+  
   return (
     <div className="scrollbar scroll-smooth scrollbar-corner-red ">
       <Nav catagory={catagory} />
-      <div>
+      {/* <div>
         <button onClick={notify}></button>
         <ToastContainer />
-      </div>
+      </div> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />

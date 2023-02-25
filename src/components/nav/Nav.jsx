@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LegendToggleIcon from "@mui/icons-material/LegendToggle";
-import { Link } from "react-router-dom";
+import { Link, useMatch, useNavigate } from "react-router-dom";
 import ModalNav from "../modalComponents/ModalNav";
 import InputModal from "../modalComponents/InputModal";
 import Taging from "./tags/Taging";
+import { useAuthChecked } from "../../utils/hooks/useAuthChecked";
 
 function Nav({ catagory }) {
   const [toggled, setToggled] = useState(false);
@@ -20,8 +21,17 @@ function Nav({ catagory }) {
     setInputToggled((prv) => !prv);
   };
 
-  
+  const isChecked = useAuthChecked();
+  // const match = useMatch();
+  const navigate = useNavigate();
 
+  const loginHandlerWithChecked = () => {
+    if(isChecked) {
+      navigate("/")
+    } else {
+      navigate("/login")
+    }
+  }
   return (
     <div>
       <div className="scrollbar-none dark:bg-black bg-yellow flex justify-between px-3 py-3 md:flex-row-reverse">
@@ -39,10 +49,9 @@ function Nav({ catagory }) {
                 toggledHandler={inputToggledHandler}
               />
             </div>
-
-            <button className="dark:text-white">
-              <AccountCircleIcon style={{ fontSize: "40px" }} />
-            </button>
+            {isChecked ? (<AccountCircleIcon style={{ fontSize: "40px" }} /> ) :
+             (<button onClick={loginHandlerWithChecked} className="w-16 h-8 text-center hover:shadow-lg p-1 border-none text-[#f1f5f9] hover:scale-125 ring ring-green hover:bg-red transition rounded-lg">Login</button>)}
+               
           </div>
         </div>
 

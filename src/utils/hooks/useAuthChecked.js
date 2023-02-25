@@ -16,6 +16,7 @@ export const useAuthChecked = () => {
 
             const token = auth.token
             const user = auth.user
+            console.log(token);
 
             if (token && user) {
                 dispatch(user_loggedIn({ token, user }));

@@ -5,10 +5,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ValidateEmail } from "../../utils/validationChecked/ValidateEmail";
 import loginThunk from "../../redux/userAuth/authThunk/loginThunk";
+import { useAuthChecked } from "../../utils/hooks/useAuthChecked";
 
 function Login() {
   const style = {
@@ -41,12 +42,10 @@ function Login() {
   // sign in
   const [signErr, setSignErr] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // state for all input
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [professional, setprofessional] = useState('');
-  const [title, setTitle] = useState('');
   const [isEmailValid, setIsEmailValid] = useState();
 
   // debounc email validation
@@ -65,6 +64,7 @@ function Login() {
 
   }, [email]);
 
+  const isChecked = useAuthChecked();
 
   // submit handler 
   const loginSubmitHandler = (e) => {
@@ -77,8 +77,10 @@ function Login() {
         password,
       }));
     }
+    
+    navigate('/')
   }
-
+  
   return (
     <div className="dark:bg-black">
       <Modal
@@ -173,7 +175,7 @@ function Login() {
                     ) : (
                       <div className="w-[80%] mx-auto flex justify-center space-x-5">
                         {signErr ? (<button disabled className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}>
-                          Login_
+                          Login
                         </button>) : (
                           <button onClick={loginSubmitHandler} className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}>
                             Login
@@ -186,11 +188,11 @@ function Login() {
 
                     <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                       Already have an account?{" "}
-                      <Link 
-                      to={"/register"}
-                        className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      <Link
+                        to={"/register"}
+                        className="font-medium text-blue hover:underline dark:text-primary-500"
                       >
-                        Login here
+                        Sign-in here
                       </Link>
                     </p>
                   </form>

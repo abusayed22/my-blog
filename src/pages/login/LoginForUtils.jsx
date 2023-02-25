@@ -55,8 +55,13 @@ function LoginForUtills() {
 
   const isChecked = useAuthChecked();
 
+  
+  
+
   // submit handler 
   const loginSubmitHandler = (e) => {
+    //TODO:
+    
     e.preventDefault()
     if (email === "" || password === "") {
       setSignErr(true)
@@ -66,7 +71,9 @@ function LoginForUtills() {
         password,
       }));
     }
-    setOpen(false)
+
+    setOpen(false);
+    // TODO: refreshPage();
   }
   
   return (

@@ -1,10 +1,15 @@
 import { Avatar } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
 import test from "../../assets//images/busness.jpg";
 import Cart from "../../components/home/Cart";
+import AuthorsVideos from "./AuthorsVideos";
 // import Zoom from "react-reveal/Zoom";
 
 function Author() {
+
+  const {blogs,isLoading,isError} = useSelector(state => state.allBlog?.blogs);
+  
   return (
     <div className="dark:bg-black">
       <div className=" border-gray bg-white dark:bg-[#53657e] bg w-[] h-[400px] mx-auto shadow-2xl  rounded-3xl p-6 shadow-[#365314]">
@@ -30,10 +35,10 @@ function Author() {
       {/* </Zoom> */}
       </div>
       <div className="flex flex-wrap justify-center space-x-5">
-        <Cart />
-        <Cart />
-        <Cart />
-        <Cart />
+        {/* // TODO: */}
+        <AuthorsVideos />
+        <AuthorsVideos />
+        <AuthorsVideos />
       </div>
       
     </div>

@@ -22,7 +22,7 @@ function App() {
     { id: 3, cat: 'Photograpy' },
     { id: 5, cat: 'Javascript' },
   ]
-
+  // TODO:
   const notify = () => toast.success("Wow so easy !");
   const isChecked = useAuthChecked()
   
@@ -37,7 +37,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />
         <Route path="/single/:id" element={<SingleBlog />} />
-        <Route path="/author" element={<Author />} />
+        <Route path="/profile" element={<Author />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Sign_in />} />
       </Routes>

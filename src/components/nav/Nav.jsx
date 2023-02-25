@@ -7,6 +7,7 @@ import ModalNav from "../modalComponents/ModalNav";
 import InputModal from "../modalComponents/InputModal";
 import Taging from "./tags/Taging";
 import { useAuthChecked } from "../../utils/hooks/useAuthChecked";
+import AccountModal from "../modalComponents/AccountModal";
 
 function Nav({ catagory }) {
   const [toggled, setToggled] = useState(false);
@@ -49,7 +50,7 @@ function Nav({ catagory }) {
                 toggledHandler={inputToggledHandler}
               />
             </div>
-            {isChecked ? (<AccountCircleIcon style={{ fontSize: "40px" }} /> ) :
+            {isChecked ? ( <AccountModal /> ) :
              (<button onClick={loginHandlerWithChecked} className="w-16 h-8 text-center hover:shadow-lg p-1 border-none text-[#f1f5f9] hover:scale-125 ring ring-green hover:bg-red transition rounded-lg">Login</button>)}
                
           </div>

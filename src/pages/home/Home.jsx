@@ -5,18 +5,19 @@ import { useDispatch, useSelector } from "react-redux";
 import fetchBlog from "../../redux/allBlog/thunk/fetchBlog";
 import Paginations from "../../utils/loader/Paginations";
 import HomeLoaderCard from "../../components/loader/HomeLoaderCard";
+import AccountModal from "../../components/modalComponents/AccountModal";
 
 function Home() {
 
-  const {blogs,isLoading,isError} = useSelector(state => state.allBlog?.blogs);
+  const { blogs, isLoading, isError } = useSelector(state => state.allBlog?.blogs);
   // get from filter state : to fetch get blogs with tags&search filter
-  const { tags,search:searched } = useSelector(state => state?.filterBlog);
+  const { tags, search: searched } = useSelector(state => state?.filterBlog);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    dispatch(fetchBlog({tags,searched}))
-    
-  }, [dispatch,tags,searched]);
+    dispatch(fetchBlog({ tags, searched }))
+
+  }, [dispatch, tags, searched]);
 
   // pagination functional
   // const [blogs, setBlogs] = useState([]);
@@ -52,11 +53,10 @@ function Home() {
         <Paginations
           blogPerPage={blogPerPage}
           totalBlogs={blogs?.length}
-          paginate={paginate} 
+          paginate={paginate}
           currentPage={currentPage}
-          />
+        />
       </div>
-      {/* <Pagination count={blogs?.length} /> */}
     </div>
   );
 }

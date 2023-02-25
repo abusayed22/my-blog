@@ -1,4 +1,4 @@
-import { USER_LOGIN_DONE, USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING } from "./actionType";
+import { USER_LOGIN_DONE, USER_LOGOUT, USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING } from "./actionType";
 
 const initialState = {
     user: {},
@@ -30,8 +30,8 @@ const authReducer = (state = initialState, action) => {
                     email: action.payload.userData?.email
                 }
             }
-            
-        case USER_REGISTER_FAILD: 
+
+        case USER_REGISTER_FAILD:
             return {
                 ...state,
                 user: {},
@@ -44,6 +44,14 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 user: {},
                 isLoading: true,
+                isError: false
+            }
+
+        // logout
+        case USER_LOGOUT:
+            return {
+                user: {},
+                isLoading: false,
                 isError: false
             }
 

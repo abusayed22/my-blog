@@ -11,49 +11,6 @@ function InputModal({ inputToggled, toggledHandler }) {
   const navigate = useNavigate()
 
   const [input, setInput] = useState('')
-  
-
-  // useEffect(() => {
-  //    function debounce (fnc, delay) {
-  //     let timeoutId;
-  //     return () => {
-  //       if(timeoutId) {
-  //         clearTimeout(timeoutId)
-  //       }
-  //       timeoutId = setTimeout(() => {
-  //         fnc()
-  //       }, delay);
-  //     }
-      
-  //   }
-    // return debounce
-  // },[])
-
-  
-  // const onChangeHandler = (e) => {
-  //   // debounce(setInput(e.target.value),3000)
-  // }
-
-
-  // useEffect(() => {
-  //   dispatch(search(input))
-  // },[dispatch,input])
-
-
-  // useEffect(() => {
-  //   let ifTimeOut
-  //   if(ifTimeOut) {
-  //     clearTimeout(ifTimeOut)
-  //   }
-  //    ifTimeOut = setTimeout(() => {
-  //     dispatch(search(input))
-  //   }, 3000);
-
-  //   // return clearTimeout(timeset)
-    
-  // },[dispatch,input])
-
-  // const debouncFunc = debounce(updateQuery,5000)
 
   const onChangeHandler = (e) => {
     setInput(e.target.value)
@@ -74,7 +31,7 @@ function InputModal({ inputToggled, toggledHandler }) {
           type="text"
           value={input}
           onChange= {onChangeHandler}
-          className="h-10 border select-all selection:text-yellow border-gray w-[380px] focus:text-rose md:w-[500px] outline-none p-1"
+          className="h-10 border select-all selection:text-yellow border-gray w-[300px] ml-4 focus:text-rose md:w-[500px] outline-none p-1"
         />
         </form>
         <CloseIcon

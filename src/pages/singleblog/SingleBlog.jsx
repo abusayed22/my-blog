@@ -11,6 +11,7 @@ import Comments from "../../components/commentBox/Comments";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
+import ScroolProgrees from "../../utils/loader/ScroolProgrees";
 
 
 function SingleBlog() {
@@ -80,6 +81,7 @@ function SingleBlog() {
   } else {
     return (
       <div className="dark:bg-black bg-[#E1D5D9]">
+        <ScroolProgrees />
         <div>
           <img src={thumbnail} alt={author} className="w-[75%] h-[60vh] mx-auto shadow-deep " />
         </div>

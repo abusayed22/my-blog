@@ -6,6 +6,11 @@ import fetchBlog from "../../redux/allBlog/thunk/fetchBlog";
 import Paginations from "../../utils/loader/Paginations";
 import HomeLoaderCard from "../../components/loader/HomeLoaderCard";
 import AccountModal from "../../components/modalComponents/AccountModal";
+import LinearIndeterminate from "../../utils/loader/LinearIndeterminate";
+import ScroolProgrees from "../../utils/loader/ScroolProgrees";
+import TextAnimated from "../../utils/loader/text animation/TextAnimated";
+import ScroolingCart from "../../utils/loader/scrolingCart/ScrollingCart";
+import { motion } from "framer-motion";
 
 function Home() {
 
@@ -32,9 +37,14 @@ function Home() {
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  return (
+  return (<>
     <div className="bg-[#E1D5D9] dark:bg-black scroll-smooth">
+      {/* <LinearIndeterminate/> */}
+
+
       <Hero />
+      <TextAnimated />
+      <ScroolProgrees />
       <br />
       <p className="text-xl font-extrabold text-green border-b text-center">
         ALL Blogs
@@ -46,7 +56,11 @@ function Home() {
             <HomeLoaderCard />
             <HomeLoaderCard />
             <HomeLoaderCard />
-          </>) : (<Cart blogs={currentBlog} />)}
+          </>) : (
+            <>
+                <Cart blogs={currentBlog} />
+            </>
+          )}
         </div>
       </div>
       <div className="flex justify-center mt-5">
@@ -57,7 +71,9 @@ function Home() {
           currentPage={currentPage}
         />
       </div>
+
     </div>
+  </>
   );
 }
 

@@ -7,11 +7,14 @@ import SingleBlog from "./pages/singleblog/SingleBlog";
 import Author from "./pages/author/Author";
 import Login from "./pages/login/Login";
 import Sign_in from "./pages/login/Sign_in";
-import { toast, ToastContainer } from "react-toastify";
 import { useAuthChecked } from "./utils/hooks/useAuthChecked";
+import { ToastContainer, toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
+import ScroolProgrees from "./utils/loader/ScroolProgrees";
 
 function App() {
+
   const catagory = [
     { id: 1, cat: 'Vs code' },
     { id: 6, cat: 'React' },
@@ -25,14 +28,17 @@ function App() {
   // TODO:
   const notify = () => toast.success("Wow so easy !");
   const isChecked = useAuthChecked()
-  
-  return (
+
+  return (<>
+
     <div className="scrollbar scroll-smooth scrollbar-corner-red ">
       <Nav catagory={catagory} />
-      {/* <div>
-        <button onClick={notify}></button>
+      <div>
+        <button onClick={notify}>Notify !</button>
         <ToastContainer />
-      </div> */}
+
+
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />
@@ -43,6 +49,7 @@ function App() {
       </Routes>
       <Footer />
     </div>
+  </>
   )
 }
 

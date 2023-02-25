@@ -80,7 +80,7 @@ function Nav({ catagory }) {
           </button>
         </div>
       </div>
-      <div className="bg-green opacity-75 w-[100%] scroll-mt-[-66px] snap-y h-20 invisible md:visible z-20">
+      <div className="bg-green opacity-75 w-[100%] h-20 hidden md:block z-20">
         <ul className="flex mx-auto justify-center w-[90%] items-center h-20 md:space-x-0">
           {catagory.map(cat => (
             <li key={cat.id} className=" ">

@@ -65,7 +65,12 @@ function Login() {
   }, [email]);
 
   const isChecked = useAuthChecked();
-
+  
+  useEffect(() => {
+    if(user?.accessToken && user?.user) {
+      navigate('/')
+    }
+  }, [user,navigate]);
   // submit handler 
   const loginSubmitHandler = (e) => {
     e.preventDefault()
@@ -80,6 +85,7 @@ function Login() {
     
     navigate('/')
   }
+  
   
   return (
     <div className="dark:bg-black">

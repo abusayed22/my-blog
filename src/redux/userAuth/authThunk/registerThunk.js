@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 // import { toast } from "react-toastify";
 import { user_register_done, user_register_loading } from "../actions"
 
@@ -16,7 +17,7 @@ const registerThunk = (userData) => async(dispatch) => {
         
         localStorage.setItem("auth", JSON.stringify({userLoggedIn: true, token: tokenData,user: userData}))
         dispatch(user_register_done({tokenData,userData}))
-        // toast.success('successfully register')
+        toast.success('successfully register')
     } catch (error) {
         // toast.error("error:" + error)
     }

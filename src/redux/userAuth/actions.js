@@ -6,11 +6,12 @@ export const user_register_done = ({tokenData,userData}) => {
         payload: {tokenData,userData}
     }
 }
-export const user_loggedIn = ({token,user}) => {
+export const user_loggedIn = ({tokenData,userData}) => {
     return {
-        type: USER_LOGIN_DONE,
-        payload: {token,user}
-    }
+        type: USER_REGISTER_DONE,
+        payload: {tokenData,userData}
+        
+    }    
 }
 export const user_register_faild = (error) => {
     return {

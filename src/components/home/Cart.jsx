@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 function Cart({ blogs  , loading }) {
   const { tags: selectedTag } = useSelector(state => state?.filterBlog);
   // const { id, thumbnail, title, avatar, author, date } = blogs;
+  
 
   // if(blogs?.length > 0) {
     if (loading) {
@@ -37,15 +38,15 @@ function Cart({ blogs  , loading }) {
                     View..
                   </Link>
                 </div>
-                <Link to={"/author"} className="mx-auto flex space-x-2 p-2 ">
+                <Link to={`/profile/${s.id}`} className="mx-auto flex space-x-2 p-2 ">
                   <Avatar
-                    alt={s.author}
+                    alt={s.author?.name}
                     src={s.avatar}
                     sx={{ width: 56, height: 56 }}
                   />
                   <div>
-                    <Link to={"/author"} className="text-lg transform hover:underline text-green">
-                      {s.author}
+                    <Link to={`/profile/${s.id}`} className="text-lg transform hover:underline text-green">
+                      {s.author?.name}
                     </Link>
                     <p className="text-[13px] text-white">a day ago</p>
                     <span className=" text-gray">{s.date}</span>

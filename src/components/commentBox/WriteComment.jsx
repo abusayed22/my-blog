@@ -9,6 +9,7 @@ import { useAuthChecked } from '../../utils/hooks/useAuthChecked';
 function WriteComment({ id: blogId }) {
 
   const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
+  const {user} = useSelector(state => state.user)
   const [input, setInput] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,6 +17,9 @@ function WriteComment({ id: blogId }) {
 
   const [isOpen, setIsOpen] = useState(false)
   const isChecked = useAuthChecked();
+  
+  console.log('isChecked '+ isChecked);
+  console.log(user);
   // comment submit hadler & more functionality for valid user
   const submitHandler = (e) => {
     e.preventDefault();

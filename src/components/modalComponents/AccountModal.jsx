@@ -16,6 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { user_logout } from '../../redux/userAuth/actions';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 
 function AccountModal() {
@@ -30,12 +31,15 @@ function AccountModal() {
         setAnchorEl(null);
     };
 
+    useEffect(() => {
+        
+    },[])
     // logout handler
     const logoutHandler = () => {
         localStorage.removeItem('auth');
         dispatch(user_logout());
         navigate('/')
-        toast.done('Logout Successfully!')
+        toast.success('Logout Successfully!')
     }
 
     return (

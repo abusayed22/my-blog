@@ -34,7 +34,7 @@ function App() {
     <div className="scrollbar scroll-smooth scrollbar-corner-red ">
       <Nav catagory={catagory} />
       <div>
-        <button onClick={notify}>Notify !</button>
+        {/* <button onClick={notify}>Notify !</button> */}
         <ToastContainer />
 
 
@@ -43,7 +43,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />
         <Route path="/single/:id" element={<SingleBlog />} />
-        <Route path="/profile" element={<Author />} />
+        <Route path="/profile/:id" element={<Author />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Sign_in />} />
       </Routes>

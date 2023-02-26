@@ -18,6 +18,9 @@ function SingleBlog() {
   const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
   const blogs = useSelector(state => state.allBlog.related);
   const { id } = useParams();
+  const { id: aID, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
+
+  // const {name,Email,professional} = author
 
   // state for toggle of comment modal
   const [open, setOpen] = useState(false);
@@ -29,12 +32,12 @@ function SingleBlog() {
   }, [dispatch, id]);
 
 
-  const { title, description, author, date, thumbnail, tags, like, comments } = blog || {}
 
 
   useEffect(() => {
-    dispatch(relatedBlog({ tags, id }))
-  }, [id, tags, dispatch])
+    dispatch(relatedBlog({ tags, aID }))
+  }, [aID, tags, dispatch])
+
   const loading = blogs?.isLoading
 
   // toggle controller
@@ -42,7 +45,9 @@ function SingleBlog() {
     setOpen((open) => !open)
   }
 
-  if (!isError && isLoading) {
+
+
+  if (!isError && loading) {
     return (<>
       <div className="dark:bg-black">
         <div className="w-[80%] h-[60vh] mx-auto bg-[#383737] animate-pulse">
@@ -83,13 +88,13 @@ function SingleBlog() {
       <div className="dark:bg-black bg-[#E1D5D9]">
         <ScroolProgrees />
         <div>
-          <img src={thumbnail} alt={author} className="w-[75%] h-[60vh] mx-auto shadow-deep " />
+          <img src={thumbnail} alt={name} className="w-[75%] h-[60vh] mx-auto shadow-deep " />
         </div>
         <br />
         <div className="flex flex-col justify-center items-center md:flex ">
           <div className="flex flex-col items-center md:w-[18%] w-[50%]  space-y-1">
-            <Avatar src="" alt="" />
-            <b className="text-gray ">{author}</b>
+            <Avatar src={link} alt={name} />
+            <b className="text-gray ">{name}</b>
           </div>
           <div className="w-[92%] p-5 bg-[#AAABA8] rounded-lg">
             <p
@@ -100,11 +105,11 @@ function SingleBlog() {
             </p>
             <br />
             <div className="w-[40%] mx-auto space-x-4 text-red dark:selection:text-yellow flex justify-around">
-              <span className="text-rose text-center"> <FavoriteTwoToneIcon /> {like}</span>
-              <span onClick={toggleHandler} className="text-yellow hover:text-blue transition text-center cursor-pointer">{`${comments?.length} Comment`} {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </span>
+              <span className="text-rose text-center"> <FavoriteTwoToneIcon /> {'count'}</span>
+              <span onClick={toggleHandler} className="text-yellow hover:text-blue transition text-center cursor-pointer">{`${'comments'?.length} Comment`} {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </span>
             </div>
             <br />
-            <Comments open={open}/>
+            <Comments open={open} />
 
           </div>
 

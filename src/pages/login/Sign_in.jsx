@@ -41,8 +41,14 @@ function Sign_in() {
   }, [email]);
 
   const isChecked = useAuthChecked();
-  const match = useMatch("/");
+console.log(isChecked);
+  // const match = useMatch("/");
 
+  useEffect(() => {
+    if(isChecked) {
+      navigate('/')
+    }
+  },[isChecked,navigate])
   // submit handler 
   const signSubmitHandler = (e) => {
     e.preventDefault()

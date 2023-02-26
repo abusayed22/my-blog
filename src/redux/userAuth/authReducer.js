@@ -14,22 +14,12 @@ const authReducer = (state = initialState, action) => {
                 user: {
                     token: action.payload.tokenData,
                     isLoggedIn: null,
-                    name: action.payload.userData?.name,
+                    name: action.payload.userData?.name || null,
                     passward: action.payload.userData?.password,
                     email: action.payload.userData?.email
                 }
             }
-        case USER_LOGIN_DONE:
-            return {
-                ...state,
-                user: {
-                    token: action.payload.token,
-                    isLoggedIn: true,
-                    name: action.payload.user?.name,
-                    passward: action.payload.userData?.password,
-                    email: action.payload.userData?.email
-                }
-            }
+       
 
         case USER_REGISTER_FAILD:
             return {

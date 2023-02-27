@@ -29,7 +29,6 @@ const allBlogReducer = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
         case LOADED:
-            // TODO: this is spread way
             return {
                 ...state,
                 blogs: {

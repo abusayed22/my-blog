@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import test from "../../assets//images/busness.jpg";
 import Cart from "../../components/home/Cart";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
+import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
 import AuthorsVideos from "./AuthorsVideos";
 
 
@@ -14,12 +15,22 @@ function Author() {
 
   useEffect(() => {
     dispatch(singleBlogFetch(id))
-  }, [dispatch,id])
+  }, [dispatch,id]);
+
+ 
 
   const {blog,isLoading,isError} = useSelector(state => state.allBlog?.blog);
+  const {authorOf,isLoading:authLoading,isError:authErrr} = useSelector(state => state.author);
 
   const { id: aID, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
-  console.log(blog);
+
+  
+   // silen fetching author's data
+   useEffect(() => {
+    dispatch(authorThunk(Email))
+  },[dispatch,Email]);
+
+
   return (
     <div className="dark:bg-black">
       <div className=" border-gray bg-white dark:bg-[#53657e] bg w-[] h-[400px] mx-auto shadow-2xl  rounded-3xl p-6 shadow-[#365314]">
@@ -33,7 +44,7 @@ function Author() {
         <div className="flex flex-col items-center my-3">
           <b className="text-xl">{name} </b>
           <b className="text-lg py-1">{professional} </b>
-          <b className="text-lg py-1">{title} </b>
+          <b className="text-lg py-1">{proTitle} </b>
         </div>
       </div>
 
@@ -45,10 +56,15 @@ function Author() {
       {/* </Zoom> */}
       </div>
       <div className="flex flex-wrap justify-center space-x-5">
-        {/* // TODO: */}
-        <AuthorsVideos />
-        <AuthorsVideos />
-        <AuthorsVideos />
+        {
+          authLoading ?  <center>Loading...</center> : (
+            
+              (<AuthorsVideos author={authorOf}/>)
+            
+          )
+          
+        }
+        
       </div>
       
     </div>

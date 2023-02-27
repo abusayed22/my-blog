@@ -22,8 +22,8 @@ import { Link } from 'react-router-dom';
             alt="green iguana"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {admin.tags}
+            <Typography gutterBottom variant="h5" component="div" className='capitalize'>
+              {(admin.tags).join(" ")}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {admin.title}

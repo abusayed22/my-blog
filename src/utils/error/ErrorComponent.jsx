@@ -1,7 +1,7 @@
-const ErrorComponent = () => {
+const ErrorComponent = ({err}) => {
     return (
         <div>
-            ERROR
+            {err}
         </div>
     )
 }

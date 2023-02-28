@@ -1,52 +1,32 @@
 import React, { useEffect, useState } from "react";
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { TextField } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useMatch, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ValidateEmail } from "../../utils/validationChecked/ValidateEmail";
 import loginThunk from "../../redux/userAuth/authThunk/loginThunk";
 import { useAuthChecked } from "../../utils/hooks/useAuthChecked";
+import ErrorComponent from "../../utils/error/ErrorComponent";
 
 function Login() {
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 500,
-    bgcolor: "background.paper",
-    borderRadius: "10px",
-    // border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
 
   const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // sign in
-  const [sign, setSign] = useState(false);
-  const signHandler = () => {
-    setSign(prev => !prev)
-  }
-
-
-  const { user, isLoading } = useSelector(state => state.user);
-  // console.log(isLoading);
-  // const [open, setOpen] = useState(true);
-  // sign in
+  const { user, isLoading, isError } = useSelector(state => state.user);
+  const { blog } = useSelector(state => state.allBlog.blog);
+  
+  // login in
   const [signErr, setSignErr] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   // state for all input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailValid, setIsEmailValid] = useState();
+  const [logErr, setLogErr] = useState('')
 
   // debounc email validation
   useEffect(() => {
@@ -57,36 +37,33 @@ function Login() {
       } else {
         setIsEmailValid(false)
       }
-
     }, 2000);
-
     return () => clearTimeout(getData)
-
   }, [email]);
 
   const isChecked = useAuthChecked();
-  
-  useEffect(() => {
-    if(user?.accessToken && user?.user) {
-      navigate('/')
-    }
-  }, [user,navigate]);
-  // submit handler 
+
+
+  //submit handler
   const loginSubmitHandler = (e) => {
     e.preventDefault()
-    if (email === "" || password === "") {
-      setSignErr(true)
-    } else {
-      dispatch(loginThunk({
-        email,
-        password,
-      }));
-    }
-    
-    navigate('/')
+    dispatch(loginThunk({
+      email,
+      password
+    }))
   }
-  
-  
+
+  useEffect(() => {
+    if(isChecked) {
+      navigate('/')
+      console.log(isChecked);
+    }
+
+    if(!isError === "") {
+      setLogErr(isError)
+    }
+  }, [isError,navigate,isChecked])
+
   return (
     <div className="dark:bg-black">
       <Modal
@@ -201,6 +178,7 @@ function Login() {
                         Sign-in here
                       </Link>
                     </p>
+                    {!logErr === "" && <ErrorComponent err={logErr} />}
                   </form>
                 </div>
               </div>

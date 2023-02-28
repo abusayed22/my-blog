@@ -10,13 +10,17 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Comments from "../../components/commentBox/Comments";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
-import ScroolProgrees from "../../utils/loader/ScroolProgrees";
 
+import ScroolProgrees from "../../utils/loader/ScroolProgrees";
+import likeIcone from "../../assets/svg/free_icon_1.svg"
+
+import LikeDislike from "../../components/like/LikeDislike";
 
 function SingleBlog() {
   const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
   const blogs = useSelector(state => state.allBlog.related);
+  const { user } = useSelector(state => state.user)
+  // console.log(user);
   const { id } = useParams();
   const { id: aID, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
 
@@ -24,9 +28,14 @@ function SingleBlog() {
 
   // state for toggle of comment modal
   const [open, setOpen] = useState(false);
+  const [liker, setLiker] = useState(false)
 
+  
   const dispatch = useDispatch();
 
+  const onDislikeHandler = () => {
+
+  }
   useEffect(() => {
     dispatch(singleBlogFetch(id))
   }, [dispatch, id]);
@@ -105,7 +114,7 @@ function SingleBlog() {
             </p>
             <br />
             <div className="w-[40%] mx-auto space-x-4 text-red dark:selection:text-yellow flex justify-around">
-              <span className="text-rose text-center"> <FavoriteTwoToneIcon /> {'count'}</span>
+              <LikeDislike />
               <span onClick={toggleHandler} className="text-yellow hover:text-blue transition text-center cursor-pointer">{`${'comments'?.length} Comment`} {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </span>
             </div>
             <br />
@@ -125,6 +134,7 @@ function SingleBlog() {
           <div className="flex justify-center mt-10">
 
           </div>
+          
         </div>
       </div>
     );

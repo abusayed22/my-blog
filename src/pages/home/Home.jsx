@@ -11,6 +11,8 @@ import ScroolProgrees from "../../utils/loader/ScroolProgrees";
 import TextAnimated from "../../utils/loader/text animation/TextAnimated";
 import ScroolingCart from "../../utils/loader/scrolingCart/ScrollingCart";
 import { motion } from "framer-motion";
+import LikeDislike from "../../components/like/LikeDislike";
+import { useAuthChecked } from "../../utils/hooks/useAuthChecked";
 
 function Home() {
 
@@ -36,6 +38,8 @@ function Home() {
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
+  const authChecked= useAuthChecked()
+  console.log(authChecked);
 
   return (<>
     <div className="bg-[#E1D5D9] dark:bg-black scroll-smooth">
@@ -71,7 +75,7 @@ function Home() {
           currentPage={currentPage}
         />
       </div>
-
+            <LikeDislike />
     </div>
   </>
   );

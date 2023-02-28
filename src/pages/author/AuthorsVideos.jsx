@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
   return (
     <div className='container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3'>
       {author?.map(admin => (
-        <Link className='flex justify-center items-center m-auto shadow-md my-2'>
+        <Link to={`/single/${admin?.id}`} className='flex justify-center items-center m-auto shadow-md my-2'>
           <Card key={admin.id} sx={{ maxWidth: 345 }} >
         <CardActionArea>
           <CardMedia

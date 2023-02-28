@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux';
 import { user_logout } from '../../redux/userAuth/actions';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import { useAuthChecked } from '../../utils/hooks/useAuthChecked';
 
 
 function AccountModal() {
@@ -30,18 +31,21 @@ function AccountModal() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    useEffect(() => {
-        
-    },[])
+    
     // logout handler
     const logoutHandler = () => {
         localStorage.removeItem('auth');
         dispatch(user_logout());
-        navigate('/')
         toast.success('Logout Successfully!')
     }
-
+    
+    const isChecked = useAuthChecked();
+    
+    useEffect(() => {
+        if(isChecked) {
+            navigate('/')
+        }
+    },[])
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>

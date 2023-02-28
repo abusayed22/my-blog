@@ -73,8 +73,8 @@ function ParallaxText({ children, baseVelocity = 100 }) {
 
  function TextAnimated() {
   return (
-    <section>
-      <ParallaxText baseVelocity={-3}>my BLog : Show your passionate words</ParallaxText>
+    <section className="text-sm">
+      <ParallaxText  baseVelocity={-3}>my BLog : Show your passionate words</ParallaxText>
       <ParallaxText baseVelocity={2}>In a review post, the blogger reviews a movie, video game, TV show, book, product . . . anything etc really.</ParallaxText>
     </section>
   );

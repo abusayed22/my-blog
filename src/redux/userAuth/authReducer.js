@@ -1,9 +1,9 @@
-import { USER_LOGIN_DONE, USER_LOGOUT, USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING } from "./actionType";
+import { USER_REFETCHING,USER_LOGIN_DONE, USER_LOGOUT, USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING, USER_PERSIST_FETCHING } from "./actionType";
 
 const initialState = {
     user: {},
     isLoading: false,
-    isError: false
+    isError: null,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -13,20 +13,31 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 user: {
                     token: action.payload.tokenData,
-                    isLoggedIn: null,
-                    name: action.payload.userData?.name || null,
+                    isLoggedIn: true,
                     passward: action.payload.userData?.password,
                     email: action.payload.userData?.email
                 }
             }
+        case USER_PERSIST_FETCHING:
+            return {
+                ...state,
+                user: {
+                    token: action.payload.token,
+                    isLoggedIn: true,
+                    passward: action.payload.user?.password,
+                    email: action.payload.user?.email
+                }
+            }
+
        
+
 
         case USER_REGISTER_FAILD:
             return {
                 ...state,
                 user: {},
                 isLoading: false,
-                isError: action.payload
+                isError: action.payload.error
             }
 
         case USER_REGISTER_LOADING:

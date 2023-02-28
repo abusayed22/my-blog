@@ -1,15 +1,15 @@
-import { USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING,USER_LOGIN_DONE, USER_LOGOUT } from "./actionType"
+import { USER_REFETCHING,USER_REGISTER_DONE, USER_REGISTER_FAILD, USER_REGISTER_LOADING,USER_LOGIN_DONE, USER_LOGOUT, USER_PERSIST_FETCHING } from "./actionType"
 
-export const user_register_done = ({tokenData,userData}) => {
+export const user_register_done = (tokenData,userData) => {
     return {
         type: USER_REGISTER_DONE,
-        payload: {tokenData,userData}
+        payload: tokenData,userData
     }
 }
-export const user_loggedIn = ({tokenData,userData}) => {
+export const user_persist_fetching = (token,user) => {
     return {
-        type: USER_REGISTER_DONE,
-        payload: {tokenData,userData}
+        type: USER_PERSIST_FETCHING,
+        payload: token,user
         
     }    
 }
@@ -25,9 +25,12 @@ export const user_register_loading = () => {
     }
 }
 
+
+
 // logout
 export const user_logout = () => {
     return{
         type: USER_LOGOUT
     }
 }
+

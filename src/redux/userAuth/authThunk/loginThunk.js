@@ -1,12 +1,13 @@
 import axios from "axios"
 import { toast } from "react-toastify";
 // import { toast } from "react-toastify";
-import { user_loggedIn, user_register_done, user_register_loading } from "../actions"
+import { user_loggedIn, user_register_done, user_register_faild, user_register_loading } from "../actions"
 
 
 const loginThunk = (userData) => async(dispatch) => {
-    dispatch(user_register_loading);
+    dispatch(user_register_loading());
     const {email, password} = userData;
+   
     try {
         const res = await axios.post(`https://auth-server-49u7.onrender.com/api/auth/login`, {
             email, password
@@ -15,9 +16,12 @@ const loginThunk = (userData) => async(dispatch) => {
         const tokenData = authData.access_token
         
         localStorage.setItem("auth", JSON.stringify({userLoggedIn: true, token: tokenData,user:userData}))
-        dispatch(user_loggedIn({tokenData,userData}));
-        toast.success('successfully register')
+        dispatch(user_register_done({tokenData,userData}));
+        console.log( userData);
+        toast.success('successfully Login')
     } catch (error) {
+        dispatch(user_register_faild(error.message))
+        // console.log(error)
         toast.error("error:" + error)
     }
 }

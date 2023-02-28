@@ -64,8 +64,13 @@ function Login() {
     }
   }, [isError,navigate,isChecked])
 
+  const clossedModal = () => {
+    handleClose();
+    navigate('/')
+  }
   return (
-    <div className="dark:bg-black">
+    <div onClick={clossedModal} className="dark:bg-black">
+      
       <Modal
         open={open}
         // onClose={handleClose}

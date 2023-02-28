@@ -13,6 +13,7 @@ import ScroolingCart from "../../utils/loader/scrolingCart/ScrollingCart";
 import { motion } from "framer-motion";
 import LikeDislike from "../../components/like/LikeDislike";
 import { useAuthChecked } from "../../utils/hooks/useAuthChecked";
+import CreateBlogButton from "../../components/home/CreateBlogButton";
 
 function Home() {
 
@@ -42,10 +43,11 @@ function Home() {
   console.log(authChecked);
 
   return (<>
-    <div className="bg-[#E1D5D9] dark:bg-black scroll-smooth">
+    <div className="bg-[#E1D5D9] dark:bg-black scroll-smooth relative z-30">
       {/* <LinearIndeterminate/> */}
-
-
+      <div className="absolute z-40 right-12 top-[60vh]">
+        <CreateBlogButton />
+      </div>
       <Hero />
       <TextAnimated />
       <ScroolProgrees />

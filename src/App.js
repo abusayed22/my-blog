@@ -12,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import ScroolProgrees from "./utils/loader/ScroolProgrees";
+import CreateBlog from "./pages/createBlog/CreateBlog";
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="/profile/:id" element={<Author />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Sign_in />} />
+        <Route path="/createBlog" element={<CreateBlog />} />
       </Routes>
       <Footer />
     </div>

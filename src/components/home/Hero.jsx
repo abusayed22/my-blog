@@ -1,6 +1,7 @@
 import React from "react";
 import bg_video from "../../assets/videos/Pexels Videos 1851768.mp4";
 import Loader from "../../utils/loader/Loader";
+import CreateBlog from "./CreateBlogButton";
 
 function Hero() {
   return (

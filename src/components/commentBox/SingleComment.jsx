@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function SingleComment() {
     const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
     const { id, thumbnail, comments } = blog;
-    console.log(comments.date);
+
     return (
         <>
             {/* component */}
@@ -17,7 +17,7 @@ function SingleComment() {
                         <tbody key={s.id} className="divide-y divide-gray-100  rounded-xl ">
                             <hr />
                             <tr className=" hover:bg-gray-50">
-                                <p className="text-center text-gray border-b-gray mt-1">{s.date}</p>
+                                <p className="text-center text-gray border-b-gray mt-1">{s?.date}</p>
                                 <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                     <div className="relative h-10 w-10">
                                         <img

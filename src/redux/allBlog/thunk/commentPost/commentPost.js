@@ -13,6 +13,7 @@ const commentPost = ({ id:blogId, commentObj ,}) => async (dispatch) => {
             title, 
             description, 
             author, 
+            date,
             duration, 
             views, 
             tags, 

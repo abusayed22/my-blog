@@ -3,24 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import doLikeThunk from "../../redux/allBlog/thunk/likeThunk/doLikeTHunk";
+import { useAuthChecked } from "../../utils/hooks/useAuthChecked";
+import { useNavigate } from "react-router-dom";
 
 
 function LikeDislike() {
     const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
-    const {id, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
-    const liked = like?.count;
-    const inLiked = like?.liker
-    const test = like?.length
-    console.log(test)
+    const { id, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
+
+
 
     const { user } = useSelector(state => state.user)
     const { email } = user
     const dispatch = useDispatch();
     const [likedThey, setLikedThey] = useState([]);
+    const [userEmail, setUserEmail] = useState(user?.email)
     // const [isLike,setIsLike] = useState(false)
     // const [likeController,setLikeController] = useState(false)
-    
-    console.log(likedThey)
 
     useEffect(() => {
         setLikedThey(like)
@@ -28,165 +27,82 @@ function LikeDislike() {
 
     const [doLike, setDoLike] = useState(false);
     const [doDisLike, setDoDislike] = useState(false);
+    const [likeAseKina, seLikeAseKina] = useState();
+    const isChecked = useAuthChecked();
+    const navigate = useNavigate()
 
-    const [likeAseKina,seLikeAseKina] = useState()
 
+    // on like handler
     useEffect(() => {
+        if (likedThey?.includes(userEmail)) {
+            seLikeAseKina(true)
+        } else {
+            seLikeAseKina(false)
+        }
+    }, [likedThey, userEmail]);
+    console.log(likeAseKina);
 
-        // if (doLike) {
-        //     // dispatch(doLikeThunk({aID,likedObject}))
-        //     console.log(`like ${doLike}`);
-        // } else {
-        //     // dispatch(doLikeThunk({aID,likedObject}))
-        //     console.log(`unlike ${doLike}`);
-        // }
-    }, [doLike])
-
-// on like handler
-useEffect(() => {
-    if(likedThey?.includes(email)){
-        seLikeAseKina(true)
-    } else {
-        seLikeAseKina(false)
-        
-    }
-}, [likedThey,email])
-
-console.log(likedThey);
-
+    // like handler
     const onLikeHandler = () => {
-        
-        if (!likeAseKina) {
-            // setLikedThey(likedThey[0]?.concat(email))
-                    // console.log(likedThey[0]);
-                    const likedObject = {
-                        title,
-                        description,
-                        name,
-                        Email,
-                        professional,
-                        proTitle,
-                        date,
-                        link,
-                        thumbnail,
-                        tags,
-                        like: like.concat(email),
-                        comments
-        
-                    }
-                    // setLikedThey(...likedThey,email)
-                    dispatch(doLikeThunk(id,likedObject))
-                } else {
-                     console.log('hi');
-                    // const index = likedThey?.indexOf(email);
-                    // if(index !== -1) {
-                    //     const newThey = likedThey?.splice(index,1)
-                    //     setLikedThey([newThey])
-                    // }
-                    // const unLikedObject = {
-                    //     id,
-                    //     title,
-                    //     description,
-                    //     name,
-                    //     Email,
-                    //     professional,
-                    //     proTitle,
-                    //     date,
-                    //     link,
-                    //     thumbnail,
-                    //     tags,
-                    //     like: {
-                    //         count: likeCount,
-                    //         liker: [
-                    //             ...likedThey
-                    //         ]
-                    //     },
-                    //     comments
-        
-                    // }
-        
-                    // dispatch(doLikeThunk({id,unLikedObject}))
+
+        if (isChecked) {
+            if (!likeAseKina) {
+                setLikedThey(likedThey?.concat(email))
+                const likedObject = {
+                    id,
+                    title,
+                    description,
+                    name,
+                    Email,
+                    professional,
+                    proTitle,
+                    date,
+                    link,
+                    thumbnail,
+                    tags,
+                    like:like.concat(userEmail),
+                    comments
+                }
+                seLikeAseKina(true)
+                dispatch(doLikeThunk(id, likedObject))
+            } else {
+                const index = likedThey?.indexOf(email);
+                if(index !== -1) {
+                    const newThey = likedThey?.splice(index,1)
+                    setLikedThey([newThey])
+                }
+                const unLikedObject = {
+                    id,
+                    title,
+                    description,
+                    name,
+                    Email,
+                    professional,
+                    proTitle,
+                    date,
+                    link,
+                    thumbnail,
+                    tags,
+                    like: ,
+                    comments
+
                 }
 
-        // if (doLike) { //like deya ase
-        //     setDoLike(false);
-        //     setLikeCount(likeCount - 1)
-        // } else { //like hobe
-        //     setDoLike(true);
-        //     setLikeCount(likeCount + 1);
-        //     if (doDisLike) {
-        //         setDoDislike(false);
+                dispatch(doLikeThunk({id,unLikedObject}))
+            }
+        } else {
+            navigate('/login')
+        }
 
-        //     }
-        // }
+
     }
 
-    // checking is liked
-    // useEffect(() => {
+    
 
-    //     if (likedThey?.includes(email)) {
-    //         console.log('hello');
-    //         const likedObject = {
-    //             id,
-    //             title,
-    //             description,
-    //             name,
-    //             Email,
-    //             professional,
-    //             proTitle,
-    //             date,
-    //             link,
-    //             thumbnail,
-    //             tags,
-    //             like: {
-    //                 count: likeCount,
-    //                 liker: [
-    //                     ...likedThey,
-    //                     email
-    //                 ]
-    //             },
-    //             comments
 
-    //         }
-    //         setDoLike(true)
-    //         setLikedThey(...likedThey,email)
-    //         dispatch(doLikeThunk({id,likedObject}))
-    //     } else {
-    //          console.log('hi');
-    //         const index = likedThey?.indexOf(email);
-    //         if(index !== -1) {
-    //             const newThey = likedThey?.splice(index,1)
-    //             setLikedThey([newThey])
-    //         }
-    //         const unLikedObject = {
-    //             id,
-    //             title,
-    //             description,
-    //             name,
-    //             Email,
-    //             professional,
-    //             proTitle,
-    //             date,
-    //             link,
-    //             thumbnail,
-    //             tags,
-    //             like: {
-    //                 count: likeCount,
-    //                 liker: [
-    //                     ...likedThey
-    //                 ]
-    //             },
-    //             comments
-
-    //         }
-
-    //         dispatch(doLikeThunk({id,unLikedObject}))
-    //     }
-
-    // }, [email, inLiked])
 
     return (<div className="w-[50px] text-center">
-        <b className="text-yellow text-xl text-center">{like?.length}</b>
+        <b className="text-yellow text-xl text-center">{likedThey?.length}</b>
         <br />
         <div className="">
             <button onClick={onLikeHandler} className="text-rose text-center font-bold">

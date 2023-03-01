@@ -4,7 +4,7 @@ import { change_refetch, user_loggedIn, user_persist_fetching, user_register_don
 
 export const useAuthChecked = () => {
     const { user, refetch } = useSelector(state => state.user)
-    console.log(user)
+    // console.log(user)
     const [authChecked, setAuthChecked] = useState(false);
     const dispatch = useDispatch();
 

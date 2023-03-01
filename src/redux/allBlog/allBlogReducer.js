@@ -1,11 +1,7 @@
-import { COMMENT_POST, LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD, RELATED_FAILD, RELATED_LOADED, RELATED_LOADING, COMMENT_POST_ERROR } from "./actionTypes";
+import { COMMENT_POST, LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD, RELATED_FAILD, RELATED_LOADED, RELATED_LOADING, COMMENT_POST_ERROR, COMMENT_LOADING, LIKED, LIKED_ERROR, LIKED_LOADING } from "./actionTypes";
 import { produce } from "immer"
 import { Castle } from "@mui/icons-material";
 
-// const initialState = {
-//     blogs: [],
-//     blog: []
-// }
 
 const initialState = {
     blogs: {
@@ -129,32 +125,75 @@ const allBlogReducer = (state = initialState, action) => {
                     isError: action.payload
                 }
             }
-        // blog: {
-        //     blog: {},
-        //     isLoading: false,
-        //     isError: null
-        // case COMMENT_POST: 
-        //     return produce(state.blog, (draft) => {
-        //         draft.comments.push(action.payload)
-        //     })
+        //  comments
         case COMMENT_POST:
             return {
                 ...state,
                 blog: {
                     ...state.blog,
-                    blog: action.payload
+                    blog: action.payload,
+                    isLoading: false,
+                    isError: null
                 }
             }
-        }
-        // case COMMENT_POST_ERROR: 
-        //     return {
+        case COMMENT_POST_ERROR:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: {},
+                    isLoading: false,
+                    isError: action.payload
+                }
+            }
+        case COMMENT_LOADING:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: {},
+                    isLoading: true,
+                    isError: null
+                }
+            }
 
-        //     }
+        //    like
+        case LIKED:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: action.payload,
+                    isLoading: false,
+                    isError: null
+                }
+            }
 
-    return state;
+        case LIKED_ERROR:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: {},
+                    isLoading: false,
+                    isError: action.payload
+                }
+            }
+        case LIKED_LOADING:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: {},
+                    isLoading: true,
+                    isError: null
+                }
+            }
+    }
+            return state;
 }
 
-export default allBlogReducer;
+    export default allBlogReducer;
 
 // {
 //     "title": "যে ১০ টি ভুল বিগিনার রিয়্যাক্ট ডেভেলপাররা করে থাকেন",

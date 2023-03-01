@@ -1,4 +1,4 @@
-import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR } from "./actionTypes"
+import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR, LIKED, COMMENT_LOADING, LIKED_LOADING, LIKED_ERROR } from "./actionTypes"
 import commentPost from "./thunk/commentPost/commentPost"
 
 
@@ -67,10 +67,32 @@ export const post_comment = (commentObj) => {
         payload: commentObj
     }
 }
+export const post_comment_error = (err) => {
+    return {
+        type: COMMENT_POST_ERROR,
+        payload: err
+    }
+}
+export const post_comment_loading = () => {
+    return {
+        type: COMMENT_LOADING,
+    }
+}
 
-// export const post_comment_error = (eror) => {
-//     return {
-//         type: COMMENT_POST_ERROR,
-//         payload: eror
-//     }
-// }
+export const liked = (likedObject) => {
+    return{
+        type: LIKED,
+        payload: likedObject
+    }
+}
+export const liked_loading = () => {
+    return {
+        type:LIKED_LOADING
+    }
+}
+export const liked_error = (err) => {
+    return{
+        type: LIKED_ERROR,
+        payload: err
+    }
+}

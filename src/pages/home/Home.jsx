@@ -77,7 +77,6 @@ function Home() {
           currentPage={currentPage}
         />
       </div>
-            <LikeDislike />
     </div>
   </>
   );

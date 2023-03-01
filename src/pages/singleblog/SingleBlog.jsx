@@ -25,6 +25,7 @@ function SingleBlog() {
   const { id: aID, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
 
   // const {name,Email,professional} = author
+  
 
   // state for toggle of comment modal
   const [open, setOpen] = useState(false);
@@ -115,7 +116,11 @@ function SingleBlog() {
             <br />
             <div className="w-[40%] mx-auto space-x-4 text-red dark:selection:text-yellow flex justify-around">
               <LikeDislike />
-              <span onClick={toggleHandler} className="text-yellow hover:text-blue transition text-center cursor-pointer">{`${'comments'?.length} Comment`} {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </span>
+              <div>
+              <b className="text-yellow text-xl font-bold">{`${comments?.length } ${comments?.length > 0 ? ("Comment's"): ("Comment")}`}</b>
+              <br />
+              <b onClick={toggleHandler} className="text-blue text-xl font-bold transition text-center cursor-pointer">Write Comment{open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </b>
+              </div>
             </div>
             <br />
             <Comments open={open} />

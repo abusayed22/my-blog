@@ -14,5 +14,10 @@ export const RELATED_FAILD = "RELATED_FAILD";
 // comment 
 export const COMMENT_POST = "BLOG/COMMENT_POST";
 export const COMMENT_POST_ERROR = "BLOG/COMMENT_POST_ERROR";
+export const COMMENT_LOADING = "BLOG/LIKED_LOADING";
+// like
+export const LIKED = "BLOG/ISLIKED";
+export const LIKED_ERROR = "BLOG/LIKED_ERROR";
+export const LIKED_LOADING = "BLOG/LIKED_LOADING";
 
 

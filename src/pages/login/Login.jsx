@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Modal from "@mui/material/Modal";
-import { Link, useMatch, useNavigate } from "react-router-dom";
+import { Link, useMatch, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ValidateEmail } from "../../utils/validationChecked/ValidateEmail";
 import loginThunk from "../../redux/userAuth/authThunk/loginThunk";
@@ -21,6 +21,7 @@ function Login() {
   const [signErr, setSignErr] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const {id} =useParams()
   
   // state for all input
   const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ function Login() {
 
   useEffect(() => {
     if(isChecked) {
-      navigate('/')
+      handleClose()
       console.log(isChecked);
     }
 
@@ -63,11 +64,12 @@ function Login() {
       setLogErr(isError)
     }
   }, [isError,navigate,isChecked])
+  // const match = useMatch(`/single/${id}`)
 
   const clossedModal = () => {
-    handleClose();
-    navigate('/')
-  }
+      handleClose();
+    }
+    
   return (
     <div onClick={clossedModal} className="dark:bg-black">
       

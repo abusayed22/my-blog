@@ -1,5 +1,5 @@
 import moment from 'moment/moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import LoginForUtills from '../../pages/login/LoginForUtils';
@@ -44,9 +44,15 @@ function WriteComment({ id: blogId }) {
       dispatch(commentPost({ id, commentObj }))
       setInput('')
     } else {
-      setIsOpen(true)
+      navigate('/login')
+      
     }
   }
+  useEffect(() => {
+    if(isChecked) {
+
+    }
+  }, [])
 
   return (
     <form action=""

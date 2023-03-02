@@ -23,27 +23,34 @@ function LikeDislike() {
 
     useEffect(() => {
         setLikedThey(like)
+        console.log('first');
     }, [like])
 
-    const [doLike, setDoLike] = useState(false);
-    const [doDisLike, setDoDislike] = useState(false);
+    // const [doLike, setDoLike] = useState(false);
+    // const [doDisLike, setDoDislike] = useState(false);
     const [likeAseKina, seLikeAseKina] = useState();
     const isChecked = useAuthChecked();
     const navigate = useNavigate()
 
-
+    
     // on like handler
     useEffect(() => {
+        console.log('1');
         if (likedThey?.includes(userEmail)) {
-            seLikeAseKina(true)
+            seLikeAseKina(true);
+            console.log('2');
         } else {
             seLikeAseKina(false)
+            console.log('3');
         }
-    }, [likedThey, userEmail]);
+    }, [likedThey,userEmail]);
+   
+    console.log('importent');
     console.log(likeAseKina);
 
     // like handler
     const onLikeHandler = () => {
+        
 
         if (isChecked) {
             if (!likeAseKina) {
@@ -66,7 +73,7 @@ function LikeDislike() {
                 seLikeAseKina(true)
                 dispatch(doLikeThunk(id, likedObject))
             } else {
-                const index = likedThey?.indexOf(email);
+                const index = likedThey?.indexOf(userEmail);
                 if(index !== -1) {
                     const newThey = likedThey?.splice(index,1)
                     setLikedThey([newThey])
@@ -83,12 +90,12 @@ function LikeDislike() {
                     link,
                     thumbnail,
                     tags,
-                    like: ,
+                    like: likedThey,
                     comments
 
                 }
 
-                dispatch(doLikeThunk({id,unLikedObject}))
+                dispatch(doLikeThunk(id,unLikedObject))
             }
         } else {
             navigate('/login')

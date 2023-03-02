@@ -18,9 +18,9 @@ function LikeDislike() {
     const dispatch = useDispatch();
     const [likedThey, setLikedThey] = useState([]);
     const [userEmail, setUserEmail] = useState(user?.email)
-    // const [isLike,setIsLike] = useState(false)
-    // const [likeController,setLikeController] = useState(false)
+    
 
+    const isChecked = useAuthChecked()
     useEffect(() => {
         setLikedThey(like)
        
@@ -34,7 +34,6 @@ function LikeDislike() {
     // const [doLike, setDoLike] = useState(false);
     // const [doDisLike, setDoDislike] = useState(false);
     const [likeAseKina, seLikeAseKina] = useState();
-    const isChecked = useAuthChecked();
     const navigate = useNavigate()
 
     // like handler

@@ -3,6 +3,7 @@ import React from "react";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomeLoaderCard from "../loader/HomeLoaderCard";
+import moment from "moment";
 
 function SingleRelated({ blogs:relatedBlogs  }) {
 const {blogs, isLoading,isError} = relatedBlogs
@@ -35,17 +36,17 @@ const {blogs, isLoading,isError} = relatedBlogs
                     View..
                   </Link>
                 </div>
-                <Link to={"/author"} className="mx-auto flex space-x-2 p-2 ">
+                <Link to={`/profile/${s.id}`} className="mx-auto justify-center items-center flex space-x-2 p-2 ">
                   <Avatar
-                    alt={s.author}
+                    alt={s.author?.name}
                     src={s.avatar}
                     sx={{ width: 56, height: 56 }}
                   />
-                  <div>
-                    <Link to={"/author"} className="text-lg transform hover:underline text-green">
-                      {s.author}
+                  <div className="space-y-0">
+                    <Link to={`/profile/${s.id}`} className="text-lg transform hover:underline text-green ">
+                      {s?.name}
                     </Link>
-                    <p className="text-[13px] text-white">a day ago</p>
+                    <p className="m-1 text-sm text-white">{moment(s.date).startOf('day').fromNow()}</p>
                     <span className=" text-gray">{s.date}</span>
                   </div>
                 </Link>

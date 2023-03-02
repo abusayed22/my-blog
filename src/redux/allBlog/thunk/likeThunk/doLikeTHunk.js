@@ -7,7 +7,7 @@ const doLikeThunk = (blogId,likedObject) => async(dispatch) => {
     dispatch(liked_loading());
     const { id, title, description, author, date, duration, views, tags, link, thumbnail, like, comments } = likedObject;
     try {
-        console.log('hello');
+        
         const res = await axios.put(`http://localhost:9000/videos2/${blogId}`, {
             id, 
             title, 

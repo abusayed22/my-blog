@@ -34,9 +34,7 @@ function SingleBlog() {
   
   const dispatch = useDispatch();
 
-  const onDislikeHandler = () => {
 
-  }
   useEffect(() => {
     dispatch(singleBlogFetch(id))
   }, [dispatch, id]);
@@ -116,10 +114,10 @@ function SingleBlog() {
             <br />
             <div className="w-[40%] mx-auto space-x-4 text-red dark:selection:text-yellow flex justify-around">
               <LikeDislike />
-              <div>
-              <b className="text-yellow text-xl font-bold">{`${comments?.length } ${comments?.length > 0 ? ("Comment's"): ("Comment")}`}</b>
-              <br />
-              <b onClick={toggleHandler} className="text-blue text-xl font-bold transition text-center cursor-pointer">Write Comment{open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </b>
+              <div className="flex flex-col">
+              <b className="w-40 text-yellow text-xl font-bold text-center">{`${comments?.length } ${comments?.length > 0 ? ("Comment's"): ("Comment")}`}</b>
+            
+              <b onClick={toggleHandler} className="w-40 text-blue text-xl font-bold transition text-center cursor-pointer">Write Comment{open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} </b>
               </div>
             </div>
             <br />

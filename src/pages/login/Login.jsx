@@ -57,6 +57,7 @@ function Login() {
   useEffect(() => {
     if(isChecked) {
       handleClose()
+      navigate(-1)
       console.log(isChecked);
     }
 
@@ -66,12 +67,10 @@ function Login() {
   }, [isError,navigate,isChecked])
   // const match = useMatch(`/single/${id}`)
 
-  const clossedModal = () => {
-      handleClose();
-    }
+
     
   return (
-    <div onClick={clossedModal} className="dark:bg-black">
+    <div  className="dark:bg-black">
       
       <Modal
         open={open}

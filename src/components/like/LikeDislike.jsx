@@ -23,8 +23,13 @@ function LikeDislike() {
 
     useEffect(() => {
         setLikedThey(like)
-        console.log('first');
-    }, [like])
+       
+        if (likedThey?.includes(userEmail)) {
+            seLikeAseKina(true);
+        } else {
+            seLikeAseKina(false)
+        }
+    }, [like,userEmail,likedThey])
 
     // const [doLike, setDoLike] = useState(false);
     // const [doDisLike, setDoDislike] = useState(false);
@@ -32,25 +37,8 @@ function LikeDislike() {
     const isChecked = useAuthChecked();
     const navigate = useNavigate()
 
-    
-    // on like handler
-    useEffect(() => {
-        console.log('1');
-        if (likedThey?.includes(userEmail)) {
-            seLikeAseKina(true);
-            console.log('2');
-        } else {
-            seLikeAseKina(false)
-            console.log('3');
-        }
-    }, [likedThey,userEmail]);
-   
-    console.log('importent');
-    console.log(likeAseKina);
-
     // like handler
     const onLikeHandler = () => {
-        
 
         if (isChecked) {
             if (!likeAseKina) {
@@ -100,8 +88,6 @@ function LikeDislike() {
         } else {
             navigate('/login')
         }
-
-
     }
 
     

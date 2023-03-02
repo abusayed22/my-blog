@@ -17,11 +17,11 @@ const loginThunk = (userData) => async(dispatch) => {
         
         localStorage.setItem("auth", JSON.stringify({userLoggedIn: true, token: tokenData,user:userData}))
         dispatch(user_register_done({tokenData,userData}));
-        console.log( userData);
+        
         toast.success('successfully Login')
     } catch (error) {
         dispatch(user_register_faild(error.message))
-        // console.log(error)
+     
         toast.error("error:" + error)
     }
 }

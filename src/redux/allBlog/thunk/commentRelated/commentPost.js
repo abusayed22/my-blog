@@ -1,4 +1,4 @@
-// like thunk here becouse updating thunk with update redux single state 
+// comment thunk here becouse updating thunk with update redux single state 
 import axios from "axios";
 import { single_loading, single_loaded, single_error, post_comment, post_comment_error, post_comment_loading } from "../../action";
 

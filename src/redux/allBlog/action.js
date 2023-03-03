@@ -1,5 +1,5 @@
-import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR, LIKED, COMMENT_LOADING, LIKED_LOADING, LIKED_ERROR } from "./actionTypes"
-import commentPost from "./thunk/commentPost/commentPost"
+import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR, LIKED, COMMENT_LOADING, LIKED_LOADING, LIKED_ERROR, DELETE_COMMENT, DELETE_COMMENT_ERROR, DELETE_COMMENT_LOADING } from "./actionTypes"
+import commentPost from "./thunk/commentRelated/commentPost"
 
 
 export const loaded = (blogs) => {
@@ -60,8 +60,9 @@ export const related_fail = (err) => {
     }
 }
 
-// comment
-export const post_comment = (commentObj) => {
+// comment related action
+// comment post
+export const post_comment = (commentObj) => { 
     return {
         type: COMMENT_POST,
         payload: commentObj
@@ -79,6 +80,27 @@ export const post_comment_loading = () => {
     }
 }
 
+// comment delete
+export const deleted_comment = (commentObj) => { 
+    return {
+        type: DELETE_COMMENT,
+        payload: commentObj
+    }
+}
+export const deleted_comment_error = (err) => {
+    return {
+        type: DELETE_COMMENT_ERROR,
+        payload: err
+    }
+}
+export const deleted_comment_loading = () => {
+    return {
+        type: DELETE_COMMENT_LOADING,
+    }
+}
+
+
+// liked related action
 export const liked = (likedObject) => {
     return{
         type: LIKED,

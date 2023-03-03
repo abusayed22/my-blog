@@ -5,7 +5,7 @@ import WriteComment from "./WriteComment";
 
 function Comments({open}) {
   const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
-  const {id} = blog
+  const {id} = blog || {}
    return (
     open && (
       <div className="w-[100%] md:w-[50%] mx-auto rounded-2xl border border-white shadow-black p-1  flex flex-col items-center justify-center">

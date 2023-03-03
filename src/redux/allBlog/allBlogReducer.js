@@ -1,4 +1,4 @@
-import { COMMENT_POST, LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD, RELATED_FAILD, RELATED_LOADED, RELATED_LOADING, COMMENT_POST_ERROR, COMMENT_LOADING, LIKED, LIKED_ERROR, LIKED_LOADING } from "./actionTypes";
+import { COMMENT_POST, LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD, RELATED_FAILD, RELATED_LOADED, RELATED_LOADING, COMMENT_POST_ERROR, COMMENT_LOADING, LIKED, LIKED_ERROR, LIKED_LOADING, DELETE_COMMENT } from "./actionTypes";
 import { produce } from "immer"
 import { Castle } from "@mui/icons-material";
 
@@ -126,7 +126,8 @@ const allBlogReducer = (state = initialState, action) => {
                 }
             }
         //  comments
-        case COMMENT_POST:
+        //COMMENT POST
+        case COMMENT_POST:  
             return {
                 ...state,
                 blog: {
@@ -156,6 +157,37 @@ const allBlogReducer = (state = initialState, action) => {
                     isError: null
                 }
             }
+        // COMMENT DELETED
+        case DELETE_COMMENT:  
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: action.payload,
+                    isLoading: false,
+                    isError: null
+                }
+            }
+        // case COMMENT_POST_ERROR:
+        //     return {
+        //         ...state,
+        //         blog: {
+        //             ...state.blog,
+        //             blog: {},
+        //             isLoading: false,
+        //             isError: action.payload
+        //         }
+        //     }
+        // case COMMENT_LOADING:
+        //     return {
+        //         ...state,
+        //         blog: {
+        //             ...state.blog,
+        //             blog: {},
+        //             isLoading: true,
+        //             isError: null
+        //         }
+        //     }
 
         //    like
         case LIKED:

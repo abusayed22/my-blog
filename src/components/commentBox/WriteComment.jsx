@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import LoginForUtills from '../../pages/login/LoginForUtils';
-import commentPost from '../../redux/allBlog/thunk/commentPost/commentPost';
+import commentPost from '../../redux/allBlog/thunk/commentRelated/commentPost';
 import { useAuthChecked } from '../../utils/hooks/useAuthChecked';
 
 function WriteComment({ id: blogId }) {
@@ -17,9 +17,8 @@ function WriteComment({ id: blogId }) {
 
   const [isOpen, setIsOpen] = useState(false)
   const isChecked = useAuthChecked();
-  
-  console.log('isChecked '+ isChecked);
-  console.log(user);
+
+
   // comment submit hadler & more functionality for valid user
   const submitHandler = (e) => {
     e.preventDefault();
@@ -38,7 +37,7 @@ function WriteComment({ id: blogId }) {
         like,
         comments: [
           ...comments,
-          { com: input, date: moment(Date.now()).format("MMM Do YY") }
+          { id: comments.length +1, com: input, date: moment(Date.now()).format("MMM Do YY") }
         ]
       }
       dispatch(commentPost({ id, commentObj }))

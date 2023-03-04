@@ -74,18 +74,20 @@ function SingleComment() {
             }
         })
     }
+    
 
     // editing submit handler
     const editSubmitHandler = (e) => {
         e.preventDefault()
         const newObj = comments?.map(s => {
-            if(s.id === editedObj.id) {
-               return s.com =input
+             if(s.id === editedObj.id) {
+                s.com = input
             }
-            return comments
+            return s
         })
         const editObject = {
             id,
+            name,
             title,
             description,
             author,
@@ -97,11 +99,11 @@ function SingleComment() {
             link,
             thumbnail,
             like,
-            comments: newObj[1]
+            comments: newObj
            
         }
-            dispatch(commentEditUpdated( id,editObject ))
-            // dispatch(commentDelete(id, deletedObject))
+            dispatch(commentEditUpdated( id,editObject ));
+            setEditable(false);
     }
 
     return (

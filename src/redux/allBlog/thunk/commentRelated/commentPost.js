@@ -6,13 +6,13 @@ import { single_loading, single_loaded, single_error, post_comment, post_comment
 const commentPost = ({ id:blogId, commentObj ,}) => async (dispatch) => {
 
     dispatch(post_comment_loading());
-    const { id, title, description, author, date, duration, views,Email, tags, link, thumbnail, like, comments } = commentObj;
+    const { id, title, description, name, date, duration, views,Email, tags, link, thumbnail, like, comments } = commentObj;
     try {
         const res = await axios.put(`http://localhost:9000/videos2/${blogId}`, {
             id, 
             title, 
             description, 
-            author, 
+            name, 
             date,
             duration, 
             views, 

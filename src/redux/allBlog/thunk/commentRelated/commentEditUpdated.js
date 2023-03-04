@@ -6,16 +6,13 @@ import {edit_updated_loading, edit_updated, edit_updated_error } from "../../act
 const commentEditUpdated = (blogId, commentObj ) => async (dispatch) => {
 
     dispatch(edit_updated_loading());
-    const { id, title, description, author, date, duration, views,Email, tags, link, thumbnail, like, comments } = commentObj;
-    console.log(blogId);
-    console.log(commentObj);
+    const { id,name, title, description,  date, duration, views,Email, tags, link, thumbnail, like, comments } = commentObj;
     try {
-        console.log('tukse');
         const res = await axios.put(`http://localhost:9000/videos2/${blogId}`, {
             id, 
+            name,
             title, 
             description, 
-            author, 
             date,
             duration, 
             views, 

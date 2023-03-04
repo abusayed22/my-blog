@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import LoginForUtills from '../../pages/login/LoginForUtils';
 import commentPost from '../../redux/allBlog/thunk/commentRelated/commentPost';
 import { useAuthChecked } from '../../utils/hooks/useAuthChecked';
+import { uniqueId } from '../../utils/randomIdcreate/UniqeId';
 
 function WriteComment({ id: blogId }) {
 
@@ -38,7 +39,7 @@ function WriteComment({ id: blogId }) {
         like,
         comments: [
           ...comments,
-          { id: comments.length +1, com: input, date: moment(Date.now()).format("MMM Do YY") }
+          { id: uniqueId(), com: input, date: moment(Date.now()).format("MMM Do YY") }
         ]
       }
       dispatch(commentPost({ id, commentObj }))

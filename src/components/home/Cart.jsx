@@ -46,7 +46,7 @@ function Cart({ blogs  , loading }) {
                     sx={{ width: 56, height: 56 }}
                   />
                   <div className="space-y-0">
-                    <Link to={`/profile/${s.id}`} className="text-lg transform hover:underline text-green ">
+                    <Link to={`/profile/${s?.id}`} className="text-lg transform hover:underline text-green ">
                       {s?.name}
                     </Link>
                     <p className="m-1 text-sm text-white">{moment(s.date).startOf('day').fromNow()}</p>

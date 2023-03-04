@@ -1,4 +1,4 @@
-import { COMMENT_POST, LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD, RELATED_FAILD, RELATED_LOADED, RELATED_LOADING, COMMENT_POST_ERROR, COMMENT_LOADING, LIKED, LIKED_ERROR, LIKED_LOADING, DELETE_COMMENT } from "./actionTypes";
+import { COMMENT_POST, LOADED, SINGLE_LOADED, FAILD, LOADING, SINGLE_LOADING, SINGLE_FAILD, RELATED_FAILD, RELATED_LOADED, RELATED_LOADING, COMMENT_POST_ERROR, COMMENT_LOADING, LIKED, LIKED_ERROR, LIKED_LOADING, DELETE_COMMENT, EDIT_UPDATED, EDIT_UPDATED_LOADING, EDIT_UPDATED_ERROR } from "./actionTypes";
 import { produce } from "immer"
 import { Castle } from "@mui/icons-material";
 
@@ -127,7 +127,7 @@ const allBlogReducer = (state = initialState, action) => {
             }
         //  comments
         //COMMENT POST
-        case COMMENT_POST:  
+        case COMMENT_POST:
             return {
                 ...state,
                 blog: {
@@ -157,8 +157,41 @@ const allBlogReducer = (state = initialState, action) => {
                     isError: null
                 }
             }
+
+        // comment edit updated
+        case EDIT_UPDATED:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: action.payload,
+                    isLoading: false,
+                    isError: null
+                }
+            }
+        case EDIT_UPDATED_LOADING:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: {},
+                    isLoading: true,
+                    isError: null
+                }
+            }
+        case EDIT_UPDATED_ERROR:
+            return {
+                ...state,
+                blog: {
+                    ...state.blog,
+                    blog: {},
+                    isLoading: false,
+                    isError: action.payload
+                }
+            }
+
         // COMMENT DELETED
-        case DELETE_COMMENT:  
+        case DELETE_COMMENT:
             return {
                 ...state,
                 blog: {
@@ -222,10 +255,10 @@ const allBlogReducer = (state = initialState, action) => {
                 }
             }
     }
-            return state;
+    return state;
 }
 
-    export default allBlogReducer;
+export default allBlogReducer;
 
 // {
 //     "title": "যে ১০ টি ভুল বিগিনার রিয়্যাক্ট ডেভেলপাররা করে থাকেন",

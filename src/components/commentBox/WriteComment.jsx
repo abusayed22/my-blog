@@ -13,7 +13,7 @@ function WriteComment({ id: blogId }) {
   const [input, setInput] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id, title, description, author, date, duration, views, tags, link, thumbnail, like, comments } = blog || {}
+  const { id, title, description, author, date, duration,Email, views, tags, link, thumbnail, like, comments } = blog || {}
 
   const [isOpen, setIsOpen] = useState(false)
   const isChecked = useAuthChecked();
@@ -31,6 +31,7 @@ function WriteComment({ id: blogId }) {
         date,
         duration,
         views,
+        Email,
         tags,
         link,
         thumbnail,
@@ -47,11 +48,11 @@ function WriteComment({ id: blogId }) {
       
     }
   }
-  useEffect(() => {
-    if(isChecked) {
+  // useEffect(() => {
+  //   if(isChecked) {
 
-    }
-  }, [])
+  //   }
+  // }, [])
 
   return (
     <form action=""

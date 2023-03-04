@@ -1,13 +1,16 @@
 // comment thunk here becouse updating thunk with update redux single state 
 import axios from "axios";
-import { single_loading, single_loaded, single_error, post_comment, post_comment_error, post_comment_loading } from "../../action";
+import {edit_updated_loading, edit_updated, edit_updated_error } from "../../action";
 
 
-const commentPost = ({ id:blogId, commentObj ,}) => async (dispatch) => {
+const commentEditUpdated = (blogId, commentObj ) => async (dispatch) => {
 
-    dispatch(post_comment_loading());
+    dispatch(edit_updated_loading());
     const { id, title, description, author, date, duration, views,Email, tags, link, thumbnail, like, comments } = commentObj;
+    console.log(blogId);
+    console.log(commentObj);
     try {
+        console.log('tukse');
         const res = await axios.put(`http://localhost:9000/videos2/${blogId}`, {
             id, 
             title, 
@@ -26,12 +29,12 @@ const commentPost = ({ id:blogId, commentObj ,}) => async (dispatch) => {
             { headers: { "Content-type": "application/json; charset=UTP-8" } });
 
         
-        dispatch(post_comment(commentObj))
+        dispatch(edit_updated(commentObj))
 
 
     } catch (error) {
-        dispatch(post_comment_error(error));
+        dispatch(edit_updated_error(error));
     }
 }
 
-export default commentPost;
+export default commentEditUpdated;

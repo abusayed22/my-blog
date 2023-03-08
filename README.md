@@ -16,6 +16,7 @@
     <li>immer implement for mutetedly state update in allBlogsReducer. But is not for my reducer opparation, because <b>Immer only supports setting array indices and the 'length' property
 </b> </li>
     <li> npm install --save-dev tailwind-scrollbar</li>
+    <li> Formik & yup install for form handle</li>
     <li> </li>
   </li>
   

@@ -6,7 +6,7 @@ import FormController from "../../components/formikHandle/FormController";
 import loginThunk from "../../redux/userAuth/authThunk/loginThunk";
 import { useDispatch } from "react-redux";
 import { useAuthChecked } from "../../utils/hooks/useAuthChecked";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function FormikLogin(props) {
   const [open, setOpen] = useState(true);
@@ -93,6 +93,9 @@ function FormikLogin(props) {
                               Login
                             </button>
                           </div>
+                          <br />
+                          <p>you are not registred! <Link className="text-red" to='/register'>click </Link></p>
+
                         </Form>
                       );
                     }}

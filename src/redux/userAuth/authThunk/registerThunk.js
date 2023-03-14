@@ -6,6 +6,7 @@ import { user_register_done, user_register_loading } from "../actions"
 
 
 const registerThunk = (userData) => async(dispatch) => {
+    console.log(userData);
     dispatch(user_register_loading);
 
     try {

@@ -63,10 +63,6 @@ console.log(isChecked);
         title
       }));
     }
-      
-      // if(!match) {
-      //   navigate('/')
-      // }
   }
   
 

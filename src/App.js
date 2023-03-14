@@ -5,7 +5,6 @@ import CommingSoon from "./components/CommingSoon";
 import Footer from "./components/footer/Footer";
 import SingleBlog from "./pages/singleblog/SingleBlog";
 import Author from "./pages/author/Author";
-import Login from "./pages/login/Login";
 import Sign_in from "./pages/login/Sign_in";
 import { useAuthChecked } from "./utils/hooks/useAuthChecked";
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScroolProgrees from "./utils/loader/ScroolProgrees";
 import CreateBlog from "./pages/createBlog/CreateBlog";
+import FormikLogin from "./pages/login/FormikLogin";
 
 function App() {
 
@@ -45,7 +45,7 @@ function App() {
         <Route path="/catagory" element={<CommingSoon />} />
         <Route path="/single/:id" element={<SingleBlog />} />
         <Route path="/profile/:id" element={<Author />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<FormikLogin />} />
         <Route path="/register" element={<Sign_in />} />
         <Route path="/createBlog" element={<CreateBlog />} />
       </Routes>

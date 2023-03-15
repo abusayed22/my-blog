@@ -31,6 +31,8 @@
  <li>Pagination</li>
 </ol>
 
+<b>react-dropzone use for image uploading</b>
+
 
 
 bugs

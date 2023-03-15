@@ -1,103 +1,128 @@
 import { Button } from "@mui/material";
-import { Form, Field, ErrorMessage, Formik, FieldArray, FastField,useFormik } from "formik";
+import { Form, Field, ErrorMessage, Formik, FieldArray, FastField, useFormik } from "formik";
 import * as yup from 'yup';
 import InputTextError from "../error/InputTextError";
 import { useSelector } from "react-redux";
+import FormController from "../formikHandle/FormController";
+import ImageUpload from "./ImageUpload";
 
 function BlogForm() {
-    const {user,isLoading ,isError}= useSelector(state => state.user);
+    const { user, isLoading, isError } = useSelector(state => state.user);
 
-// formik handle
+    //id
+    //title
+    //description
+    //author
+    //avatar
+    //date
+    //link
+    //thumbnail
+    //tags
+    // likes
+    // unlike
+    // 
 
+    // formik handle
     const initialValue = {
         title: '',
         description: '',
         tags: [''],
-        link: '',
         email: user.email,
         thumbnail: '',
     }
-    const Submit = (value) => {
+    const onSubmit = (value) => {
         console.log(console.log(value));
+
     }
-    // const validate = (value) => {
-    //     let error = {};
-    //     if (!value.title) {
-    //         error.title = 'required@'
-    //     }
-    // }
     const validationSchema = yup.object({
         title: yup.string().required('Required!'),
         description: yup.string().required('Required!'),
-        tags: yup.string().required('Please valid your tags!'),
+        tags: yup.array().of(yup.string().required('required!')),
         email: yup.string().email().required(),
-        thumbnail: yup.string().url('Valid picture url Please!').required('Required!')
+        thumbnail: yup.string().required('Required!')
     })
 
-    return (<div className="w-[50%] mx-auto py-2">
+    return (<div className="w-[90%] mx-auto py-2">
         <Formik
             initialValues={initialValue}
-            onSubmit={Submit}
+            onSubmit={onSubmit}
             validationSchema={validationSchema}
-            validateOnChange={false}
-            validateOnBlur={false}
         >
-            <Form className="flex flex-col justify-center items-center">
-                <div className="flex flex-col">
-                    <span htmlFor="Title">Title:</span>
-                    <FastField className='w-80 md:w-96 h-10 border peer outline-green bg-[#1a201da4] text-yellow p-2 rounded-md' type="text" name="title" id="title" placeholder="your blog title..." />
-                    <ErrorMessage name="title" component={InputTextError}/>
-                </div>
-                <br />
-                <div className="flex flex-col">
-                    <label htmlFor="description">Description:</label>
-                    <Field  as='textarea' className='w-80 md:w-96 h-10 border peer outline-green bg-[#1a201da4] text-yellow p-2 rounded-md' type="text" name="description" id="Description" placeholder="your blog title..." />
-                    <ErrorMessage name="description" component={InputTextError}/>
-                </div>
-                <br />
+            {
+                (formik) => {
+                    return (<Form>
+                        <FormController
+                            control="textarea"
+                            name="title"
+                            type="text"
+                            label="Title:"
+                            className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                        />
+                        <br />
+                        <FormController
+                            control="textarea"
+                            name="description"
+                            type="text"
+                            label="Description:"
+                            className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                        />
+                        <FieldArray>
+                            {
+                                (feildArray) => {
+                                    const { push, remove, form } = feildArray;
+                                    const { initialValues } = form;
+                                    const { tags } = initialValues;
+                                    <div>
+                                        {tags.map((tag, index) =>  <div key={index}>
+                                                <FormController
+                                                    control="input"
+                                                    name='tags'
+                                                    type="text"
+                                                    label="Tags:"
+                                                    className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-10 p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                                                />
 
-                {/* Field array */}
-                <Form >
-                    <label htmlFor="List of Tags">List of Tags</label>
-                    <FieldArray name="tags">
-                    {fieldArray => {
-                        const {push,remove,form} = fieldArray;
-                        const {values} = form;
-                        const {tags} = values;
-                        // console.log(form.errors);
-                    
-
-                        return <div>
-                            {tags?.map((tag,i) => (
-                            <div key={i} className="flex mt-1">
-                                <Field className='w-72 md:w-70 h-10 border peer outline-green bg-[#1a201da4] text-yellow p-2 rounded-md' type="text" name={`tag[${i}]`} placeholder={`tag ${(i +1)}`}></Field>
-                                <button className="w-12 bg-white border border-yellow rounded-sm bg-[#1a201da4]" onClick={() => push('')}>+</button>
-                                {i > 0 && <button className="w-12 bg-white border border-yellow rounded-sm bg-[#1a201da4]" onClick={() => remove(i)}>-</button>} 
-                            </div>
-                        ))}
+                                                {/* return <Field name={`tags[${index}]`} type='text'/> */}
+                                                <button type="button" onClick={() => remove(index)}>-</button>
+                                                <button type="button" onClick={() => push('')}>+</button>
+                                            </div>
+                                        )}
+                                    </div>
+                                }
+                            }
+                        </FieldArray>
+                        <br />
+                        <FormController
+                            control="input"
+                            name="email"
+                            type="email"
+                            label="Email:"
+                            className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                        />
+                        <br />
+                        <FormController
+                            control="input"
+                            name="thumbnail"
+                            type="text"
+                            label="Cover image url:"
+                            className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                        />
+                        <br />
+                        {/* <div> */}
+                        {/* <span className="font-semibold">Drag your Cover image</span> */}
+                        {/* <div className="w-[100%] h-40 border-gray bg-yellow rounded-lg shadow-lg">
+                            
+                         <ImageUpload /> 
+                          </div> */}
+                        {/* </div> */}
+                        <div className="flex justify-center">
+                            <button disabled={!formik.isValid} onClick={onsubmit} className={`mx-auto border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg`}>
+                                Post
+                            </button>
                         </div>
-
-                    }}
-                    </FieldArray>
-                </Form>
-                <br />
-
-                <div className="flex flex-col">
-                    <label htmlFor="tags">Email:</label>
-                    <input disabled className='w-80 md:w-96 h-10 border peer outline-green bg-[#1a201da4] text-yellow p-2 rounded-md' type="text" name="tags" id="tags" placeholder={user.email} />
-                </div>
-                <br />
-                <div className="flex flex-col">
-                    <label htmlFor="urlHobe">Cover Image:</label>
-                    <Field className='w-80 md:w-96 h-10 border peer outline-green bg-[#1a201da4] text-yellow p-2 rounded-md' type="text" name="urlHobe" id="Cover Image" placeholder="your blog Image..." />
-                    <ErrorMessage name="urlHobe" component={InputTextError}/>
-                </div>
-                <br />
-                <br />
-               <button type="submit" className="w-24 h-10 border border-white bg-[#443f3f8c] transition text-white hover:bg-[#443f3f52] rounded-md">
-                Post 
-               </button>
-            </Form>
+                    </Form>)
+                }
+            }
         </Formik>
     </div>)
 }

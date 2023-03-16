@@ -26,4 +26,9 @@ export const LIKED = "BLOG/ISLIKED";
 export const LIKED_ERROR = "BLOG/LIKED_ERROR";
 export const LIKED_LOADING = "BLOG/LIKED_LOADING";
 
+// Blog post
+export const BLOG_POST = "BLOG/BLOG_POST";
+export const BLOG_POST_ERROR = "BLOG/BLOG_POST_ERROR";
+export const BLOG_LOADING = "BLOG/BLOG_LOADING";
+
 

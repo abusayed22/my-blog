@@ -1,4 +1,4 @@
-import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR, LIKED, COMMENT_LOADING, LIKED_LOADING, LIKED_ERROR, DELETE_COMMENT, DELETE_COMMENT_ERROR, DELETE_COMMENT_LOADING, EDIT_UPDATED, EDIT_UPDATED_LOADING, EDIT_UPDATED_ERROR } from "./actionTypes"
+import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR, LIKED, COMMENT_LOADING, LIKED_LOADING, LIKED_ERROR, DELETE_COMMENT, DELETE_COMMENT_ERROR, DELETE_COMMENT_LOADING, EDIT_UPDATED, EDIT_UPDATED_LOADING, EDIT_UPDATED_ERROR, BLOG_POST, BLOG_POST_ERROR, BLOG_LOADING } from "./actionTypes"
 import commentPost from "./thunk/commentRelated/commentPost"
 
 
@@ -134,5 +134,25 @@ export const liked_error = (err) => {
     return{
         type: LIKED_ERROR,
         payload: err
+    }
+}
+
+//     =========================== BLOG ==============================
+// blog post 
+export const blog_post = (post) => { 
+    return {
+        type: BLOG_POST,
+        payload: post
+    }
+}
+export const blog_post_error = (err) => {
+    return {
+        type: BLOG_POST_ERROR,
+        payload: err
+    }
+}
+export const blog_post_loading = () => {
+    return {
+        type: BLOG_LOADING,
     }
 }

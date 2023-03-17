@@ -95,7 +95,6 @@ function FormikLogin(props) {
                           </div>
                           <br />
                           <p>you are not registred! <Link className="text-red" to='/register'>click </Link></p>
-
                         </Form>
                       );
                     }}

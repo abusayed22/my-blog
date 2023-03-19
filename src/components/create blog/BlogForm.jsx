@@ -28,7 +28,8 @@ function BlogForm() {
     title: "",
     description: "",
     name: "",
-    tags: [""],
+    // tags: [""],
+    tags: "",
     email: user.email,
     thumbnail: "",
     professional: "",
@@ -37,8 +38,9 @@ function BlogForm() {
 
   const validationSchema = yup.object({
     name: yup.string().required("Required!"),
-    title: yup.string().required("Required!"),
+    title: yup.string().max(60, 'Must be 60 characters or less').required("Required!"),
     description: yup.string().required("Required!"),
+    tags: yup.string().required('Required!'),
     // tags: yup.array().of(yup.string().required("Required!")),
     // email: '',
     email: yup.string().email("pleas valid Email here!").required("required!"),
@@ -47,26 +49,27 @@ function BlogForm() {
     link: yup.string().required("required!"),
   });
 
+
   const onSubmit = (value) => {
+    const aTag = value.tags
+    const allTags = aTag.split(' ')
+    // const ts = allTags
     const postVlaue = {
       id: uniqueId(),
       title: value.title,
       description: value.description,
       name: value.name,
-      tag: value.tags,
       email: user.email,
       thumbnail: value.thumbnail,
-      // link: initialValue.thumbnail,
       professional: value.professional,
       date: Date.now(),
-      tags: [], //TODO:
+      tags: allTags,
       like: [],
       comments: [],
     };
     dispatch(PostBlog(postVlaue));
-    console.log("submit");
-    console.log(value);
   };
+  
 
   return (
     <div className="w-[90%] mx-auto py-2">
@@ -106,6 +109,13 @@ function BlogForm() {
               name="email"
               type="email"
               label="Email:"
+              className=" h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+            />
+            <FormController
+              control="input"
+              name="tags"
+              type="text"
+              label="Tags:"
               className=" h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
             <br />

@@ -31,4 +31,8 @@ export const BLOG_POST = "BLOG/BLOG_POST";
 export const BLOG_POST_ERROR = "BLOG/BLOG_POST_ERROR";
 export const BLOG_LOADING = "BLOG/BLOG_LOADING";
 
+// Blog delete
+export const BLOG_DELETE = "BLOG/BLOG_DELETE";
+export const BLOG_DELETE_ERROR = "BLOG/BLOG_DELETE_ERROR";
+export const BLOG_DELETE_LOADING = "BLOG/BLOG_DELETE_LOADING";
 

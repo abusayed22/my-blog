@@ -1,15 +1,23 @@
 import { Avatar } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import test from "../../assets//images/busness.jpg";
 import Cart from "../../components/home/Cart";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
 import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
-import AuthorsVideos from "./AuthorsVideos";
+import OwnVideos from "./OwnVideos";
+import PublicVideos from "./PublicVideos";
 
 
 function Author() {
+  const {blog,isLoading,isError} = useSelector(state => state.allBlog?.blog);
+  const {authorOf,isLoading:authLoading,isError:authErrr} = useSelector(state => state.author);
+  const { user, isLoading:userLoaging, isError:userError } = useSelector((state) => state.user);
+
+  const [isAuth, setIsAuth] = useState(false);
+  const authEmail = user?.email
+
   const {id} = useParams();
   const dispatch = useDispatch();
 
@@ -17,18 +25,23 @@ function Author() {
     dispatch(singleBlogFetch(id))
   }, [dispatch,id]);
 
- 
 
-  const {blog,isLoading,isError} = useSelector(state => state.allBlog?.blog);
-  const {authorOf,isLoading:authLoading,isError:authErrr} = useSelector(state => state.author);
+
+  
 
   const { id: aID, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
-
   
    // silen fetching author's data
    useEffect(() => {
     dispatch(authorThunk(Email))
   },[dispatch,Email]);
+
+   // own conditon with useEffect
+ useEffect(() => {
+  if(authEmail === Email) {
+    setIsAuth(true)
+  }
+ },[Email,authEmail])
 
 
   return (
@@ -57,12 +70,10 @@ function Author() {
       </div>
       <div className="flex flex-wrap justify-center space-x-5">
         {
-          authLoading ?  <center>Loading...</center> : (
-            
-              (<AuthorsVideos author={authorOf}/>)
-            
-          )
-          
+          // authLoading ?  <center>Loading...</center> : ({
+          //   isAuth ? (): ''
+          // })
+          isAuth ? <OwnVideos author={authorOf}/> : <PublicVideos />
         }
         
       </div>

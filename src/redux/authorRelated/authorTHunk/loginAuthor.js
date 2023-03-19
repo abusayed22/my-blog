@@ -1,6 +1,6 @@
 import { author_error, author_loaded, author_loading } from "../action";
 
-const loginAuthor = (email) =>async(dispatch) => {
+const loginAuthor = (email) => async(dispatch) => {
 
     dispatch(author_loading())
 

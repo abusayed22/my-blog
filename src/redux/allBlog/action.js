@@ -1,4 +1,4 @@
-import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR, LIKED, COMMENT_LOADING, LIKED_LOADING, LIKED_ERROR, DELETE_COMMENT, DELETE_COMMENT_ERROR, DELETE_COMMENT_LOADING, EDIT_UPDATED, EDIT_UPDATED_LOADING, EDIT_UPDATED_ERROR, BLOG_POST, BLOG_POST_ERROR, BLOG_LOADING, BLOG_DELETE, BLOG_DELETE_ERROR, BLOG_DELETE_LOADING } from "./actionTypes"
+import { LOADED, SINGLE_LOADED, LOADING, FAILD, SINGLE_LOADING, SINGLE_FAILD, RELATED_LOADED, RELATED_LOADING, RELATED_FAILD,COMMENT_POST, COMMENT_POST_ERROR, LIKED, COMMENT_LOADING, LIKED_LOADING, LIKED_ERROR, DELETE_COMMENT, DELETE_COMMENT_ERROR, DELETE_COMMENT_LOADING, EDIT_UPDATED, EDIT_UPDATED_LOADING, EDIT_UPDATED_ERROR, BLOG_POST, BLOG_POST_ERROR, BLOG_LOADING, BLOG_DELETE, BLOG_DELETE_ERROR, BLOG_DELETE_LOADING, BLOG_EDIT, BLOG_EDIT_ERROR, BLOG_EDIT_LOADING } from "./actionTypes"
 import commentPost from "./thunk/commentRelated/commentPost"
 
 
@@ -173,5 +173,24 @@ export const delete_Blog_error = (err) => {
 export const delete_Blog_loading = () => {
     return {
         type: BLOG_DELETE_LOADING,
+    }
+}
+
+//edit blog
+export const edit_Blog = (deleteId,editValue) => { 
+    return {
+        type: BLOG_EDIT,
+        payload: deleteId,editValue
+    }
+}
+export const edit_Blog_error = (err) => {
+    return {
+        type: BLOG_EDIT_ERROR,
+        payload: err
+    }
+}
+export const edit_Blog_loading = () => {
+    return {
+        type: BLOG_EDIT_LOADING,
     }
 }

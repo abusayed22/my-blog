@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 import test from "../../assets//images/busness.jpg";
 import Cart from "../../components/home/Cart";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
-import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
+// import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
 import OwnVideos from "./OwnVideos";
 import PublicVideos from "./PublicVideos";
+import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
 
 
 function Author() {
@@ -44,7 +45,6 @@ function Author() {
   }
  },[email,authEmail])
 
-
   return (
     <div className="dark:bg-black">
       <div className=" border-gray bg-white dark:bg-[#53657e] bg w-[] h-[400px] mx-auto shadow-2xl  rounded-3xl p-6 shadow-[#365314]">
@@ -58,7 +58,7 @@ function Author() {
         <div className="flex flex-col items-center my-3">
           <b className="text-xl">{name} </b>
           <b className="text-lg py-1">{professional} </b>
-          <b className="text-lg py-1">{proTitle} </b>
+          <b className="text-lg py-1">{email} </b>
         </div>
       </div>
 

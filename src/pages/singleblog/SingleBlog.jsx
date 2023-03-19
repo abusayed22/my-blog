@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Avatar, Pagination } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import HomeLoaderCard from "../../components/loader/HomeLoaderCard";
 import relatedBlog from '../../redux/allBlog/thunk/relatedBlog'
 import SingleRelated from "../../components/singleRelated/SingleRelated";
@@ -22,7 +22,7 @@ function SingleBlog() {
   const { user } = useSelector(state => state.user)
   // console.log(user);
   const { id } = useParams();
-  const { id: aID, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
+  const { id: aID, title, description, name, email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
 
   // const {name,Email,professional} = author
   
@@ -102,7 +102,7 @@ function SingleBlog() {
         <div className="flex flex-col justify-center items-center md:flex ">
           <div className="flex flex-col items-center md:w-[18%] w-[50%]  space-y-1">
             <Avatar src={link} alt={name} />
-            <b className="text-gray ">{name}</b>
+            <p className="text-gray ">{name}</p>
           </div>
           <div className="w-[92%] p-5 bg-[#AAABA8] rounded-lg">
             <p
@@ -122,7 +122,6 @@ function SingleBlog() {
             </div>
             <br />
             <Comments open={open} />
-
           </div>
 
         </div>

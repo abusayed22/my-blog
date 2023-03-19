@@ -53,7 +53,7 @@ function BlogForm() {
 
   const onSubmit = (value) => {
     const aTag = value.tags
-    const allTags = aTag.split(' ')
+    const allTags = aTag.split(" ")
     // const ts = allTags
     const postVlaue = {
       id: uniqueId(),

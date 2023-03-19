@@ -14,6 +14,7 @@ import ScroolProgrees from "./utils/loader/ScroolProgrees";
 import CreateBlog from "./pages/createBlog/CreateBlog";
 import FormikLogin from "./pages/login/FormikLogin";
 import FormikRegister from "./pages/login/FormikRegister";
+import EditPostAuthor from "./pages/author/EditPostAuthor";
 
 function App() {
 
@@ -50,6 +51,8 @@ function App() {
         <Route path="/register" element={<FormikRegister />} />
         {/* <Route path="/register" element={<Sign_in />} /> */}
         <Route path="/createBlog" element={<CreateBlog />} />
+        <Route path="/profile/:id/editBlog/:id" element={<EditPostAuthor />} />
+        {/* <Route path="*" element={<div className="h-[60vh] text-red text-3xl text-center">Not found....!!!</div>} /> */}
       </Routes>
       <Footer />
     </div>

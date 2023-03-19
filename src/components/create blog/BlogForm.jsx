@@ -15,11 +15,13 @@ import FormController from "../formikHandle/FormController";
 import ImageUpload from "./ImageUpload";
 import { uniqueId } from "../../utils/randomIdcreate/UniqeId";
 import PostBlog from "../../redux/allBlog/thunk/PostEdtiDelete/PostBlog";
+import { useNavigate } from "react-router-dom";
 
 function BlogForm() {
   const { user, isLoading, isError } = useSelector((state) => state.user);
   const { authorOf } = useSelector((state) => state.author);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   // "thumbnail"TODO:
 
@@ -28,7 +30,6 @@ function BlogForm() {
     title: "",
     description: "",
     name: "",
-    // tags: [""],
     tags: "",
     email: user.email,
     thumbnail: "",
@@ -68,6 +69,7 @@ function BlogForm() {
       comments: [],
     };
     dispatch(PostBlog(postVlaue));
+    navigate('/')
   };
   
 

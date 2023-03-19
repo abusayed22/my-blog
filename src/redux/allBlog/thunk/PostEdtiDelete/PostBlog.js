@@ -10,8 +10,8 @@ const PostBlog = ( postValue ) => async (dispatch) => {
     try {
         const res = await axios.post(`http://localhost:9000/videos2/`, postValue,
             { headers: { "Content-type": "application/json; charset=UTP-8" } });
+            toast.success('successfully your blog Posted')
         dispatch(blog_post(postValue));
-        toast.success('successfully your blog Posted')
     } catch (error) {
         dispatch(blog_post_error(error));
     }

@@ -15,7 +15,7 @@ function Author() {
   const {authorOf,isLoading:authLoading,isError:authErrr} = useSelector(state => state.author);
   const { user, isLoading:userLoaging, isError:userError } = useSelector((state) => state.user);
 
-  const [isAuth, setIsAuth] = useState(false);
+  const [matchAuth, setMatchAuth] = useState(false);
   const authEmail = user?.email
 
   const {id} = useParams();
@@ -26,22 +26,23 @@ function Author() {
   }, [dispatch,id]);
 
 
-
   
-
-  const { id: aID, title, description, name, Email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
+//  for single data read
+  const { id: aID, title, description, name, email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
   
-   // silen fetching author's data
+   // silent fetching author's data match with user email
    useEffect(() => {
-    dispatch(authorThunk(Email))
-  },[dispatch,Email]);
+    dispatch(authorThunk(email))
+  },[dispatch,email]);
 
    // own conditon with useEffect
  useEffect(() => {
-  if(authEmail === Email) {
-    setIsAuth(true)
+  if(authEmail !== email) {
+    setMatchAuth(false)
+  }else {
+    setMatchAuth(true)
   }
- },[Email,authEmail])
+ },[email,authEmail])
 
 
   return (
@@ -73,7 +74,7 @@ function Author() {
           // authLoading ?  <center>Loading...</center> : ({
           //   isAuth ? (): ''
           // })
-          isAuth ? <OwnVideos author={authorOf}/> : <PublicVideos />
+          matchAuth ? <OwnVideos author={authorOf}/> : <PublicVideos author={authorOf}/>
         }
         
       </div>

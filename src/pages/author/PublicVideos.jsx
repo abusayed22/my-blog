@@ -40,7 +40,7 @@ function PublicVideos({ author }) {
                     component="div"
                     className="capitalize"
                   >
-                    {admin.tags.join(" ")}
+                    {admin.tags}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     {admin.title}

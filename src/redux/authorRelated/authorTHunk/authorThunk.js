@@ -8,7 +8,6 @@ const authorThunk = (email) =>async(dispatch) => {
     try{
         const res = await fetch(`http://localhost:9000/videos2?email=${email}`);
         const authorsData = await res.json();
-        console.log(authorsData);
         dispatch(author_loaded(authorsData))
     } catch (err) {
         author_error(err)

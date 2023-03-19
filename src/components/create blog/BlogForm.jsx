@@ -34,7 +34,7 @@ function BlogForm() {
     email: user.email,
     thumbnail: "",
     professional: "",
-    link: "",
+    // link: "",
   };
 
   const validationSchema = yup.object({
@@ -47,7 +47,7 @@ function BlogForm() {
     email: yup.string().email("pleas valid Email here!").required("required!"),
     thumbnail: yup.string().required("Required!"),
     professional: yup.string().required("required!"),
-    link: yup.string().required("required!"),
+    // link: yup.string().required("required!"),
   });
 
 
@@ -137,13 +137,13 @@ function BlogForm() {
               className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
             <br />
-            <FormController
+            {/* <FormController
               control="input"
               name="link"
               type="text"
               label="Profile image url:"
               className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
-            />
+            /> */}
 
             <br />
             <div className="flex justify-center">

@@ -47,7 +47,9 @@ function EditPostAuthor() {
   useEffect(() => {
     dispatch(singleBlogFetch(id));
   }, [dispatch, id]);
-  console.log(title);
+
+  const tagString = tags.split()
+//   console.log(tagString);
 
   // formik handle
   const initialValue = {
@@ -77,7 +79,7 @@ function EditPostAuthor() {
 
   const onSubmit = (value) => {
     const aTag = value.tags;
-    const allTags = aTag.split("");
+    const allTags = aTag.split(" ");
     
     const updateVlaue = {
       id: blogId,

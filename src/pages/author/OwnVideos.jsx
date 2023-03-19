@@ -49,13 +49,14 @@ function OwnVideos({ author }) {
                   >
                     {admin.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" >
-                    <div >
-                    {admin.tags.map(tag => (
-                      <p className="bg-[#df32327e] p-1">{tag}</p>
-                    ))}
-                    </div>
-                  </Typography>
+                  {/* <Typography variant="body2" color="text.secondary" >
+                    // {console.log(admin.tags)}
+                  </Typography> */}
+                  {/* <div>
+                    {admin?.tags?.map(tag => {
+                      <b>{tag}</b>
+                    })}
+                  </div> */}
                 </CardContent>
               </CardActionArea>
             </Card>

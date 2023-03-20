@@ -48,15 +48,15 @@ function EditPostAuthor() {
     dispatch(singleBlogFetch(id));
   }, [dispatch, id]);
 
-  const tagString = tags.split()
-//   console.log(tagString);
+console.log();
 
   // formik handle
   const initialValue = {
+    
     title,
     description,
     name,
-    tags,
+    tags: tags?.join(' '),
     email,
     thumbnail,
     professional,
@@ -89,12 +89,16 @@ function EditPostAuthor() {
       email: user.email,
       thumbnail: value.thumbnail,
       professional: value.professional,
-      tags: allTags
+      tags: allTags,
+      proTitle,
+    date,
+    link,
+    like,
+    comments,
     };
     dispatch(editBlog(blogId, updateVlaue));
     navigate('/')
   };
-
   return (
     <div className="bg-[#778D45]">
         <div className="w-[80%] bg-[#aec09a8a] mx-auto">

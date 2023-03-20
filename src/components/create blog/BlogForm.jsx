@@ -23,9 +23,7 @@ function BlogForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  // "thumbnail"TODO:
-
-  // formik handle
+  // ===== formik handle
   const initialValue = {
     title: "",
     description: "",
@@ -34,7 +32,6 @@ function BlogForm() {
     email: user.email,
     thumbnail: "",
     professional: "",
-    // link: "",
   };
 
   const validationSchema = yup.object({
@@ -42,19 +39,15 @@ function BlogForm() {
     title: yup.string().max(60, 'Must be 60 characters or less').required("Required!"),
     description: yup.string().required("Required!"),
     tags: yup.string().required('Required!'),
-    // tags: yup.array().of(yup.string().required("Required!")),
-    // email: '',
     email: yup.string().email("pleas valid Email here!").required("required!"),
     thumbnail: yup.string().required("Required!"),
     professional: yup.string().required("required!"),
-    // link: yup.string().required("required!"),
   });
 
 
   const onSubmit = (value) => {
     const aTag = value.tags
     const allTags = aTag.split(" ")
-    // const ts = allTags
     const postVlaue = {
       id: uniqueId(),
       title: value.title,

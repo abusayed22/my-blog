@@ -7,6 +7,7 @@ import { CardActionArea } from "@mui/material";
 import busness from "../../assets/images/busness.jpg";
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import PreviewIcon from '@mui/icons-material/Preview';
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,10 +61,13 @@ function OwnVideos({ author }) {
                 </CardContent>
               </CardActionArea>
             </Card>
-            <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden dark:bg-[#161515f5] bg-[#aca5a57a] opacity-0 transition duration-300 ease-in-out hover:opacity-70">
+            <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden dark:bg-[#161515f5] bg-[#dad2fcc9] opacity-0 transition duration-300 ease-in-out hover:opacity-70">
               <div className="flex justify-center items-center h-full">
                 <Link to={`editBlog/${admin.id}`} className="w-10">
                   <CreateIcon className="text-2xl text-blue" />
+                </Link>
+                <Link to={`single_blog/${admin.id}`} className="w-10">
+                  <PreviewIcon className="text-2xl text-rose" />
                 </Link>
                 <button onClick={() => deleteHandle(admin.id)} className="w-10">
                 <DeleteOutlineIcon  className="text-[#ee0505]" />

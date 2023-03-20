@@ -46,6 +46,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/catagory" element={<CommingSoon />} />
         <Route path="/single/:id" element={<SingleBlog />} />
+        <Route path="profile/:id/single_blog/:id" element={<SingleBlog />} />
         <Route path="/profile/:id" element={<Author />} />
         <Route path="/login" element={<FormikLogin />} />
         <Route path="/register" element={<FormikRegister />} />

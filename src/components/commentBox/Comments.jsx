@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import SingleComment from "./SingleComment";
 import WriteComment from "./WriteComment";
 
-
 function Comments({open}) {
   const { blog, isLoading, isError } = useSelector(state => state.allBlog.blog);
   const {id} = blog || {}

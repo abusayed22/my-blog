@@ -1,7 +1,7 @@
+import * as yup from "yup";
 import { Modal } from "@mui/material";
 import { Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import * as yup from "yup";
 import FormController from "../../components/formikHandle/FormController";
 import loginThunk from "../../redux/userAuth/authThunk/loginThunk";
 import { useDispatch } from "react-redux";
@@ -15,6 +15,7 @@ function FormikLogin(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // ====== is checked?
   const isChecked = useAuthChecked();
   useEffect(() => {
     if (isChecked) {
@@ -24,12 +25,13 @@ function FormikLogin(props) {
     }
   }, [navigate, isChecked]);
 
-  // ===================== for formik
+  // =========== for formik
   const initialValues = {
     email: "",
     password: "",
   };
 
+  // =========== formik submit handler
   const onSubmit = (value) => {
     const { email, password } = value;
     dispatch(
@@ -94,7 +96,12 @@ function FormikLogin(props) {
                             </button>
                           </div>
                           <br />
-                          <p>you are not registred! <Link className="text-red" to='/register'>click </Link></p>
+                          <p>
+                            you are not registred!{" "}
+                            <Link className="text-red" to="/register">
+                              click{" "}
+                            </Link>
+                          </p>
                         </Form>
                       );
                     }}

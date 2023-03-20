@@ -2,48 +2,67 @@ import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import test from "../../assets//images/busness.jpg";
-import Cart from "../../components/home/Cart";
 import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
-// import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
 import OwnVideos from "./OwnVideos";
 import PublicVideos from "./PublicVideos";
 import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
 
-
 function Author() {
-  const {blog,isLoading,isError} = useSelector(state => state.allBlog?.blog);
-  const {authorOf,isLoading:authLoading,isError:authErrr} = useSelector(state => state.author);
-  const { user, isLoading:userLoaging, isError:userError } = useSelector((state) => state.user);
+  const { blog, isLoading, isError } = useSelector(
+    (state) => state.allBlog?.blog
+  );
+  const {
+    authorOf,
+    isLoading: authLoading,
+    isError: authErrr,
+  } = useSelector((state) => state.author);
+  const {
+    user,
+    isLoading: userLoaging,
+    isError: userError,
+  } = useSelector((state) => state.user);
 
   const [matchAuth, setMatchAuth] = useState(false);
-  const authEmail = user?.email
+  const authEmail = user?.email;
 
-  const {id} = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
 
+  // === single blog fetching
   useEffect(() => {
-    dispatch(singleBlogFetch(id))
-  }, [dispatch,id]);
+    dispatch(singleBlogFetch(id));
+  }, [dispatch, id]);
 
+  // === for single data read
+  const {
+    id: aID,
+    title,
+    description,
+    name,
+    email,
+    professional,
+    proTitle,
+    date,
+    link,
+    thumbnail,
+    tags,
+    like,
+    comments,
+  } = blog || {};
 
-  
-//  for single data read
-  const { id: aID, title, description, name, email, professional, proTitle, date, link, thumbnail, tags, like, comments } = blog || {}
-  
-   // silent fetching author's data match with user email
-   useEffect(() => {
-    dispatch(authorThunk(email))
-  },[dispatch,email]);
+  // silent fetching author's data match with user email
+  useEffect(() => {
+    dispatch(authorThunk(email));
+  }, [dispatch, email]);
 
-   // own conditon with useEffect
- useEffect(() => {
-  if(authEmail !== email) {
-    setMatchAuth(false)
-  }else {
-    setMatchAuth(true)
-  }
- },[email,authEmail])
+  // own conditon with useEffect
+  useEffect(() => {
+    if (authEmail !== email) {
+      setMatchAuth(false);
+    } else {
+      setMatchAuth(true);
+    }
+  }, [email, authEmail]);
 
   return (
     <div className="dark:bg-black">
@@ -61,24 +80,18 @@ function Author() {
           <b className="text-lg py-1">{email} </b>
         </div>
       </div>
-
       <div className="mt-10">
-      {/* <Zoom> */}
         <p className="text-xl font-extrabold text-green border-b text-center">
-        {name}'s Blog
+          {name}'s Blog
         </p>
-      {/* </Zoom> */}
       </div>
       <div className="flex flex-wrap justify-center space-x-5">
-        {
-          // authLoading ?  <center>Loading...</center> : ({
-          //   isAuth ? (): ''
-          // })
-          matchAuth ? <OwnVideos author={authorOf}/> : <PublicVideos author={authorOf}/>
-        }
-        
+        {matchAuth ? (
+          <OwnVideos author={authorOf} />
+        ) : (
+          <PublicVideos author={authorOf} />
+        )}
       </div>
-      
     </div>
   );
 }

@@ -3,11 +3,9 @@ import { loaded ,fail,loading} from "../action";
 
 const fetchBlog = ({tags, searched}) =>  async (dispatch) => {
 
-    dispatch(loading());
+    dispatch(loading());    // loading
 
     try {
-        // like query type : ?tags_like=react
-        // undefinedtags_like=Javascript
         let queryString;
         if(tags?.length > 0) {
             queryString = tags.map(tag => `tags_like=${tag}`).join("&");
@@ -20,10 +18,9 @@ const fetchBlog = ({tags, searched}) =>  async (dispatch) => {
         const res = await fetch(`http://localhost:9000/videos2?${queryString}`);
         const blogs = await res.json();
 
-        dispatch(loaded(blogs))
+        dispatch(loaded(blogs)) //to redux state
     } catch (error) {
-        dispatch(fail(error.message))
-        console.log(error);
+        dispatch(fail(error.message))   // error
     };
 
 

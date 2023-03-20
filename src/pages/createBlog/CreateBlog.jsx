@@ -1,32 +1,6 @@
-// "id": 1,
-// "name": "Learn With Sumit",
-// "Email": "lws@gmail.com",
-// "professional": "Software Eng.",
-// "proTitle": "A passionate Teacher",
-// "date": "May 10, 2022",
-// "duration": "10:12",
-// "views": "2.3k",
-// "tags": [
-//     "js",
-//     "javascript"
-// ],
-// "like": [
-//     "rahim",
-//     "karim"
-// ],
-// "comments": [
-//     {
-//         "id":1,
-//         "com": "your words touch my heart",
-//         "date": "April 25, 2022"
-//     }
-
 import BlogForm from "../../components/create blog/BlogForm";
 
-
 function CreateBlog() {
-
-
 
   return (
     <div className="w-screen  p-1 bg-[#6D8C00]">

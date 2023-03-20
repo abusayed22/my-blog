@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import {
   Form,
   Field,
@@ -10,7 +9,6 @@ import {
 } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import ImageUpload from "../../components/create blog/ImageUpload";
 import { useNavigate, useParams } from "react-router-dom";
 import FormController from "../../components/formikHandle/FormController";
 import { useEffect } from "react";
@@ -25,7 +23,6 @@ function EditPostAuthor() {
     isLoading: blogLoading,
     isError: blogError,
   } = useSelector((state) => state.allBlog.blog);
-  const { authorOf } = useSelector((state) => state.author);
   const {
     id: blogId,
     title,
@@ -48,15 +45,12 @@ function EditPostAuthor() {
     dispatch(singleBlogFetch(id));
   }, [dispatch, id]);
 
-console.log();
-
-  // formik handle
+  // ===== formik handle
   const initialValue = {
-    
     title,
     description,
     name,
-    tags: tags?.join(' '),
+    tags: tags?.join(" "),
     email,
     thumbnail,
     professional,
@@ -70,8 +64,6 @@ console.log();
       .required("Required!"),
     description: yup.string().required("Required!"),
     tags: yup.string().required("Required!"),
-    // tags: yup.array().of(yup.string().required("Required!")),
-    // email: '',
     email: yup.string().email("pleas valid Email here!").required("required!"),
     thumbnail: yup.string().required("Required!"),
     professional: yup.string().required("required!"),
@@ -80,7 +72,6 @@ console.log();
   const onSubmit = (value) => {
     const aTag = value.tags;
     const allTags = aTag.split(" ");
-    
     const updateVlaue = {
       id: blogId,
       title: value.title,
@@ -91,98 +82,97 @@ console.log();
       professional: value.professional,
       tags: allTags,
       proTitle,
-    date,
-    link,
-    like,
-    comments,
+      date,
+      link,
+      like,
+      comments,
     };
     dispatch(editBlog(blogId, updateVlaue));
-    navigate('/')
+    navigate("/");
   };
+
   return (
     <div className="bg-[#778D45]">
-        <div className="w-[80%] bg-[#aec09a8a] mx-auto">
-      <div className="w-[90%] mx-auto py-2">
-        <Formik
-          initialValues={initialValue}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
-          {(formik) => (
-            <Form>
-              <FormController
-                control="input"
-                name="name"
-                type="text"
-                label="Name your Account:"
-                className="h-30 w-full bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
-              />
-              <br />
-              <FormController
-                control="input"
-                name="email"
-                type="email"
-                label="Email:"
-                className=" h-30 w-full bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
-              />
-              <br />
-              <FormController
-                control="textarea"
-                name="title"
-                type="text"
-                label="Title:"
-                className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
-              />
-              <br />
-              <FormController
-                control="textarea"
-                name="description"
-                type="text"
-                label="Description:"
-                className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
-              />
-              <br />
+      <div className="w-[80%] bg-[#aec09a8a] mx-auto">
+        <div className="w-[90%] mx-auto py-2">
+          <Formik
+            initialValues={initialValue}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            {(formik) => (
+              <Form>
+                <FormController
+                  control="input"
+                  name="name"
+                  type="text"
+                  label="Name your Account:"
+                  className="h-30 w-full bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                />
+                <br />
+                <FormController
+                  control="input"
+                  name="email"
+                  type="email"
+                  label="Email:"
+                  className=" h-30 w-full bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                />
+                <br />
+                <FormController
+                  control="textarea"
+                  name="title"
+                  type="text"
+                  label="Title:"
+                  className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                />
+                <br />
+                <FormController
+                  control="textarea"
+                  name="description"
+                  type="text"
+                  label="Description:"
+                  className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                />
+                <br />
 
-              <FormController
-                control="input"
-                name="tags"
-                type="text"
-                label="Tags:"
-                className=" h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
-              />
-              <br />
-              <FormController
-                control="input"
-                name="professional"
-                type="text"
-                label="Your Profession:"
-                className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
-              />
-              <br />
-              <FormController
-                control="input"
-                name="thumbnail"
-                type="text"
-                label="Cover image url:"
-                className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
-              />
-              <br />
-              
-
-              <br />
-              <div className="flex justify-center">
-                <button
-                  className={`mx-auto border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg`}
-                  type="submit"
-                >
-                  Update
-                </button>
-              </div>
-            </Form>
-          )}
-        </Formik>
+                <FormController
+                  control="input"
+                  name="tags"
+                  type="text"
+                  label="Tags:"
+                  className=" h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                />
+                <br />
+                <FormController
+                  control="input"
+                  name="professional"
+                  type="text"
+                  label="Your Profession:"
+                  className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                />
+                <br />
+                <FormController
+                  control="input"
+                  name="thumbnail"
+                  type="text"
+                  label="Cover image url:"
+                  className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+                />
+                <br />
+                <br />
+                <div className="flex justify-center">
+                  <button
+                    className={`mx-auto border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg`}
+                    type="submit"
+                  >
+                    Update
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

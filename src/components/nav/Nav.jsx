@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LegendToggleIcon from "@mui/icons-material/LegendToggle";
-import { Link, useMatch, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ModalNav from "../modalComponents/ModalNav";
 import InputModal from "../modalComponents/InputModal";
 import Taging from "./tags/Taging";
@@ -14,33 +13,31 @@ function Nav({ catagory }) {
   const [inputToggled, setInputToggled] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
 
-  // nav toggled handler
+  // ===== nav toggled handler
   const toggledHandler = () => {
     setToggled((prv) => !prv);
   };
-  // input toggled handler
+  // =======  input toggled handler
   const inputToggledHandler = () => {
     setInputToggled((prv) => !prv);
   };
-
   const isChecked = useAuthChecked();
-  // const match = useMatch();
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const loginHandlerWithChecked = () => {
-    if(authChecked) {
-      navigate("/")
+    if (authChecked) {
+      navigate("/");
     } else {
-      navigate("/login")
+      navigate("/login");
     }
-  }
+  };
   useEffect(() => {
-    if(isChecked) {
-      setAuthChecked(true)
+    if (isChecked) {
+      setAuthChecked(true);
     } else {
-      setAuthChecked(false)
+      setAuthChecked(false);
     }
-  },[isChecked])
+  }, [isChecked]);
 
   return (
     <div>
@@ -59,9 +56,16 @@ function Nav({ catagory }) {
                 toggledHandler={inputToggledHandler}
               />
             </div>
-            {authChecked ? ( <AccountModal /> ) :
-             (<button onClick={loginHandlerWithChecked} className="w-16 h-8 text-center hover:shadow-lg p-1 border-none text-[#f1f5f9] hover:scale-125 ring ring-green hover:bg-red transition rounded-lg">Login</button>)}
-               
+            {authChecked ? (
+              <AccountModal />
+            ) : (
+              <button
+                onClick={loginHandlerWithChecked}
+                className="w-16 h-8 text-center hover:shadow-lg p-1 border-none text-[#f1f5f9] hover:scale-125 ring ring-green hover:bg-red transition rounded-lg"
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
 
@@ -91,7 +95,7 @@ function Nav({ catagory }) {
       </div>
       <div className="bg-green opacity-75 w-[100%] h-20 hidden md:block z-20">
         <ul className="flex mx-auto justify-center w-[90%] items-center h-20 md:space-x-0">
-          {catagory.map(cat => (
+          {catagory.map((cat) => (
             <li key={cat.id} className=" ">
               <Taging tag={cat.cat} />
             </li>

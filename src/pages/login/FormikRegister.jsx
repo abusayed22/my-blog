@@ -41,16 +41,11 @@ function FormikRegister(props) {
     name: yup.string().required("required!"),
     email: yup.string().email("pleas valid Email here!").required("required!"),
     password: yup.string().required("required!"),
-    // confirmPassword: yup
-    //   .string()
-    //   .oneOf([yup.ref("password"), ""], "password must match")
-    //   .required("required!"),
     professional: yup.string().required("required!"),
     title: yup.string().required("required!"),
   });
 
   const isChecked = useAuthChecked();
-  //   console.log(isChecked);
 
   useEffect(() => {
     if (isChecked) {
@@ -128,7 +123,7 @@ function FormikRegister(props) {
                           />
                           <div className="flex justify-center">
                             {isLoading ? (
-                                <button
+                              <button
                                 type="button"
                                 disabled
                                 className="border dark:text-white shadow-lg border-white bg-blue w-24 h-10 rounded-lg flex items-center justify-around p-[2px]"
@@ -139,19 +134,23 @@ function FormikRegister(props) {
                                 />
                                 Loading...
                               </button>
-                            ): (
-                                <button
-                              disabled={!formik.isValid}
-                              onClick={onSubmit}
-                              className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}
-                            >
-                              Register
-                            </button>
+                            ) : (
+                              <button
+                                disabled={!formik.isValid}
+                                onClick={onSubmit}
+                                className={`border dark:text-white shadow-lg border-white bg-blue hover:bg-[#7DB9B6] transition-colors hover:text-yellow w-24 h-10 rounded-lg `}
+                              >
+                                Register
+                              </button>
                             )}
                             <br />
                           </div>
-                          <p>if already have your account! <Link className="text-red" to='/login'>click </Link></p>
-
+                          <p>
+                            if already have your account!{" "}
+                            <Link className="text-red" to="/login">
+                              click{" "}
+                            </Link>
+                          </p>
                         </Form>
                       );
                     }}

@@ -12,8 +12,34 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import deleteBlog from "../../redux/allBlog/thunk/PostEdtiDelete/deleteBlog";
 
-function OwnVideos({ author }) {
+function OwnVideos() {
+  const {
+    blog,
+    isLoading: blogLoading,
+    isError: blogErr,
+  } = useSelector((state) => state.allBlog?.blog);
+  const {
+    authorOf,
+    isLoading: authLoading,
+    isError: authErrr,
+  } = useSelector((state) => state.author);
   const { user, isLoading, isError } = useSelector((state) => state.user);
+  const {
+    id: aID,
+    title,
+    description,
+    name,
+    email,
+    professional,
+    proTitle,
+    date,
+    link,
+    thumbnail,
+    tags,
+    like,
+    comments,
+  } = blog || {};
+
   const [hoverAction, setHoverAction] = useState(false);
   const authEmail = user?.email;
   const dispatch = useDispatch();
@@ -23,8 +49,8 @@ function OwnVideos({ author }) {
     dispatch(deleteBlog(deleteId));
   };
   return (
-    <div className="container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-      {author?.map((admin) => (
+    <div className="flex flex-wrap">
+      {authorOf?.map((admin) => (
         <div className="relative flex justify-center items-center m-auto shadow-md my-2">
           <Card key={admin.id} sx={{ maxWidth: 345 }}>
             <CardActionArea>

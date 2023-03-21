@@ -5,13 +5,32 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
 
-function PublicVideos({ author }) {
+function PublicVideos() {
+  const {
+    blog,
+    isLoading: blogLoading,
+    isError: blogErr,
+  } = useSelector((state) => state.allBlog?.blog);
+  const {
+    authorOf,
+    isLoading: authLoading,
+    isError: authErrr,
+  } = useSelector((state) => state.author);
+
+  const dispatch = useDispatch();
+
+  // ====== fetching author data
+  useEffect(() => {
+    dispatch(authorThunk(blog?.email));
+  }, [dispatch, blog]);
 
   return (
-    <div className=" container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3">
-      {author?.map((admin) => (
+    <div className=" flex flex-wrap">
+      {authorOf?.map((admin) => (
         <Link
           to={`/single/${admin?.id}`}
           className="flex justify-center items-center m-auto shadow-md my-2"

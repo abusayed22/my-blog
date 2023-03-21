@@ -86,11 +86,7 @@ function Author() {
         </p>
       </div>
       <div className="flex flex-wrap justify-center space-x-5">
-        {matchAuth ? (
-          <OwnVideos author={authorOf} />
-        ) : (
-          <PublicVideos author={authorOf} />
-        )}
+        {matchAuth ? <OwnVideos /> : <PublicVideos />}
       </div>
     </div>
   );

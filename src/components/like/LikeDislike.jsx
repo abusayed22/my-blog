@@ -15,7 +15,7 @@ function LikeDislike() {
     title,
     description,
     name,
-    Email,
+    email,
     professional,
     proTitle,
     date,
@@ -26,36 +26,37 @@ function LikeDislike() {
     comments,
   } = blog || {};
   const { user } = useSelector((state) => state.user);
-  const { email } = user;
+  const { email:userEmail } = user;
   const dispatch = useDispatch();
   const [likedThey, setLikedThey] = useState([]);
-  const [userEmail, setUserEmail] = useState(user?.email);
+  // const [userEmail, setUserEmail] = useState(user?.email);
+  const [authLiked,setauthLiked] = useState()
 
   // ==== is checking for conditional like
   const isChecked = useAuthChecked();
   useEffect(() => {
     setLikedThey(like);
     if (likedThey?.includes(userEmail)) {
-      seLikeAseKina(true);
+      setauthLiked(true);
     } else {
-      seLikeAseKina(false);
+      setauthLiked(false);
     }
   }, [like, userEmail, likedThey]);
 
-  const [likeAseKina, seLikeAseKina] = useState();
+  // const [likeAseKina, seLikeAseKina] = useState();
   const navigate = useNavigate();
 
   // ==== like handler
   const onLikeHandler = () => {
     if (isChecked) {
-      if (!likeAseKina) {
-        setLikedThey(likedThey?.concat(email));
+      if (!authLiked) {
+        setLikedThey(likedThey?.concat(userEmail));
         const likedObject = {
           id,
           title,
           description,
           name,
-          Email,
+          email,
           professional,
           proTitle,
           date,
@@ -65,7 +66,7 @@ function LikeDislike() {
           like: like.concat(userEmail),
           comments,
         };
-        seLikeAseKina(true);
+        setauthLiked(true);
         dispatch(doLikeThunk(id, likedObject));
       } else {
         const index = likedThey?.indexOf(userEmail);
@@ -78,7 +79,7 @@ function LikeDislike() {
           title,
           description,
           name,
-          Email,
+          email,
           professional,
           proTitle,
           date,
@@ -104,7 +105,7 @@ function LikeDislike() {
           onClick={onLikeHandler}
           className="text-rose text-center font-bold"
         >
-          {likeAseKina ? <FavoriteIcon /> : <FavoriteTwoToneIcon />}
+          {authLiked ? <FavoriteIcon /> : <FavoriteTwoToneIcon />}
         </button>
       </div>
     </div>

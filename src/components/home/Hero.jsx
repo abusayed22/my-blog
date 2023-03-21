@@ -7,7 +7,7 @@ function Hero() {
       <video
         src={bg_video}
         autoPlay
-        loop
+        // loop
         muted
         width="100%"
         className="object-cover h-[80vh] z-10"

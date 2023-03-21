@@ -25,7 +25,7 @@ The project will create blogs, edit own blogs, delete own blogs and show every b
 ## FontFamily:
 ### 1.sans: ['Graphik', 'sans-serif']  2.serif: ['Merriweather', 'serif']
 
-## Some of the challenges:
+# Some of the challenges:
 ### immer installed but is not used, because immer for one dimensional array's immuted operation.Root data fetching is allBlogs feature. So this feature's  state very nested. So this not for immer . Already i know that, but i learned more about this.
 
 ### react-reveal a bug lossed half-day, the bug was of react-reveal. react-reveal published was 5 years old. so maybe react-reveal isn't for this time.
@@ -38,7 +38,7 @@ npm install
 npm start 
 ```
 
-## How to Use the Project:
+# How to Use the Project:
 #### View all blogs by home page and by pagination.
 #### If you want to post blog, there is a button and click the button. Then fill in your information if you are already logged in and input the form. And link the image as cover image. Post it
 

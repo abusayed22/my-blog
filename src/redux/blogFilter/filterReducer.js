@@ -1,4 +1,4 @@
-import { TAG_SELECT, TAG_REMOVED, SEARCH } from "./actionTypes";
+import { TAG_SELECT, TAG_REMOVED, SEARCH, SEARCH_REMOVED } from "./actionTypes";
 
 const initialState = {
   tags: [],
@@ -21,6 +21,12 @@ const filterReducer = (state = initialState, action) => {
       };
 
     case SEARCH:
+      return {
+        ...state,
+        search: action.payload,
+      };
+
+    case SEARCH_REMOVED:
       return {
         ...state,
         search: action.payload,

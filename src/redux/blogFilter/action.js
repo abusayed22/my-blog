@@ -1,4 +1,4 @@
-import { SEARCH, TAG_REMOVED, TAG_SELECT } from "./actionTypes";
+import { SEARCH, SEARCH_REMOVED, TAG_REMOVED, TAG_SELECT } from "./actionTypes";
 
 export const tag_select = (tag) => {
   return {
@@ -18,5 +18,11 @@ export const search = (searchKey) => {
   return {
     type: SEARCH,
     payload: searchKey,
+  };
+};
+export const search_removed = () => {
+  return {
+    type: SEARCH_REMOVED,
+    payload: null
   };
 };

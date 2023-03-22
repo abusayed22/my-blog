@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
-import { search } from "../../redux/blogFilter/action";
+import { search, search_removed } from "../../redux/blogFilter/action";
 import { useMatch, useNavigate } from "react-router-dom";
 
 function InputModal({ inputToggled, toggledHandler }) {
@@ -14,6 +14,12 @@ function InputModal({ inputToggled, toggledHandler }) {
 
   const onChangeHandler = (e) => {
     setInput(e.target.value)
+  }
+
+  // ======= input clossed & search key null
+  const clossedHandler = () => {
+    toggledHandler();
+    dispatch(search_removed())
   }
 
   const submitHandler = (e) => {
@@ -35,7 +41,7 @@ function InputModal({ inputToggled, toggledHandler }) {
         />
         </form>
         <CloseIcon
-          onClick={toggledHandler}
+          onClick={clossedHandler}
           className="bg-yellow hover:text-[#ffff]"
         />
       </div>

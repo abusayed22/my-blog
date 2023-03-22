@@ -1,3 +1,4 @@
 export const TAG_SELECT = "TAG_SELECT"
 export const TAG_REMOVED = "TAG_REMOVED";
 export const SEARCH = "FILTER_SEARCH"
+export const SEARCH_REMOVED = "FILTER/SEARCH_REMOVED"

@@ -3,20 +3,22 @@ import bg_video from "../../assets/videos/Pexels Videos 1851768.mp4";
 
 function Hero() {
   return (
-    <div className="relative ">
+    <div className="relative">
       <video
         src={bg_video}
         autoPlay
         // loop
         muted
         width="100%"
-        className="object-cover h-[80vh] z-10"
+        className="object-cover h-[60vh] md:h-[80vh]"
       />
-      <div className="absolute top-[50%] left-[35%] md:left-[45%] flex flex-col  items-center">
-        <h2 className="font-serif text-4xl text-red text-center">My Blog</h2>
+      <div className="absolute top-0 right-0 w-full h-full">
+        <div className="h-[100%] flex flex-col items-center justify-center">
+        <h2 className="font-serif text-4xl text-red ">My Blog</h2>
         <p className="font-sans text-lg text-yellow">
-          Show your passinate content..
+          Show your passinate words..
         </p>
+        </div>
       </div>
     </div>
   );

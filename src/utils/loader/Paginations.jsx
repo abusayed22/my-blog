@@ -15,7 +15,7 @@ const Paginations = ({ blogPerPage, totalBlogs, paginate, currentPage }) => {
             {currentPage > 1 ? (
               <div
                 onClick={() => paginate(currentPage - 1)}
-                className="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-yellow border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-yellow dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="block px-2 md:px-3 py-1 md:py-2 ml-0 leading-tight text-gray-500 bg-yellow border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-yellow dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 <span className="sr-only">Previous</span>
                 <svg
@@ -37,7 +37,7 @@ const Paginations = ({ blogPerPage, totalBlogs, paginate, currentPage }) => {
             <li key={number}>
               <div
                 onClick={() => paginate(number)}
-                className={`px-3 py-2 leading-tight border border-white ${
+                className={`px-2 md:px-3 py-1 md:py-2 leading-tight border border-white ${
                   number === currentPage ? "bg-red" : "bg-green"
                 } cursor-pointer`}
               >
@@ -49,7 +49,7 @@ const Paginations = ({ blogPerPage, totalBlogs, paginate, currentPage }) => {
             {pageNumbers.lastIndexOf ? (
               <div
                 onClick={() => paginate(currentPage + 1)}
-                className="block px-3 py-2 leading-tight text-gray-500 bg-yellow dark:bg-yellow  border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="block px-2 md:px-3 py-1 md:py-2 leading-tight text-gray-500 bg-yellow dark:bg-yellow  border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 <span className="sr-only">Next</span>
                 <svg

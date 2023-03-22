@@ -8,13 +8,13 @@ function ModalNav({ toggled, toggledHandler, catagory }) {
     return (
         toggled && (
             <div>
-                <div className="overflow-hidden bg-[#595c61] p-2 w-80 top-[-100px] mt-[-140px] ">
+                <div className="bg-[#595c61] overflow-hidden p-2 w-60 md:w-70 top-[-100px] mt-[-140px]">
                     <CloseIcon
                         onClick={toggledHandler()}
                         className="bg-yellow hover:text-[#ffff]"
                     />
 
-                    <ul className="flex flex-col items-center mt-5 w-72 bg-white">
+                    <ul className=" flex flex-col items-center mt-5 w-60 bg-white">
                         {catagory.map((list) => (
                             <ModalNavList key={list.id} list={list} />
                         ))}

@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import deleteBlog from "../../redux/allBlog/thunk/PostEdtiDelete/deleteBlog";
+import { delete_Blog } from "../../redux/allBlog/action";
+import { delete_author_Blog } from "../../redux/authorRelated/action";
 
 function OwnVideos() {
   const {
@@ -40,16 +42,16 @@ function OwnVideos() {
     comments,
   } = blog || {};
 
-  const [hoverAction, setHoverAction] = useState(false);
   const authEmail = user?.email;
   const dispatch = useDispatch();
 
   // ==== delete handler
   const deleteHandle = (deleteId) => {
+    // dispatch(delete_author_Blog(deleteId))
     dispatch(deleteBlog(deleteId));
   };
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap space-x-4">
       {authorOf?.map((admin) => (
         <div className="relative flex justify-center items-center m-auto shadow-md my-2">
           <Card key={admin.id} sx={{ maxWidth: 345 }}>

@@ -19,21 +19,21 @@ function Cart({ blogs, loading }) {
         {blogs?.map((s) => (
           <div
             key={s.id}
-            className=" hover:scale-105 transition rounded-lg mt-5 dark:bg-[#f30b0ba8] bg-[#ec121f] w-[420px] md:w-[380px] space-y-4 h-[500px] opacity- flex flex-col items-center justify-center shadow-down shadow-xl"
+            className=" hover:scale-105 transition rounded-lg dark:bg-[#f30b0ba8] bg-[#ec121f]  h-[340px] md:h-[450px] lg:h-[450px] xl:h-[470px] w-[210px] md:w-[360px] xl:w-[380px]  flex flex-col items-center justify-center shadow-down shadow-xl"
           >
             <img
               src={s.thumbnail}
               alt="test"
-              className="m-auto opacity-75 w-[380px] h-60 mb-5"
+              className="m-auto p-auto mt-5 w-[200px] md:w-[370px] xl:w-[410px] h-[120px] md:h-[180px] lg:h-[200px] mb-5"
             />
             <div className="flex flex-col space-y-3">
-              <b className="text-clip p-5 text-center font-extrabold select-text selection:text-green">
+              <b className="p-2 text-clip text-center font-bold md:font-extrabold text-sm md:text-lg xl:text-xl select-text selection:text-green">
                 {s.title}
               </b>
               <div className="mx-auto">
                 <Link
                   to={`/single/${s.id}`}
-                  className="my-6 border border-white transition hover:border-[#818cf8]  shadow-sm hover:shadow-[#818cf8] hover:shadow-md px-5 py-2 text-blue rounded-md"
+                  className="text-sm lg:text-lg  border border-white transition hover:border-[#818cf8]  shadow-sm hover:shadow-[#818cf8] hover:shadow-md px-3 md:px-5 py-1 md:py-2 text-blue rounded-md"
                 >
                   View..
                 </Link>
@@ -45,19 +45,20 @@ function Cart({ blogs, loading }) {
                 <Avatar
                   alt={s.author?.name}
                   src={s.avatar}
-                  sx={{ width: 56, height: 56 }}
+                  // sx={{ width: 56, height: 56 }}
+                  className="w-[30px] md:w-[55px] md:h-[55px] h-[30px]"
                 />
                 <div className="space-y-0">
                   <Link
                     to={`/profile/${s?.id}`}
-                    className="text-lg transform hover:underline text-green "
+                    className="text-sm md:text-lg  transform hover:underline text-green "
                   >
                     {s?.name}
                   </Link>
-                  <p className="m-1 text-sm text-white">
+                  <p className="m-1 text-[12px] md:text-sm text-white">
                     {moment(s.date).startOf("day").fromNow()}
                   </p>
-                  <span className=" text-gray">{s.date}</span>
+                  <span className="text-[14px] md:text-lg text-gray">{s.date}</span>
                 </div>
               </Link>
             </div>

@@ -18,7 +18,6 @@ function ModalNavList({ list }) {
         }
     };
 
-    const selectedStyle = ifSlected ? " bg-red text-blue-600 px-4 py-1 rounded-full cursor-pointer text-white" : "  hover:shadow-red w-72 h-10 mt-4 shadow-lg font-bold text-center hover:text-red"
 
 
     return (
@@ -26,7 +25,7 @@ function ModalNavList({ list }) {
             <div
                 onClick={() => tagSelectHandler()}
                 to={`${list.cat}`}
-                className={selectedStyle}
+                className=" w-60 hover:shadow-red w-72 h-7 mt-3 shadow-lg font-extralight text-center hover:text-red"
             >
                 {list.cat}
             </div>

@@ -40,8 +40,8 @@ function Nav({ catagory }) {
   }, [isChecked]);
 
   return (
-    <div>
-      <div className=" dark:bg-black bg-yellow flex justify-between px-3 py-3 md:flex-row-reverse">
+    <div className="">
+      <div className="  dark:bg-black bg-yellow flex justify-between px-3 py-3 md:flex-row-reverse">
         <div className="flex">
           <div className="flex">
             <SearchIcon
@@ -83,7 +83,7 @@ function Nav({ catagory }) {
             className="relative md:hidden transition-transform z-10 dark:text-gray"
           >
             <LegendToggleIcon style={{ fontSize: "40px" }} />
-            <div className="absolute right-0 top-32">
+            <div className="absolute z-30 right-0 top-32">
               <ModalNav
                 toggled={toggled}
                 toggledHandler={toggledHandler}

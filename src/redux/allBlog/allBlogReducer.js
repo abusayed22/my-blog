@@ -318,11 +318,7 @@ const allBlogReducer = (state = initialState, action) => {
         ...state,
         blogs: {
           ...state.blogs,
-          blogs: [
-            ...state.blogs.filter((blog) => {
-              return blog.id !== action.payload;
-            }),
-          ],
+          blogs: state.blogs.blogs.filter(blog => blog.id !== action.payload) ,
           isLoading: false,
           isError: null,
         },

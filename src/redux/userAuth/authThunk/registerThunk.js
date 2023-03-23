@@ -9,7 +9,7 @@ const registerThunk = (userData) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `https://auth-server-49u7.onrender.com/api/auth/register`,
+      `${process.env.REACT_APP_AUTH_REGISTER}`,
       {
         userData,
       }

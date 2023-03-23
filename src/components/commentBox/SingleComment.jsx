@@ -121,11 +121,12 @@ function SingleComment() {
                 className="divide-y divide-gray-100  rounded-xl "
               >
                 <hr />
-                <tr className=" hover:bg-gray-50">
-                  <p className="text-center text-gray border-b-gray mt-1">
+                <tr className=" hover:bg-[#C8D2D1] transition">
+                  <span className="text-center text-gray border-b-gray mt-1">
                     {s?.date}
-                  </p>
-                  <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
+                  </span>
+                  <span>{s.name}</span>
+                  <th className="flex gap-3 px-6 py-4 font-normal text-gray">
                     <div className="relative h-10 w-10">
                       <img
                         className="h-full w-full rounded-full object-cover object-center"

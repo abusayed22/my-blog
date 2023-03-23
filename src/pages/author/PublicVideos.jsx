@@ -29,7 +29,7 @@ function PublicVideos() {
   }, [dispatch, blog]);
 
   return (
-    <div className=" flex flex-wrap space-x-2">
+    <div className=" flex flex-wrap ">
       {authorOf?.map((admin) => (
         <Link
           to={`/single/${admin?.id}`}

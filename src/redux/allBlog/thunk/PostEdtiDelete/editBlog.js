@@ -10,7 +10,7 @@ const editBlog = (blogId, updateValue) => async (dispatch) => {
   dispatch(delete_Blog_loading()); // loading
   try {
     const res = await axios.put(
-      `http://localhost:9000/videos2/${blogId}`,
+      `${process.env.REACT_APP_MY_API}/${blogId}`,
       updateValue,
       { headers: { "Content-type": "application/json; charset = UTP-8" } }
     );

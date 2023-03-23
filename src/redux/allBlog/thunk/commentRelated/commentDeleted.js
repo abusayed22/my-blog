@@ -27,7 +27,7 @@ const commentDelete = (id, commentObj) => async (dispatch) => {
   } = commentObj || {};
   try {
     const res = await axios.put(
-      `http://localhost:9000/videos2/${id}`,
+      `${process.env.REACT_APP_MY_API}/${id}`,
       {
         id,
         title,

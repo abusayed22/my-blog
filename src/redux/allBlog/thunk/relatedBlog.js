@@ -14,7 +14,7 @@ const relatedBlog =
           ? tags.map((tag) => `tags_like=${tag}`).join("&") + `&id_ne=${id}`
           : `id_ne=${id}`;
 
-      const res = await fetch(`http://localhost:9000/videos2?${queryString}`);
+      const res = await fetch(`${process.env.REACT_APP_MY_API}?${queryString}`);
       const related = await res.json();
 
       dispatch(related_loaded(related));

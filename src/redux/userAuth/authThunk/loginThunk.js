@@ -10,10 +10,10 @@ import {
 const loginThunk = (userData) => async (dispatch) => {
   dispatch(user_register_loading());
   const { email, password } = userData;
-
+  // ${process.env.REACT_APP_MY_API}
   try {
     const res = await axios.post(
-      `https://auth-server-49u7.onrender.com/api/auth/login`,
+      `${process.env.REACT_APP_AUTH_LOGIN}`,
       {
         email,
         password,

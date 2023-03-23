@@ -25,7 +25,7 @@ const commentEditUpdated = (blogId, commentObj) => async (dispatch) => {
   } = commentObj;
   try {
     const res = await axios.put(
-      `http://localhost:9000/videos2/${blogId}`,
+      `${process.env.REACT_APP_MY_API}/${blogId}`,
       {
         id,
         name,

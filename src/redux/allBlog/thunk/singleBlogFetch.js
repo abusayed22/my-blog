@@ -6,7 +6,7 @@ const singleBlogFetch = (blogId) => {
 
         dispatch(single_loading())
         try {
-            const res = await fetch(`http://localhost:9000/videos2/${blogId}`);
+            const res = await fetch(`${process.env.REACT_APP_MY_API}/${blogId}`);
 
             const singleBlog = await res.json();
             dispatch(single_loaded(singleBlog));

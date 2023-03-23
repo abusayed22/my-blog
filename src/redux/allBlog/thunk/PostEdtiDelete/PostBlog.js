@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const PostBlog = (postValue) => async (dispatch) => {
   dispatch(blog_post_loading());    // loading
   try {
-    const res = await axios.post(`http://localhost:9000/videos2/`, postValue, {
+    const res = await axios.post(`${process.env.REACT_APP_MY_API}/`, postValue, {
       headers: { "Content-type": "application/json; charset=UTP-8" },
     });
     toast.success("successfully your blog Posted"); // toast notification

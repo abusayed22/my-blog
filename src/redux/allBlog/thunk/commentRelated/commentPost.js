@@ -7,7 +7,7 @@ const commentPost = ({ id:blogId, commentObj ,}) => async (dispatch) => {
     dispatch(post_comment_loading());   // laoding 
     const { id, title, description, name, date, duration, views,Email, tags, link, thumbnail, like, comments } = commentObj;
     try {
-        const res = await axios.put(`http://localhost:9000/videos2/${blogId}`, {
+        const res = await axios.put(`${process.env.REACT_APP_MY_API}/${blogId}`, {
             id, 
             title, 
             description, 

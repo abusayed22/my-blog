@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import deleteBlog from "../../redux/allBlog/thunk/PostEdtiDelete/deleteBlog";
 import { delete_Blog } from "../../redux/allBlog/action";
 import { delete_author_Blog } from "../../redux/authorRelated/action";
+import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
+import { useEffect } from "react";
 
 function OwnVideos() {
   const {
@@ -26,6 +28,7 @@ function OwnVideos() {
     isError: authErrr,
   } = useSelector((state) => state.author);
   const { user, isLoading, isError } = useSelector((state) => state.user);
+  const dispatch = useDispatch()
   const {
     id: aID,
     title,
@@ -42,16 +45,21 @@ function OwnVideos() {
     comments,
   } = blog || {};
 
+   // silent fetching author's data match with user email
+  //  useEffect(() => {
+  //   dispatch(authorThunk(email));
+  // }, [dispatch, email]);
+
   const authEmail = user?.email;
-  const dispatch = useDispatch();
 
   // ==== delete handler
   const deleteHandle = (deleteId) => {
-    // dispatch(delete_author_Blog(deleteId))
+    // dispatch(delete_author_Blog(deleteId)); // author state delete to update
     dispatch(deleteBlog(deleteId));
   };
   return (
-    <div className="flex flex-wrap space-x-4">
+    <div className="flex flex-wrap justify-around">
+      {authorOf?.length === 0 && 'No blog...'}
       {authorOf?.map((admin) => (
         <div className="relative flex justify-center items-center m-auto shadow-md my-2">
           <Card key={admin.id} sx={{ maxWidth: 345 }}>

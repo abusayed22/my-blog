@@ -27,7 +27,8 @@ function Home() {
   const indexOfLastBlog = currentPage * blogPerPage
   const indexOfFirstBlog = indexOfLastBlog - blogPerPage
   const currentBlog = blogs?.slice(indexOfFirstBlog, indexOfLastBlog);
-
+  console.log(process.env.REACT_APP_AUTH_LOGIN);
+  console.log(process.env.REACT_APP_AUTH_REGISTER);
 
   // ===== pagination Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);

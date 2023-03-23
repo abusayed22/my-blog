@@ -14,8 +14,7 @@ const fetchBlog = ({tags, searched}) =>  async (dispatch) => {
         if(!searched == "") {
             queryString = `q=${searched}`
         }
-
-        const res = await fetch(`http://localhost:9000/videos2?${queryString}`);
+        const res = await fetch(`${process.env.REACT_APP_MY_API}?${queryString}`);
         const blogs = await res.json();
 
         dispatch(loaded(blogs)) //to redux state

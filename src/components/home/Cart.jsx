@@ -39,12 +39,12 @@ function Cart({ blogs, loading }) {
                 </Link>
               </div>
               <Link
-                to={`/profile/${s.id}`}
+                to={`/profile/${s.email}`}
                 className="mx-auto justify-center items-center flex space-x-2 p-2 "
               >
                 <Avatar
                   alt={s.author?.name}
-                  src={s.avatar}
+                  src={s.link}
                   // sx={{ width: 56, height: 56 }}
                   className="w-[30px] md:w-[55px] md:h-[55px] h-[30px]"
                 />

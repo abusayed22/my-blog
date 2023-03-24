@@ -29,6 +29,7 @@ function BlogForm() {
     email: user.email,
     thumbnail: "",
     professional: "",
+    link: ""
   };
 
   const validationSchema = yup.object({
@@ -41,6 +42,7 @@ function BlogForm() {
     tags: yup.string().required("Required!"),
     email: yup.string().email("pleas valid Email here!").required("required!"),
     thumbnail: yup.string().required("Required!"),
+    link: yup.string().required("Required!"),
     professional: yup.string().required("required!"),
   });
 
@@ -59,6 +61,7 @@ function BlogForm() {
       tags: allTags,
       like: [],
       comments: [],
+      link: value.link
     };
     dispatch(PostBlog(postVlaue));
     navigate("/");
@@ -78,6 +81,7 @@ function BlogForm() {
               name="name"
               type="text"
               label="Name your Account:"
+              placeholder="Type your name"
               className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
             <br />
@@ -86,6 +90,7 @@ function BlogForm() {
               name="title"
               type="text"
               label="Title:"
+              placeholder="Type your blog title in 60 characters!"
               className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
             <br />
@@ -94,6 +99,7 @@ function BlogForm() {
               name="description"
               type="text"
               label="Description:"
+              placeholder="Type your blog description!"
               className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
             <br />
@@ -102,13 +108,16 @@ function BlogForm() {
               name="email"
               type="email"
               label="Email:"
+              placeholder="Type email!"
               className=" h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
+            <br />
             <FormController
               control="input"
               name="tags"
               type="text"
               label="Tags:"
+              placeholder="Type tags are with space!"
               className=" h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
             <br />
@@ -117,6 +126,7 @@ function BlogForm() {
               name="professional"
               type="text"
               label="Your Profession:"
+              placeholder="Type your profession!"
               className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
             <br />
@@ -124,7 +134,17 @@ function BlogForm() {
               control="input"
               name="thumbnail"
               type="text"
-              label="Cover image url:"
+              label="Cover Image url:"
+              placeholder="Cover image url paste here!"
+              className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
+            />
+            <br />
+            <FormController
+              control="input"
+              name="link"
+              type="text"
+              label="Profile Image url:"
+              placeholder="Profile image url paste here!"
               className="h-30 bg-gray border border-green text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray dark:focus:ring-blue dark:focus:border-blue"
             />
             <br />

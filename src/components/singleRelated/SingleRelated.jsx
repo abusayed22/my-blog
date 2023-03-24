@@ -47,7 +47,7 @@ function SingleRelated({ blogs: relatedBlogs }) {
               >
                 <Avatar
                   alt={s.author?.name}
-                  src={s.avatar}
+                  src={s.link}
                   // sx={{ width: 56, height: 56 }}
                   className="w-[30px] md:w-[55px] md:h-[55px] h-[30px]"
                 />

@@ -1,7 +1,8 @@
 import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
 import OwnVideos from "./OwnVideos";
 import PublicVideos from "./PublicVideos";
 import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
@@ -24,9 +25,13 @@ function Author() {
   const [matchAuth, setMatchAuth] = useState(false);
   const authEmail = user?.email;
 
-  const { paraEmail } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
 
+  // === single blog fetching
+  useEffect(() => {
+    dispatch(singleBlogFetch(id)); 
+  }, [dispatch, id]);
 
   // === for single data read
   const {
@@ -47,17 +52,19 @@ function Author() {
 
   // silent fetching author's data match with user email
   useEffect(() => {
-    dispatch(authorThunk(paraEmail));
-  }, [dispatch, paraEmail]);
+    if(blog?.length > 0) {
+      dispatch(authorThunk(email));
+    }
+  }, [dispatch, email]);
 
   // own conditon with useEffect
   useEffect(() => {
-    if (authEmail !== paraEmail) {
+    if (authEmail !== email) {
       setMatchAuth(false);
     } else {
       setMatchAuth(true);
     }
-  }, [paraEmail, authEmail]);
+  }, [email, authEmail]);
 
   return (
     <div className="dark:bg-black">

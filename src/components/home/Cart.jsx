@@ -39,7 +39,7 @@ function Cart({ blogs, loading }) {
                 </Link>
               </div>
               <Link
-                to={`/profile/${s.email}`}
+                to={`/profile/${s.id}`}
                 className="mx-auto justify-center items-center flex space-x-2 p-2 "
               >
                 <Avatar

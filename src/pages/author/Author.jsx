@@ -1,8 +1,7 @@
 import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
-import singleBlogFetch from "../../redux/allBlog/thunk/singleBlogFetch";
+import { useParams } from "react-router-dom";
 import OwnVideos from "./OwnVideos";
 import PublicVideos from "./PublicVideos";
 import authorThunk from "../../redux/authorRelated/authorTHunk/authorThunk";
@@ -28,13 +27,6 @@ function Author() {
   const { paraEmail } = useParams();
   const dispatch = useDispatch();
 
-  // === single blog fetching
-  // useEffect(() => {
-  //   dispatch(singleBlogFetch(id)); // TODO:
-  // }, [dispatch, id]);
-  const search = useLocation().search
-    const searchParams = new URLSearchParams(search)
-  console.log(searchParams);
 
   // === for single data read
   const {

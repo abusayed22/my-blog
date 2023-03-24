@@ -40,7 +40,7 @@ function App() {
           <Route path="/single/:id" element={<SingleBlog />} />
           {/* when profile to single blgo */}
           <Route path="profile/:id/single_blog/:id" element={<SingleBlog />} />
-          <Route path="/profile/:id" element={<Author />} />
+          <Route path="/profile/:paraEmail" element={<Author />} />
           <Route path="/login" element={<FormikLogin />} />
           <Route path="/register" element={<FormikRegister />} />
           <Route path="/createBlog" element={<CreateBlog />} />

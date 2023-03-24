@@ -2,7 +2,7 @@
 # my-blog
 
 
-# live: https//
+# live: https://myblog-hobby.netlify.app/
 
 
 

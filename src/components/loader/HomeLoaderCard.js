@@ -3,26 +3,23 @@ import { Link } from "react-router-dom";
 
 const HomeLoaderCard = () => {
   return (
-    <div className="animate-pulse rounded-lg mt-5 dark:bg-[#f30b0ba8] bg-[#f4f7fa] w-[420px] md:w-[380px] space-y-4 h-[500px] opacity- flex flex-col items-center justify-center shadow-down shadow-xl">
-      <div className="animate-pulse w-[380px] h-60 mb-5 border border-black bg-black"></div>
+    <div className="animate-pulse mt-4 rounded-lg bg-[#f4f7fa] w-[220px] md:w-[380px] space-y-4 h-[300px] md:h-[500px] flex flex-col items-center justify-center shadow-down shadow-xl">
+      <div className="animate-pulse w-[180px] md:w-[380px] h-40 md:h-60 mb-5 bg-white rounded-md"></div>
       <div className="flex flex-col space-y-3">
-        <b className="text-clip p-5 text-center font-extrabold select-text selection:text-green">
+        <b className="text-clip text-center ">
           ..............
         </b>
-        <div className="mx-auto">
-          {/* <img className="animate-pulse h-8 w-8 bg-red" src={loading} alt="" /> */}
-        </div>
-        <Link
-          to={"/author"}
-          className="mx-auto flex items-center space-x-2 p-2 "
+        
+        <div
+          className="mx-auto flex flex-col items-center space-x-1 p-2 "
         >
-          <Avatar className="animate-pulse" sx={{ width: 56, height: 56 }} />
-          <div>
-            <div className="animate-pulse w-40 h-10 mb-5 border border-black bg-[#1e293b]"></div>
-            <p className="animate-pulse w-30 h-5 bg-black"></p>
-            <p className="animate-pulse mt-2 w-30 h-2 bg-black"></p>
+          <Avatar className="animate-pulse" />
+          <div className="flex flex-col justify-around">
+            <div className="animate-pulse w-40 h-10 rounded-sm bg-white"></div>
+            <b className="animate-pulse w-30 h-5 bg-white"></b>
+            <b className="animate-pulse w-30 h-2 bg-white"></b>
           </div>
-        </Link>
+        </div>
       </div>
     </div>
   );

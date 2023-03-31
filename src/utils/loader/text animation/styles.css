@@ -177,11 +177,11 @@
     display: flex;
     flex-wrap: nowrap;
   }
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 280px) {
     .parallax .scroller {
       font-weight: 600;
       text-transform: uppercase;
-      font-size: 30px;
+      font-size: 25px;
       display: flex;
       white-space: nowrap;
       display: flex;
@@ -192,7 +192,7 @@
     .parallax .scroller {
       font-weight: 600;
       text-transform: uppercase;
-      font-size: 40px;
+      font-size: 35px;
       display: flex;
       white-space: nowrap;
       display: flex;

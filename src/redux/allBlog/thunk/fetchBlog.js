@@ -10,14 +10,15 @@ const fetchBlog = ({tags, searched}) =>  async (dispatch) => {
         if(tags?.length > 0) {
             queryString = tags.map(tag => `tags_like=${tag}`).join("&");
         }
-
         if(!searched == "") {
             queryString = `q=${searched}`
         }
+
         const res = await fetch(`${process.env.REACT_APP_MY_API}?${queryString}`);
         const blogs = await res.json();
 
         dispatch(loaded(blogs)) //to redux state
+
     } catch (error) {
         dispatch(fail(error.message))   // error
     };

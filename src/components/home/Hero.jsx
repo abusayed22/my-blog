@@ -10,8 +10,9 @@ function Hero() {
         // loop
         muted
         width="100%"
-        className="object-cover h-[60vh] md:h-[80vh]"
+        className="clip object-cover w-[100%] h-[50vh] md:h-[80vh]"
       />
+      
       <div className="absolute top-0 right-0 w-full h-full">
         <div className="h-[100%] flex flex-col items-center justify-center">
         <h2 className="font-serif text-4xl text-red ">My Blog</h2>

@@ -32,7 +32,7 @@ import {
 const initialState = {
   blogs: {
     blogs: [],
-    isLoadindg: false,
+    isLoading: false,
     isError: null,
   },
   blog: {
@@ -56,7 +56,7 @@ const allBlogReducer = (state = initialState, action) => {
         blogs: {
           ...state.blogs,
           blogs: action.payload,
-          isLoadindg: false,
+          isLoading: false,
           isError: null,
         },
       };
@@ -66,7 +66,7 @@ const allBlogReducer = (state = initialState, action) => {
         blogs: {
           ...state.blogs,
           blogs: [],
-          isLoadindg: true,
+          isLoading: true,
           isError: null,
         },
       };
@@ -76,7 +76,7 @@ const allBlogReducer = (state = initialState, action) => {
         blogs: {
           ...state.blogs,
           blogs: [],
-          isLoadindg: false,
+          isLoading: false,
           isError: action.payload,
         },
       };

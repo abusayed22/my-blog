@@ -31,13 +31,13 @@ function InputModal({ inputToggled, toggledHandler }) {
   }
   return (
     inputToggled && (
-      <div className="flex">
-        <form onSubmit={submitHandler}>
+      <div className="flex top-14 ">
+        <form onSubmit={submitHandler} className="w-[100%]">
         <input
           type="text"
           value={input}
           onChange= {onChangeHandler}
-          className="h-10 border select-all selection:text-yellow border-gray w-[300px] ml-4 focus:text-rose md:w-[500px] outline-none p-1"
+          className="h-10 border select-all selection:text-yellow border-gray w-[100%] ml-4 focus:text-rose md:w-[500px] outline-none p-1"
         />
         </form>
         <CloseIcon

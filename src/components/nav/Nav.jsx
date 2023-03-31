@@ -41,16 +41,16 @@ function Nav({ catagory }) {
 
   return (
     <div className="">
-      <div className="  dark:bg-black bg-yellow flex justify-between px-3 py-3 md:flex-row-reverse">
-        <div className="flex">
-          <div className="flex">
+      <div className="relative dark:bg-black bg-yellow flex justify-between px-3 py-3 md:flex-row-reverse">
+        <div className="flex ">
+          <div className="flex ">
             <SearchIcon
               onClick={inputToggledHandler}
               toggledHandler={inputToggledHandler}
-              className="relative text-green cursor-pointer"
+              className=" text-green cursor-pointer"
               style={{ fontSize: "40px" }}
             />
-            <div className="absolute top-3 left-[20%] md:left-[20%]">
+            <div className="absolute w-[96%] z-30 top-[100%] md:top-3 left-0 md:left-[20%] ">
               <InputModal
                 inputToggled={inputToggled}
                 toggledHandler={inputToggledHandler}

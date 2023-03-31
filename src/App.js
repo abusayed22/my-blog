@@ -48,6 +48,7 @@ function App() {
             path="/profile/:id/editBlog/:id"
             element={<EditPostAuthor />}
           />
+          {/* TODO: */}
           {/* <Route path="*" element={<div className="h-[60vh] text-red text-3xl text-center">Not found....!!!</div>} /> */}
         </Routes>
         <Footer />

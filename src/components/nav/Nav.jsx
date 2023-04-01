@@ -10,15 +10,18 @@ import AccountModal from "../modalComponents/AccountModal";
 
 function Nav({ catagory }) {
   const [toggled, setToggled] = useState(false);
+  // const [navToggled, setNavToggled] = useState(false);
   const [inputToggled, setInputToggled] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
 
   // ===== nav toggled handler
   const toggledHandler = () => {
+    console.log('hello');
     setToggled((prv) => !prv);
   };
   // =======  input toggled handler
   const inputToggledHandler = () => {
+    console.log('toggled');
     setInputToggled((prv) => !prv);
   };
   const isChecked = useAuthChecked();
@@ -76,11 +79,11 @@ function Nav({ catagory }) {
           myblog
         </Link>
 
-        {/* toggled */}
+        {/* toggled nav */}
         <div>
           <button
             onClick={toggledHandler}
-            className="relative md:hidden transition-transform z-10 dark:text-gray"
+            className="relative md:hidden transition-transform z-30 dark:text-gray"
           >
             <LegendToggleIcon style={{ fontSize: "40px" }} />
             <div className="absolute z-30 right-0 top-32">
